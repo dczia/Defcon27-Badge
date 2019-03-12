@@ -1,6 +1,6 @@
 # Defcon27-Badge
 
-``` 
+```
  ____   ____ ______             ____   ____ ____ _____
 |  _ \ / ___|__  (_) __ _      |  _ \ / ___|___ \___  |
 | | | | |     / /| |/ _` |_____| | | | |     __) | / /
@@ -8,18 +8,17 @@
 |____/ \____/____|_|\__,_|     |____/ \____|_____/_/
 ```
 
-
 # Lazer Theramin Synth Badge
 
-This year we wanted to do something different. Our idea is that we use two laser time of flight sensors that can measure the distance of your hands moving around infront of our badge to control a synthesizer to create something like a laser theremin. 
+This year we wanted to do something different. Our idea is that we use two laser time of flight sensors that can measure the distance of your hands moving around infront of our badge to control a synthesizer to create something like a laser theremin.
 
 # Hardware
 
--  **Rigado BMD-340** aka NRF52 Microconroller
-    - Bluetooth, Lots of IO's, Fast, Small, Low Power (ish), and cheap ~ $12
+- **Rigado BMD-340** aka NRF52 Microconroller
+  - Bluetooth, Lots of IO's, Fast, Small, Low Power (ish), and cheap ~ $12
 
-- **Dev Board - Rigaldo BM-340 Eval Board* 
-    - https://www.digikey.com/products/en/rf-if-and-rfid/rf-evaluation-and-development-kits-boards/859?k=BMD-340&pkeyword=&sv=0&sf=0&FV=ffe0035b&quantity=&ColumnSort=0&page=1&pageSize=25
+- **Dev Board - Rigaldo BM-340 Eval Board*
+  - https://www.digikey.com/products/en/rf-if-and-rfid/rf-evaluation-and-development-kits-boards/859?k=BMD-340&pkeyword=&sv=0&sf=0&FV=ffe0035b&quantity=&ColumnSort=0&page=1&pageSize=25
 
 - Time of Flight Sensors - To Be Determined for final board, dev modules are from Adafruit - https://www.adafruit.com/product/3317
 
@@ -35,11 +34,11 @@ This year we wanted to do something different. Our idea is that we use two laser
 
 - Microphone - TBD
 
-- SD Card 
+- SD Card
 
 - LEDs
 
-- Master volume dial - Use guitar amplifer sytle knob? 
+- Master volume dial - Use guitar amplifer sytle knob?
 
 # Software
 
@@ -54,10 +53,10 @@ This year we wanted to do something different. Our idea is that we use two laser
 
 # Documentation
 
-[Documentation library - nordicsemi.com](https://www.nordicsemi.com/DocLib)    
+[Documentation library - nordicsemi.com](https://www.nordicsemi.com/DocLib)
 
 # Links to relevant information
 
-* DC801 Party Badge - Good source for setting up dev env, and seeing some Rigado code in action - https://github.com/DC801/DC26PartyBadge
+- DC801 Party Badge - Good source for setting up dev env, and seeing some Rigado code in action - https://github.com/DC801/DC26PartyBadge
 
-* oxvox - Rigado based pwm synth - https://github.com/mediumrehr/oxvox
+- oxvox - Rigado based pwm synth - https://github.com/mediumrehr/oxvox
