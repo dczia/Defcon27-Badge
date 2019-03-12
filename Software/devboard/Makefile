@@ -31,6 +31,8 @@ SRC_FILES += \
   $(SDK_ROOT)/modules/nrfx/soc/nrfx_atomic.c \
   $(PROJ_DIR)/main.c \
   $(SDK_ROOT)/modules/nrfx/mdk/system_nrf52840.c \
+  \
+  $(PROJ_DIR)/buttons.c \
 
 # Include folders common to all targets
 INC_FOLDERS += \

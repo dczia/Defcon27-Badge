@@ -14,11 +14,14 @@ This year we wanted to do something different. Our idea is that we use two laser
 
 # Hardware
 
-- **Rigado BMD-340** aka NRF52 Microconroller
+- Rigado BMD-340 aka NRF52 Microconroller
   - Bluetooth, Lots of IO's, Fast, Small, Low Power (ish), and cheap ~ $12
 
-- **Dev Board - Rigaldo BM-340 Eval Board*
+- Dev Board - Rigaldo BM-340 Eval Board
   - https://www.digikey.com/products/en/rf-if-and-rfid/rf-evaluation-and-development-kits-boards/859?k=BMD-340&pkeyword=&sv=0&sf=0&FV=ffe0035b&quantity=&ColumnSort=0&page=1&pageSize=25
+
+- Alt Dev Board - nrf52840 Dongle
+  - Just want to write some code? Dont need all the IO's routed to pins? Try the dongle. Only $10! https://www.mouser.com/ProductDetail/Nordic-Semiconductor/nRF52840-Dongle?qs=gTYE2QTfZfTbdrOaMHWEZg%3D%3D
 
 - Time of Flight Sensors - To Be Determined for final board, dev modules are from Adafruit - https://www.adafruit.com/product/3317
 

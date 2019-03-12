@@ -5,7 +5,7 @@
  * @date March 17, 2019
  * @author lithochasm
  *
- * This is the custom board defines for the LEDs and etc on the DC25 badge
+ * This is the custom board defines for the LEDs and stuff on the DC27 badge
  *
  */
 

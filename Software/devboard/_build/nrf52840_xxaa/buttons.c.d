@@ -1,4 +1,9 @@
-_build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
+_build/nrf52840_xxaa/buttons.c.o: ../../Software/buttons.c \
+ ../../Software/common.h ../../Software/config/custom_board.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/core_cm4.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdint.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/stdint.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/_default_types.h \
@@ -6,17 +11,6 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/_newlib_version.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_intsup.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_stdint.h \
- /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/boards/boards.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_gpio.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/nrfx.h \
- /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_config.h \
- ../config/sdk_config.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_common.h \
- /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stddef.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/core_cm4.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/core_cmInstr.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/cmsis_gcc.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/core_cmFunc.h \
@@ -26,19 +20,6 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf51_to_nrf52840.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52_to_nrf52840.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/compiler_abstraction.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf_peripherals.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840_peripherals.h \
- /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_glue.h \
- /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/apply_old_config.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs_nrf52840.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util.h \
- /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/compiler_abstraction.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util_platform.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/stdio.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/_ansi.h \
@@ -46,6 +27,7 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/config.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/ieeefp.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/cdefs.h \
+ /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stddef.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdarg.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/reent.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/_ansi.h \
@@ -56,20 +38,47 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_pthreadtypes.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/types.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/stdio.h \
+ /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_errors.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/drivers_nrf/nrf_soc_nosd/nrf_error.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error_weak.h \
+ ../../Software/buttons.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/nrfx.h \
+ /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_config.h \
+ ../config/sdk_config.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_common.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf_peripherals.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840_peripherals.h \
+ /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_glue.h \
+ /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/apply_old_config.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs_nrf52840.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/compiler_abstraction.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util_platform.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_coredep.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_atomic.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_errors.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_resources.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_errors.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/boards/pca10056.h \
- ../../Software/buttons.h ../../Software/common.h \
- ../../Software/config/custom_board.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h \
- ../../Software/buttons.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_gpio.h
+
+../../Software/common.h:
+
+../../Software/config/custom_board.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/core_cm4.h:
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdint.h:
 
@@ -84,28 +93,6 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_intsup.h:
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_stdint.h:
-
-/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/boards/boards.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_gpio.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/nrfx.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_config.h:
-
-../config/sdk_config.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_common.h:
-
-/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stddef.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/core_cm4.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/components/toolchain/cmsis/include/core_cmInstr.h:
 
@@ -125,32 +112,6 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
 
 /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/compiler_abstraction.h:
 
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf_peripherals.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840_peripherals.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_glue.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/apply_old_config.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs_nrf52840.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/compiler_abstraction.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util_platform.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h:
-
 /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h:
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/stdio.h:
@@ -164,6 +125,8 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/ieeefp.h:
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/cdefs.h:
+
+/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stddef.h:
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdarg.h:
 
@@ -185,11 +148,51 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/stdio.h:
 
+/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h:
+
 /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_errors.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/components/drivers_nrf/nrf_soc_nosd/nrf_error.h:
 
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nordic_common.h:
+
 /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error_weak.h:
+
+../../Software/buttons.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/nrfx.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_config.h:
+
+../config/sdk_config.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_common.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf_peripherals.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/nrf52840_peripherals.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/nrfx_glue.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/apply_old_config.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_irqs_nrf52840.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/mdk/compiler_abstraction.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util_platform.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/nrf_assert.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/soc/nrfx_coredep.h:
 
@@ -201,16 +204,4 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
 
 /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_errors.h:
 
-/Users/jason.andrews/dev/nordic-sdk15/components/boards/pca10056.h:
-
-../../Software/buttons.h:
-
-../../Software/common.h:
-
-../../Software/config/custom_board.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h:
-
-../../Software/buttons.h:
-
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h:
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_gpio.h:

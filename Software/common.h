@@ -3,10 +3,13 @@
 #include "nordic_common.h"
 #include "nrf.h"
 #include "app_error.h"
-//#include "bsp.h"
+
+#include "buttons.h"
 
 #include "nrf_delay.h"
 #include "nrf_gpio.h"
+
+//#include "bsp.h"
 
 /*
 #include "ble.h"

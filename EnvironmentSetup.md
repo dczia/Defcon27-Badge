@@ -13,11 +13,13 @@
 - Download your IDE of chizzoice - VS Code, Sublime Text, VIM, Emacs (eww) etc…
 
 ## Windows
+
 - Use Segger Embedded studio, or figure out how to get GCC Arm setup on there.
 
 ## Installation
 
 ### Setup Directory Structure
+
 You can create your own directory structure, but the current makefile is setup to look for something similar to:
 
 ```
@@ -48,6 +50,7 @@ CD into the Defcon27-Badge/Software/devboard folder. This contains the makefile 
 Run 'make' to build the firmware. Then run 'make flash' to flash the device. Boom, done!
 
 ## Misc Links
+
 [The complete cross-platform nRF development tutorial - Novel Bits](https://www.novelbits.io/cross-platform-nrf-development-tutorial/) - SES
 
 Oldskool GCC Way - [Programming an nRF52 on a Mac | Aaron Eiche](https://aaroneiche.com/2016/06/01/programming-an-nrf52-on-a-mac/)
