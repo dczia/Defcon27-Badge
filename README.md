@@ -43,13 +43,14 @@ This year we wanted to do something different. Our idea is that we use two laser
 
 # Software
 
-- ARM-GCC toolchain
+- GNU-ARM-GCC toolchain
+    - Your own choice of IDE (Visual Studio Code, Atom, CLion, Eclipse, etc)
 
 - See SOFTWARE for more info
 
 # Board
 
-- KiCad
+- Designed in KiCad
 
 # Documentation
 
