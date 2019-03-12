@@ -3,7 +3,7 @@ TARGETS          := nrf52840_xxaa
 OUTPUT_DIRECTORY := _build
 
 SDK_ROOT := /Users/$(USER)/dev/nordic-sdk15
-PROJ_DIR := /Users/$(USER)/dev/dczia/Software
+PROJ_DIR := ../../Software
 NRFJPROG := /Users/$(USER)/dev/bin/nrfjprog/nrfjprog
 MERGEHEX := /Users/$(USER)/dev/bin/mergehex/mergehex
 

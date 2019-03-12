@@ -1,5 +1,4 @@
-_build/nrf52840_xxaa/main.c.o: \
- /Users/jason.andrews/dev/dczia/Software/main.c \
+_build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdint.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/stdint.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/_default_types.h \
@@ -66,8 +65,7 @@ _build/nrf52840_xxaa/main.c.o: \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_resources.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_errors.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/boards/pca10056.h \
- /Users/jason.andrews/dev/dczia/Software/common.h \
- /Users/jason.andrews/dev/dczia/Software/config/custom_board.h \
+ ../../Software/common.h ../../Software/config/custom_board.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h
 
@@ -203,9 +201,9 @@ _build/nrf52840_xxaa/main.c.o: \
 
 /Users/jason.andrews/dev/nordic-sdk15/components/boards/pca10056.h:
 
-/Users/jason.andrews/dev/dczia/Software/common.h:
+../../Software/common.h:
 
-/Users/jason.andrews/dev/dczia/Software/config/custom_board.h:
+../../Software/config/custom_board.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h:
 
