@@ -65,3 +65,7 @@ This year we wanted to do something different. Our idea is that we use two laser
 - oxvox - Rigado based pwm synth - https://github.com/mediumrehr/oxvox
 
 - Basic audio synthesis with an Arduino - https://makezine.com/projects/make-35/advanced-arduino-sound-synthesis/
+
+- mintysynth - simple arduino synth - https://mintysynth.com/
+
+- Basic aurduino waveforms and synth engine - https://github.com/dzlonline/the_synth
