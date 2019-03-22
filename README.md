@@ -63,3 +63,5 @@ This year we wanted to do something different. Our idea is that we use two laser
 - DC801 Party Badge - Good source for setting up dev env, and seeing some Rigado code in action - https://github.com/DC801/DC26PartyBadge
 
 - oxvox - Rigado based pwm synth - https://github.com/mediumrehr/oxvox
+
+- Basic audio synthesis with an Arduino - https://makezine.com/projects/make-35/advanced-arduino-sound-synthesis/
