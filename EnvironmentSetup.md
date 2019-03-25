@@ -16,9 +16,9 @@
 
 - Use Segger Embedded studio, or figure out how to get GCC Arm setup on there.
 
-## Installation
+# Installation
 
-### Setup Directory Structure
+## Setup Directory Structure
 
 You can create your own directory structure, but the current makefile is setup to look for something similar to:
 
@@ -39,11 +39,11 @@ The devboard folder contains the make file and linker script for the devboard. T
 
 The code for the project is in the Software folder.
 
-### Setup Makefile
+## Setup Makefile
 
 If you installed stuff into other areas you may need to edit the makefile.
 
-### Build
+## Build
 
 CD into the Defcon27-Badge/Software/devboard folder. This contains the makefile for building software for the development board.
 
