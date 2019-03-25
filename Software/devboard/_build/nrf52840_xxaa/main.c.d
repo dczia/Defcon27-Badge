@@ -1,4 +1,5 @@
-_build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
+_build/nrf52840_xxaa/main.c.o: ..//main.c \
+ /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdint.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/stdint.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/_default_types.h \
@@ -6,7 +7,6 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/_newlib_version.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_intsup.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_stdint.h \
- /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/boards/boards.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_gpio.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/nrfx.h \
@@ -65,11 +65,41 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_resources.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/nrfx_errors.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/boards/pca10056.h \
- ../../Software/buttons.h ../../Software/common.h \
- ../../Software/config/custom_board.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/bsp/bsp.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/button/app_button.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h \
- ../../Software/buttons.h \
- /Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/timer/app_timer.h \
+ /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_pwm.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_pwm.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_pwm.h \
+ /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_twi.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_twim.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_twim.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_twi.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_twi.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_common.h \
+ /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/string.h \
+ /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/string.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_os.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_macros.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/experimental_section_vars/nrf_section.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/strerror/nrf_strerror.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/src/nrf_log_internal.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_instance.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_types.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_types.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_ctrl.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/src/nrf_log_ctrl_internal.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_backend_interface.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/memobj/nrf_memobj.h \
+ /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/stdlib.h \
+ /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/stdlib.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/balloc/nrf_balloc.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_default_backends.h
+
+/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h:
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdint.h:
 
@@ -84,8 +114,6 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_intsup.h:
 
 /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/_stdint.h:
-
-/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/lib/gcc/arm-none-eabi/8.2.1/include/stdbool.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/components/boards/boards.h:
 
@@ -203,14 +231,68 @@ _build/nrf52840_xxaa/main.c.o: ../../Software/main.c \
 
 /Users/jason.andrews/dev/nordic-sdk15/components/boards/pca10056.h:
 
-../../Software/buttons.h:
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/bsp/bsp.h:
 
-../../Software/common.h:
-
-../../Software/config/custom_board.h:
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/button/app_button.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_error.h:
 
-../../Software/buttons.h:
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/timer/app_timer.h:
 
-/Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h:
+/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_pwm.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_pwm.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_pwm.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_twi.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_twim.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_twim.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_twi.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_twi.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_common.h:
+
+/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/string.h:
+
+/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/sys/string.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_os.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/app_util.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_macros.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/experimental_section_vars/nrf_section.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/strerror/nrf_strerror.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/src/nrf_log_internal.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_instance.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_types.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_types.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_ctrl.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/src/nrf_log_ctrl_internal.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_backend_interface.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/memobj/nrf_memobj.h:
+
+/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/stdlib.h:
+
+/usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/machine/stdlib.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/balloc/nrf_balloc.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log_default_backends.h:
