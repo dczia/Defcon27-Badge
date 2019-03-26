@@ -69,3 +69,7 @@ This year we wanted to do something different. Our idea is that we use two laser
 - mintysynth - simple arduino synth - https://mintysynth.com/
 
 - Basic aurduino waveforms and synth engine - https://github.com/dzlonline/the_synth
+
+# Devboard pinout
+
+![BMD-340-DK Pinout](https://i.imgur.com/5dEBRfZ.jpg)
