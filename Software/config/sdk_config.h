@@ -46,268 +46,6 @@
 #ifdef USE_APP_CONFIG
 #include "app_config.h"
 #endif
-
-// <e> NRFX_TIMER_ENABLED - nrfx_timer - TIMER periperal driver
-//==========================================================
-#ifndef NRFX_TIMER_ENABLED
-#define NRFX_TIMER_ENABLED 1
-#endif
-// <q> NRFX_TIMER0_ENABLED  - Enable TIMER0 instance
- 
-
-#ifndef NRFX_TIMER0_ENABLED
-#define NRFX_TIMER0_ENABLED 0
-#endif
-
-// <q> NRFX_TIMER1_ENABLED  - Enable TIMER1 instance
- 
-
-#ifndef NRFX_TIMER1_ENABLED
-#define NRFX_TIMER1_ENABLED 0
-#endif
-
-// <q> NRFX_TIMER2_ENABLED  - Enable TIMER2 instance
- 
-
-#ifndef NRFX_TIMER2_ENABLED
-#define NRFX_TIMER2_ENABLED 0
-#endif
-
-// <q> NRFX_TIMER3_ENABLED  - Enable TIMER3 instance
- 
-
-#ifndef NRFX_TIMER3_ENABLED
-#define NRFX_TIMER3_ENABLED 0
-#endif
-
-// <q> NRFX_TIMER4_ENABLED  - Enable TIMER4 instance
- 
-
-#ifndef NRFX_TIMER4_ENABLED
-#define NRFX_TIMER4_ENABLED 0
-#endif
-
-// <o> NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY  - Timer frequency if in Timer mode
- 
-// <0=> 16 MHz 
-// <1=> 8 MHz 
-// <2=> 4 MHz 
-// <3=> 2 MHz 
-// <4=> 1 MHz 
-// <5=> 500 kHz 
-// <6=> 250 kHz 
-// <7=> 125 kHz 
-// <8=> 62.5 kHz 
-// <9=> 31.25 kHz 
-
-#ifndef NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY
-#define NRFX_TIMER_DEFAULT_CONFIG_FREQUENCY 0
-#endif
-
-// <o> NRFX_TIMER_DEFAULT_CONFIG_MODE  - Timer mode or operation
- 
-// <0=> Timer 
-// <1=> Counter 
-
-#ifndef NRFX_TIMER_DEFAULT_CONFIG_MODE
-#define NRFX_TIMER_DEFAULT_CONFIG_MODE 0
-#endif
-
-// <o> NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH  - Timer counter bit width
- 
-// <0=> 16 bit 
-// <1=> 8 bit 
-// <2=> 24 bit 
-// <3=> 32 bit 
-
-#ifndef NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH
-#define NRFX_TIMER_DEFAULT_CONFIG_BIT_WIDTH 0
-#endif
-
-// <o> NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
- 
-// <0=> 0 (highest) 
-// <1=> 1 
-// <2=> 2 
-// <3=> 3 
-// <4=> 4 
-// <5=> 5 
-// <6=> 6 
-// <7=> 7 
-
-#ifndef NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY
-#define NRFX_TIMER_DEFAULT_CONFIG_IRQ_PRIORITY 6
-#endif
-
-// <e> NRFX_TIMER_CONFIG_LOG_ENABLED - Enables logging in the module.
-//==========================================================
-#ifndef NRFX_TIMER_CONFIG_LOG_ENABLED
-#define NRFX_TIMER_CONFIG_LOG_ENABLED 0
-#endif
-// <o> NRFX_TIMER_CONFIG_LOG_LEVEL  - Default Severity level
- 
-// <0=> Off 
-// <1=> Error 
-// <2=> Warning 
-// <3=> Info 
-// <4=> Debug 
-
-#ifndef NRFX_TIMER_CONFIG_LOG_LEVEL
-#define NRFX_TIMER_CONFIG_LOG_LEVEL 3
-#endif
-
-// <o> NRFX_TIMER_CONFIG_INFO_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef NRFX_TIMER_CONFIG_INFO_COLOR
-#define NRFX_TIMER_CONFIG_INFO_COLOR 0
-#endif
-
-// <o> NRFX_TIMER_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
- 
-// <0=> Default 
-// <1=> Black 
-// <2=> Red 
-// <3=> Green 
-// <4=> Yellow 
-// <5=> Blue 
-// <6=> Magenta 
-// <7=> Cyan 
-// <8=> White 
-
-#ifndef NRFX_TIMER_CONFIG_DEBUG_COLOR
-#define NRFX_TIMER_CONFIG_DEBUG_COLOR 0
-#endif
-
-// </e>
-
-// </e>
-
-// <q> PPI_ENABLED  - nrf_drv_ppi - PPI peripheral driver - legacy layer
- 
-
-#ifndef PPI_ENABLED
-#define PPI_ENABLED 1
-#endif
-
-// <e> TIMER_ENABLED - nrf_drv_timer - TIMER periperal driver - legacy layer
-//==========================================================
-#ifndef TIMER_ENABLED
-#define TIMER_ENABLED 1
-#endif
-// <o> TIMER_DEFAULT_CONFIG_FREQUENCY  - Timer frequency if in Timer mode
- 
-// <0=> 16 MHz 
-// <1=> 8 MHz 
-// <2=> 4 MHz 
-// <3=> 2 MHz 
-// <4=> 1 MHz 
-// <5=> 500 kHz 
-// <6=> 250 kHz 
-// <7=> 125 kHz 
-// <8=> 62.5 kHz 
-// <9=> 31.25 kHz 
-
-#ifndef TIMER_DEFAULT_CONFIG_FREQUENCY
-#define TIMER_DEFAULT_CONFIG_FREQUENCY 0
-#endif
-
-// <o> TIMER_DEFAULT_CONFIG_MODE  - Timer mode or operation
- 
-// <0=> Timer 
-// <1=> Counter 
-
-#ifndef TIMER_DEFAULT_CONFIG_MODE
-#define TIMER_DEFAULT_CONFIG_MODE 0
-#endif
-
-// <o> TIMER_DEFAULT_CONFIG_BIT_WIDTH  - Timer counter bit width
- 
-// <0=> 16 bit 
-// <1=> 8 bit 
-// <2=> 24 bit 
-// <3=> 32 bit 
-
-#ifndef TIMER_DEFAULT_CONFIG_BIT_WIDTH
-#define TIMER_DEFAULT_CONFIG_BIT_WIDTH 0
-#endif
-
-// <o> TIMER_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
- 
-
-// <i> Priorities 0,2 (nRF51) and 0,1,4,5 (nRF52) are reserved for SoftDevice
-// <0=> 0 (highest) 
-// <1=> 1 
-// <2=> 2 
-// <3=> 3 
-// <4=> 4 
-// <5=> 5 
-// <6=> 6 
-// <7=> 7 
-
-#ifndef TIMER_DEFAULT_CONFIG_IRQ_PRIORITY
-#define TIMER_DEFAULT_CONFIG_IRQ_PRIORITY 6
-#endif
-
-// <q> TIMER0_ENABLED  - Enable TIMER0 instance
- 
-
-#ifndef TIMER0_ENABLED
-#define TIMER0_ENABLED 1
-#endif
-
-// <q> TIMER1_ENABLED  - Enable TIMER1 instance
- 
-
-#ifndef TIMER1_ENABLED
-#define TIMER1_ENABLED 1
-#endif
-
-// <q> TIMER2_ENABLED  - Enable TIMER2 instance
- 
-
-#ifndef TIMER2_ENABLED
-#define TIMER2_ENABLED 0
-#endif
-
-// <q> TIMER3_ENABLED  - Enable TIMER3 instance
- 
-
-#ifndef TIMER3_ENABLED
-#define TIMER3_ENABLED 0
-#endif
-
-// <q> TIMER4_ENABLED  - Enable TIMER4 instance
- 
-
-#ifndef TIMER4_ENABLED
-#define TIMER4_ENABLED 0
-#endif
-
-// </e>
-
-// </h> 
-//==========================================================
-
-// <h> nRF_Libraries 
-
-//==========================================================
-// <q> APP_PWM_ENABLED  - app_pwm - PWM functionality
- 
-
-#ifndef APP_PWM_ENABLED
-#define APP_PWM_ENABLED 1
-#endif
-
 // <h> nRF_Drivers 
 
 //==========================================================
@@ -337,6 +75,91 @@
 #ifndef GPIOTE_CONFIG_IRQ_PRIORITY
 #define GPIOTE_CONFIG_IRQ_PRIORITY 6
 #endif
+
+// </e>
+
+// <e> NRFX_CLOCK_ENABLED - nrfx_clock - CLOCK peripheral driver
+//==========================================================
+#ifndef NRFX_CLOCK_ENABLED
+#define NRFX_CLOCK_ENABLED 1
+#endif
+// <o> NRFX_CLOCK_CONFIG_LF_SRC  - LF Clock Source
+ 
+// <0=> RC 
+// <1=> XTAL 
+// <2=> Synth 
+// <131073=> External Low Swing 
+// <196609=> External Full Swing 
+
+#ifndef NRFX_CLOCK_CONFIG_LF_SRC
+#define NRFX_CLOCK_CONFIG_LF_SRC 1
+#endif
+
+// <o> NRFX_CLOCK_CONFIG_IRQ_PRIORITY  - Interrupt priority
+ 
+// <0=> 0 (highest) 
+// <1=> 1 
+// <2=> 2 
+// <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
+
+#ifndef NRFX_CLOCK_CONFIG_IRQ_PRIORITY
+#define NRFX_CLOCK_CONFIG_IRQ_PRIORITY 6
+#endif
+
+// <e> NRFX_CLOCK_CONFIG_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef NRFX_CLOCK_CONFIG_LOG_ENABLED
+#define NRFX_CLOCK_CONFIG_LOG_ENABLED 0
+#endif
+// <o> NRFX_CLOCK_CONFIG_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef NRFX_CLOCK_CONFIG_LOG_LEVEL
+#define NRFX_CLOCK_CONFIG_LOG_LEVEL 3
+#endif
+
+// <o> NRFX_CLOCK_CONFIG_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_CLOCK_CONFIG_INFO_COLOR
+#define NRFX_CLOCK_CONFIG_INFO_COLOR 0
+#endif
+
+// <o> NRFX_CLOCK_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_CLOCK_CONFIG_DEBUG_COLOR
+#define NRFX_CLOCK_CONFIG_DEBUG_COLOR 0
+#endif
+
+// </e>
 
 // </e>
 
@@ -505,6 +328,184 @@
 
 #ifndef NRFX_PRS_CONFIG_DEBUG_COLOR
 #define NRFX_PRS_CONFIG_DEBUG_COLOR 0
+#endif
+
+// </e>
+
+// </e>
+
+// <e> NRFX_PWM_ENABLED - nrfx_pwm - PWM peripheral driver
+//==========================================================
+#ifndef NRFX_PWM_ENABLED
+#define NRFX_PWM_ENABLED 1
+#endif
+// <q> NRFX_PWM0_ENABLED  - Enable PWM0 instance
+ 
+
+#ifndef NRFX_PWM0_ENABLED
+#define NRFX_PWM0_ENABLED 0
+#endif
+
+// <q> NRFX_PWM1_ENABLED  - Enable PWM1 instance
+ 
+
+#ifndef NRFX_PWM1_ENABLED
+#define NRFX_PWM1_ENABLED 0
+#endif
+
+// <q> NRFX_PWM2_ENABLED  - Enable PWM2 instance
+ 
+
+#ifndef NRFX_PWM2_ENABLED
+#define NRFX_PWM2_ENABLED 0
+#endif
+
+// <q> NRFX_PWM3_ENABLED  - Enable PWM3 instance
+ 
+
+#ifndef NRFX_PWM3_ENABLED
+#define NRFX_PWM3_ENABLED 0
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_OUT0_PIN - Out0 pin  <0-31> 
+
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_OUT0_PIN
+#define NRFX_PWM_DEFAULT_CONFIG_OUT0_PIN 31
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_OUT1_PIN - Out1 pin  <0-31> 
+
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_OUT1_PIN
+#define NRFX_PWM_DEFAULT_CONFIG_OUT1_PIN 31
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_OUT2_PIN - Out2 pin  <0-31> 
+
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_OUT2_PIN
+#define NRFX_PWM_DEFAULT_CONFIG_OUT2_PIN 31
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_OUT3_PIN - Out3 pin  <0-31> 
+
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_OUT3_PIN
+#define NRFX_PWM_DEFAULT_CONFIG_OUT3_PIN 31
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_BASE_CLOCK  - Base clock
+ 
+// <0=> 16 MHz 
+// <1=> 8 MHz 
+// <2=> 4 MHz 
+// <3=> 2 MHz 
+// <4=> 1 MHz 
+// <5=> 500 kHz 
+// <6=> 250 kHz 
+// <7=> 125 kHz 
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_BASE_CLOCK
+#define NRFX_PWM_DEFAULT_CONFIG_BASE_CLOCK 4
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_COUNT_MODE  - Count mode
+ 
+// <0=> Up 
+// <1=> Up and Down 
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_COUNT_MODE
+#define NRFX_PWM_DEFAULT_CONFIG_COUNT_MODE 0
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_TOP_VALUE - Top value 
+#ifndef NRFX_PWM_DEFAULT_CONFIG_TOP_VALUE
+#define NRFX_PWM_DEFAULT_CONFIG_TOP_VALUE 1000
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_LOAD_MODE  - Load mode
+ 
+// <0=> Common 
+// <1=> Grouped 
+// <2=> Individual 
+// <3=> Waveform 
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_LOAD_MODE
+#define NRFX_PWM_DEFAULT_CONFIG_LOAD_MODE 0
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_STEP_MODE  - Step mode
+ 
+// <0=> Auto 
+// <1=> Triggered 
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_STEP_MODE
+#define NRFX_PWM_DEFAULT_CONFIG_STEP_MODE 0
+#endif
+
+// <o> NRFX_PWM_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
+ 
+// <0=> 0 (highest) 
+// <1=> 1 
+// <2=> 2 
+// <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
+
+#ifndef NRFX_PWM_DEFAULT_CONFIG_IRQ_PRIORITY
+#define NRFX_PWM_DEFAULT_CONFIG_IRQ_PRIORITY 6
+#endif
+
+// <e> NRFX_PWM_CONFIG_LOG_ENABLED - Enables logging in the module.
+//==========================================================
+#ifndef NRFX_PWM_CONFIG_LOG_ENABLED
+#define NRFX_PWM_CONFIG_LOG_ENABLED 0
+#endif
+// <o> NRFX_PWM_CONFIG_LOG_LEVEL  - Default Severity level
+ 
+// <0=> Off 
+// <1=> Error 
+// <2=> Warning 
+// <3=> Info 
+// <4=> Debug 
+
+#ifndef NRFX_PWM_CONFIG_LOG_LEVEL
+#define NRFX_PWM_CONFIG_LOG_LEVEL 3
+#endif
+
+// <o> NRFX_PWM_CONFIG_INFO_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_PWM_CONFIG_INFO_COLOR
+#define NRFX_PWM_CONFIG_INFO_COLOR 0
+#endif
+
+// <o> NRFX_PWM_CONFIG_DEBUG_COLOR  - ANSI escape code prefix.
+ 
+// <0=> Default 
+// <1=> Black 
+// <2=> Red 
+// <3=> Green 
+// <4=> Yellow 
+// <5=> Blue 
+// <6=> Magenta 
+// <7=> Cyan 
+// <8=> White 
+
+#ifndef NRFX_PWM_CONFIG_DEBUG_COLOR
+#define NRFX_PWM_CONFIG_DEBUG_COLOR 0
 #endif
 
 // </e>
@@ -758,6 +759,178 @@
 
 // </e>
 
+// <e> NRF_CLOCK_ENABLED - nrf_drv_clock - CLOCK peripheral driver - legacy layer
+//==========================================================
+#ifndef NRF_CLOCK_ENABLED
+#define NRF_CLOCK_ENABLED 1
+#endif
+// <o> CLOCK_CONFIG_LF_SRC  - LF Clock Source
+ 
+// <0=> RC 
+// <1=> XTAL 
+// <2=> Synth 
+// <131073=> External Low Swing 
+// <196609=> External Full Swing 
+
+#ifndef CLOCK_CONFIG_LF_SRC
+#define CLOCK_CONFIG_LF_SRC 1
+#endif
+
+// <q> CLOCK_CONFIG_LF_CAL_ENABLED  - Calibration enable for LF Clock Source
+ 
+
+#ifndef CLOCK_CONFIG_LF_CAL_ENABLED
+#define CLOCK_CONFIG_LF_CAL_ENABLED 0
+#endif
+
+// <o> CLOCK_CONFIG_IRQ_PRIORITY  - Interrupt priority
+ 
+
+// <i> Priorities 0,2 (nRF51) and 0,1,4,5 (nRF52) are reserved for SoftDevice
+// <0=> 0 (highest) 
+// <1=> 1 
+// <2=> 2 
+// <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
+
+#ifndef CLOCK_CONFIG_IRQ_PRIORITY
+#define CLOCK_CONFIG_IRQ_PRIORITY 6
+#endif
+
+// </e>
+
+// <e> PWM_ENABLED - nrf_drv_pwm - PWM peripheral driver - legacy layer
+//==========================================================
+#ifndef PWM_ENABLED
+#define PWM_ENABLED 1
+#endif
+// <o> PWM_DEFAULT_CONFIG_OUT0_PIN - Out0 pin  <0-31> 
+
+
+#ifndef PWM_DEFAULT_CONFIG_OUT0_PIN
+#define PWM_DEFAULT_CONFIG_OUT0_PIN 31
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_OUT1_PIN - Out1 pin  <0-31> 
+
+
+#ifndef PWM_DEFAULT_CONFIG_OUT1_PIN
+#define PWM_DEFAULT_CONFIG_OUT1_PIN 31
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_OUT2_PIN - Out2 pin  <0-31> 
+
+
+#ifndef PWM_DEFAULT_CONFIG_OUT2_PIN
+#define PWM_DEFAULT_CONFIG_OUT2_PIN 31
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_OUT3_PIN - Out3 pin  <0-31> 
+
+
+#ifndef PWM_DEFAULT_CONFIG_OUT3_PIN
+#define PWM_DEFAULT_CONFIG_OUT3_PIN 31
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_BASE_CLOCK  - Base clock
+ 
+// <0=> 16 MHz 
+// <1=> 8 MHz 
+// <2=> 4 MHz 
+// <3=> 2 MHz 
+// <4=> 1 MHz 
+// <5=> 500 kHz 
+// <6=> 250 kHz 
+// <7=> 125 kHz 
+
+#ifndef PWM_DEFAULT_CONFIG_BASE_CLOCK
+#define PWM_DEFAULT_CONFIG_BASE_CLOCK 4
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_COUNT_MODE  - Count mode
+ 
+// <0=> Up 
+// <1=> Up and Down 
+
+#ifndef PWM_DEFAULT_CONFIG_COUNT_MODE
+#define PWM_DEFAULT_CONFIG_COUNT_MODE 0
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_TOP_VALUE - Top value 
+#ifndef PWM_DEFAULT_CONFIG_TOP_VALUE
+#define PWM_DEFAULT_CONFIG_TOP_VALUE 1000
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_LOAD_MODE  - Load mode
+ 
+// <0=> Common 
+// <1=> Grouped 
+// <2=> Individual 
+// <3=> Waveform 
+
+#ifndef PWM_DEFAULT_CONFIG_LOAD_MODE
+#define PWM_DEFAULT_CONFIG_LOAD_MODE 0
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_STEP_MODE  - Step mode
+ 
+// <0=> Auto 
+// <1=> Triggered 
+
+#ifndef PWM_DEFAULT_CONFIG_STEP_MODE
+#define PWM_DEFAULT_CONFIG_STEP_MODE 0
+#endif
+
+// <o> PWM_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
+ 
+
+// <i> Priorities 0,2 (nRF51) and 0,1,4,5 (nRF52) are reserved for SoftDevice
+// <0=> 0 (highest) 
+// <1=> 1 
+// <2=> 2 
+// <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
+
+#ifndef PWM_DEFAULT_CONFIG_IRQ_PRIORITY
+#define PWM_DEFAULT_CONFIG_IRQ_PRIORITY 6
+#endif
+
+// <q> PWM0_ENABLED  - Enable PWM0 instance
+ 
+
+#ifndef PWM0_ENABLED
+#define PWM0_ENABLED 1
+#endif
+
+// <q> PWM1_ENABLED  - Enable PWM1 instance
+ 
+
+#ifndef PWM1_ENABLED
+#define PWM1_ENABLED 1
+#endif
+
+// <q> PWM2_ENABLED  - Enable PWM2 instance
+ 
+
+#ifndef PWM2_ENABLED
+#define PWM2_ENABLED 1
+#endif
+
+// <q> PWM3_ENABLED  - Enable PWM3 instance
+ 
+
+#ifndef PWM3_ENABLED
+#define PWM3_ENABLED 0
+#endif
+
+// </e>
+
 // <e> UART_ENABLED - nrf_drv_uart - UART/UARTE peripheral driver - legacy layer
 //==========================================================
 #ifndef UART_ENABLED
@@ -864,13 +1037,6 @@
 // <h> nRF_Libraries 
 
 //==========================================================
-// <q> APP_FIFO_ENABLED  - app_fifo - Software FIFO implementation
- 
-
-#ifndef APP_FIFO_ENABLED
-#define APP_FIFO_ENABLED 1
-#endif
-
 // <e> APP_SCHEDULER_ENABLED - app_scheduler - Events scheduler
 //==========================================================
 #ifndef APP_SCHEDULER_ENABLED
@@ -987,21 +1153,6 @@
 
 // </e>
 
-// <e> APP_UART_ENABLED - app_uart - UART driver
-//==========================================================
-#ifndef APP_UART_ENABLED
-#define APP_UART_ENABLED 1
-#endif
-// <o> APP_UART_DRIVER_INSTANCE  - UART instance used
- 
-// <0=> 0 
-
-#ifndef APP_UART_DRIVER_INSTANCE
-#define APP_UART_DRIVER_INSTANCE 0
-#endif
-
-// </e>
-
 // <e> NRF_BALLOC_ENABLED - nrf_balloc - Block allocator module
 //==========================================================
 #ifndef NRF_BALLOC_ENABLED
@@ -1070,13 +1221,6 @@
 
 #ifndef NRF_STRERROR_ENABLED
 #define NRF_STRERROR_ENABLED 1
-#endif
-
-// <q> RETARGET_ENABLED  - retarget - Retargeting stdio functions
- 
-
-#ifndef RETARGET_ENABLED
-#define RETARGET_ENABLED 1
 #endif
 
 // <h> app_button - buttons handling module
