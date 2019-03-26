@@ -77,6 +77,14 @@ _build/nrf52840_xxaa/main.c.o: ..//main.c \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_twim.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_twi.h \
  /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_twi.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h \
+ /Users/jason.andrews/dev/nordic-sdk15/components/libraries/pwm/app_pwm.h \
+ /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_timer.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_timer.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_timer.h \
+ /Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_ppi.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_ppi.h \
+ /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_ppi.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log.h \
  /Users/jason.andrews/dev/nordic-sdk15/components/libraries/util/sdk_common.h \
  /usr/local/gcc_arm/gcc-arm-none-eabi-8-2018-q4-major/arm-none-eabi/include/string.h \
@@ -254,6 +262,22 @@ _build/nrf52840_xxaa/main.c.o: ..//main.c \
 /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_twi.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_twi.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/delay/nrf_delay.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/components/libraries/pwm/app_pwm.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_timer.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_timer.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_timer.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/integration/nrfx/legacy/nrf_drv_ppi.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/drivers/include/nrfx_ppi.h:
+
+/Users/jason.andrews/dev/nordic-sdk15/modules/nrfx/hal/nrf_ppi.h:
 
 /Users/jason.andrews/dev/nordic-sdk15/components/libraries/log/nrf_log.h:
 

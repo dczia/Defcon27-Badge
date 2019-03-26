@@ -66,14 +66,39 @@
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
+#define SPEAKER 3
 
 APP_PWM_INSTANCE(PWM1,1);                   // Create the instance "PWM1" using TIMER1.
+
 
 static volatile bool ready_flag;            // A flag indicating PWM status.
 
 void pwm_ready_callback(uint32_t pwm_id)    // PWM callback function
 {
     ready_flag = true;
+}
+
+/**
+ * @brief Beeps the speaker for a duration at a certain frequency
+ * @param duration How long to beep
+ * @param frequency Tone freq in hz
+ *
+ * @note Busy waits, frequency might not be exact, might sound uneven if the softdevice needs to do BLE things
+ */
+void beep(int duration, int frequency){
+
+	// Figure out how many beeps
+	float period = 1000 / (float)frequency;
+	long counter = period * duration;
+	float delay = period / 2;
+
+	for(long i = 0; i < counter; i++){
+		nrf_gpio_pin_write(SPEAKER, 1);
+		nrf_delay_us(delay * 1000);
+		nrf_gpio_pin_write(SPEAKER, 0);
+		nrf_delay_us(delay * 1000);
+	}
+
 }
 
 /**@brief Function for handling bsp events.
@@ -84,6 +109,7 @@ static void bsp_evt_handler(bsp_event_t evt) {
         case BSP_EVENT_KEY_0:
             if (bsp_button_is_pressed(0)) {
                 bsp_board_led_invert(0);
+                beep(75, 600);
             } else {
                 
             }
@@ -93,6 +119,7 @@ static void bsp_evt_handler(bsp_event_t evt) {
         case BSP_EVENT_KEY_1:
             if (bsp_button_is_pressed(1)) {
                 bsp_board_led_invert(1);
+                beep(75, 600);
             } else {
                 
             }
@@ -102,6 +129,7 @@ static void bsp_evt_handler(bsp_event_t evt) {
         case BSP_EVENT_KEY_2:
             if (bsp_button_is_pressed(2)) {
                 bsp_board_led_invert(2);
+                beep(150, 800);
             } else {
                 
             }
@@ -111,6 +139,7 @@ static void bsp_evt_handler(bsp_event_t evt) {
         case BSP_EVENT_KEY_3:
             if (bsp_button_is_pressed(3)) {
                bsp_board_led_invert(3);
+               beep(150, 800);
             } else {
                
             }
@@ -139,6 +168,7 @@ void clock_initialization()
 }
 
 
+
 /**@brief Function for initializing bsp module.
  */
 void bsp_configuration()
@@ -147,6 +177,8 @@ void bsp_configuration()
 
     err_code = bsp_init(BSP_INIT_LEDS | BSP_INIT_BUTTONS, bsp_evt_handler);
     APP_ERROR_CHECK(err_code);
+
+    nrf_gpio_cfg_output(SPEAKER);
 }
 
 
@@ -166,6 +198,12 @@ int main(void)
     NRF_LOG_INFO("BSP example started.");
     bsp_configuration();
 
+    // Pop pop!
+    beep(75, 600);
+    nrf_delay_ms(50);
+    beep(150, 800);
+    nrf_delay_ms(50);
+
     while (true)
     {
         NRF_LOG_FLUSH();
@@ -176,6 +214,35 @@ int main(void)
     }
 
      //ret_code_t err_code;
+
+    /* 2-channel PWM, 200Hz, output on DK LED pins. */
+   app_pwm_config_t pwm1_cfg = APP_PWM_DEFAULT_CONFIG_2CH(5000L, BSP_BOARD_LED_0, BSP_BOARD_LED_1);
+
+    /* Switch the polarity of the second channel. */
+    pwm1_cfg.pin_polarity[1] = APP_PWM_POLARITY_ACTIVE_HIGH;
+
+    /* Initialize and enable PWM. */
+    app_pwm_init(&PWM1,&pwm1_cfg,pwm_ready_callback);
+   // APP_ERROR_CHECK(err_code);
+    app_pwm_enable(&PWM1);
+
+    uint32_t value;
+    while (true)
+    {
+        for (uint8_t i = 0; i < 40; ++i)
+        {
+            value = (i < 20) ? (i * 5) : (100 - (i - 20) * 5);
+
+            ready_flag = false;
+            /* Set the duty cycle - keep trying until PWM is ready... */
+            while (app_pwm_channel_duty_set(&PWM1, 0, value) == NRF_ERROR_BUSY);
+
+            /* ... or wait for callback. */
+            while (!ready_flag);
+            app_pwm_channel_duty_set(&PWM1, 1, value);
+            nrf_delay_ms(25);
+        }
+    }
 
 }
 
