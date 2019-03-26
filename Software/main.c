@@ -57,17 +57,24 @@
 #include "nrf_drv_pwm.h"
 #include "nrf_drv_twi.h"
 
+#include "nrf.h"
+#include "nrf_delay.h"
+#include "app_pwm.h"
+
 
 #include "nrf_log.h"
 #include "nrf_log_ctrl.h"
 #include "nrf_log_default_backends.h"
 
-#define BUTTON_PREV_ID           0                           /**< Button used to switch the state. */
-#define BUTTON_NEXT_ID           1                           /**< Button used to switch the state. */
 
+APP_PWM_INSTANCE(PWM1,1);                   // Create the instance "PWM1" using TIMER1.
 
+static volatile bool ready_flag;            // A flag indicating PWM status.
 
-
+void pwm_ready_callback(uint32_t pwm_id)    // PWM callback function
+{
+    ready_flag = true;
+}
 
 /**@brief Function for handling bsp events.
  */
@@ -167,6 +174,9 @@ int main(void)
         __WFE();
         // no implementation needed
     }
+
+     //ret_code_t err_code;
+
 }
 
 
