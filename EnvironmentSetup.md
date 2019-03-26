@@ -49,6 +49,12 @@ CD into the Defcon27-Badge/Software/devboard folder. This contains the makefile 
 
 Run 'make' to build the firmware. Then run 'make flash' to flash the device. Boom, done!
 
+## Code Tips
+
+#### Adding Headers
+
+To add something from the SDK, make sure to include the header in the project, add the header locataion and corespondinf .c file to the Makefile, and if needed, enable the thingy in the sdk_config.c file.
+
 ## Misc Links
 
 [The complete cross-platform nRF development tutorial - Novel Bits](https://www.novelbits.io/cross-platform-nrf-development-tutorial/) - SES
