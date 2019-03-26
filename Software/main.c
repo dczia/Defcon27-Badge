@@ -119,7 +119,7 @@ static void bsp_evt_handler(bsp_event_t evt) {
         case BSP_EVENT_KEY_1:
             if (bsp_button_is_pressed(1)) {
                 bsp_board_led_invert(1);
-                beep(75, 600);
+                beep(75, 800);
             } else {
                 
             }
@@ -129,7 +129,7 @@ static void bsp_evt_handler(bsp_event_t evt) {
         case BSP_EVENT_KEY_2:
             if (bsp_button_is_pressed(2)) {
                 bsp_board_led_invert(2);
-                beep(150, 800);
+                beep(75, 1000);
             } else {
                 
             }
@@ -139,7 +139,7 @@ static void bsp_evt_handler(bsp_event_t evt) {
         case BSP_EVENT_KEY_3:
             if (bsp_button_is_pressed(3)) {
                bsp_board_led_invert(3);
-               beep(150, 800);
+               beep(75, 1200);
             } else {
                
             }
