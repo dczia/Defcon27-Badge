@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP VL6180X
+D Proximity and ambient light sensing (ALS) module
+F https://www.st.com/resource/en/datasheet/vl6180x.pdf
+$ENDCMP
+#
+#End Doc Library
