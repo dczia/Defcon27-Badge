@@ -4,7 +4,7 @@ EELAYER 29 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
-Sheet 2 2
+Sheet 2 3
 Title "HCRN - DC801 Defcon 27 Badge"
 Date "2019-04-11"
 Rev "1.0"

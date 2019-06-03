@@ -23,4 +23,5 @@
   (lib (name OPL_Resistor)(type Legacy)(uri ${KIPRJMOD}/Seeed_Fusion_PCBA_OPL_Component_Library_for_KiCad/OPL_Resistor.lib)(options "")(descr ""))
   (lib (name OPL_Sensor-Transducer)(type Legacy)(uri ${KIPRJMOD}/Seeed_Fusion_PCBA_OPL_Component_Library_for_KiCad/OPL_Sensor-Transducer.lib)(options "")(descr ""))
   (lib (name OPL_Switch)(type Legacy)(uri ${KIPRJMOD}/Seeed_Fusion_PCBA_OPL_Component_Library_for_KiCad/OPL_Switch.lib)(options "")(descr ""))
+  (lib (name usb_b_micro)(type Legacy)(uri ${KIPRJMOD}/lib_sch/usb_b_micro.lib)(options "")(descr ""))
 )

@@ -1,0 +1,13 @@
+### Module positions - created on 5/19/2019 10:48:44 PM ###
+### Printed by Pcbnew version kicad (5.1.0)-1
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val       Package                PosX       PosY       Rot  Side
+D5        SK6812    LED4-SMD-5050      116.6800   -70.9500    0.0000  top
+D6        SK6812    LED4-SMD-5050      178.3300   -71.0200    0.0000  top
+D7        LED       LED-0603           109.0200  -108.9100  180.0000  top
+D8        LED       LED-0603           128.0650  -108.9100  180.0000  top
+D9        LED       LED-0603           147.1150  -108.9100  180.0000  top
+D10       LED       LED-0603           166.1650  -108.9100  180.0000  top
+D11       LED       LED-0603           185.2150  -108.9100  180.0000  top
+## End

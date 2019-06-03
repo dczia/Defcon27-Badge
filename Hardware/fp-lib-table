@@ -13,4 +13,5 @@
   (lib (name OPL_Resistor)(type KiCad)(uri ${KIPRJMOD}/Seeed_Fusion_PCBA_OPL_Component_Library_for_KiCad/OPL_Resistor.pretty)(options "")(descr ""))
   (lib (name OPL_Sensor-Transducer)(type KiCad)(uri ${KIPRJMOD}/Seeed_Fusion_PCBA_OPL_Component_Library_for_KiCad/OPL_Sensor-Transducer.pretty)(options "")(descr ""))
   (lib (name OPL_Switch)(type KiCad)(uri ${KIPRJMOD}/Seeed_Fusion_PCBA_OPL_Component_Library_for_KiCad/OPL_Switch.pretty)(options "")(descr ""))
+  (lib (name Tag-Connect)(type Legacy)(uri C:/Users/hamster/Documents/Development/dc801/dc27-party-badge/Hardware/Tag-Connect.mod)(options "")(descr ""))
 )
