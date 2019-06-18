@@ -53,7 +53,7 @@ U 1 1 5CFD6D63
 P 2880 3675
 F 0 "D5" H 3224 3721 50  0000 L CNN
 F 1 "SK6812" H 3224 3630 50  0000 L CNN
-F 2 "OPL_Optoelectronics:LED4-SMD-5050" H 2930 3375 50  0001 L TNN
+F 2 "lib_fp:LED4-SMD-5050" H 2930 3375 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/product-files/1138/SK6812+LED+datasheet+.pdf" H 2980 3300 50  0001 L TNN
 	1    2880 3675
 	1    0    0    -1  
@@ -70,7 +70,7 @@ U 1 1 5CFD7E9B
 P 3980 3675
 F 0 "D6" H 4324 3721 50  0000 L CNN
 F 1 "SK6812" H 4324 3630 50  0000 L CNN
-F 2 "OPL_Optoelectronics:LED4-SMD-5050" H 4030 3375 50  0001 L TNN
+F 2 "lib_fp:LED4-SMD-5050" H 4030 3375 50  0001 L TNN
 F 3 "https://cdn-shop.adafruit.com/product-files/1138/SK6812+LED+datasheet+.pdf" H 4080 3300 50  0001 L TNN
 	1    3980 3675
 	1    0    0    -1  

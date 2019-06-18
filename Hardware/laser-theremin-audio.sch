@@ -292,7 +292,7 @@ AR Path="/5D05D244" Ref="D?"  Part="1"
 AR Path="/5D01A7D6/5D05D244" Ref="D12"  Part="1" 
 F 0 "D12" H 8705 2900 50  0000 C CNN
 F 1 "D_Schottky" H 8715 3120 50  0001 C CNN
-F 2 "OPL_Discrete_Semiconductor:SOD-123" H 8715 2995 50  0001 C CNN
+F 2 "lib_fp:SOD-123" H 8715 2995 50  0001 C CNN
 F 3 "~" H 8715 2995 50  0001 C CNN
 	1    8715 2995
 	-1   0    0    -1  
