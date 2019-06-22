@@ -1,0 +1,2868 @@
+1: 255r 255g 255b 2: 0r 128g 0b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 3 Status1: 0 Range2: 34 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 5 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 37 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 43 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 43 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 36 Status2: 0
+Range1: 0 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 0 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 4 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 4 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 34 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 4 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 4 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 4 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 43 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 43 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 4 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 3 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 45 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Rescan 0 badges...
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 4 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 34 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 12 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 4 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 4 Status1: 0 Range2: 36 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 12 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 43 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 12 Range2: 42 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 35 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 43 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 12 Range2: 34 Status2: 0
+Range1: 0 Status1: 12 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 43 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 36 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 4 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 43 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 4 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 4 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 4 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 35 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 3 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 3 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 4 Status1: 0 Range2: 37 Status2: 0
+Range1: 4 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 41 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 12 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 0 Status1: 0 Range2: 37 Status2: 0
+Range1: 3 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 0 Status1: 12 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 0 Status1: 0 Range2: 35 Status2: 0
+Range1: 0 Status1: 12 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 0 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 0 Status1: 12 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Rescan 0 badges...
+Range1: 0 Status1: 0 Range2: 41 Status2: 0
+Range1: 0 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 34 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 37 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 3 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 12 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 0 Status1: 12 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 0 Status1: 0 Range2: 41 Status2: 0
+Range1: 0 Status1: 12 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 35 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 0 Status1: 0 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 35 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 1 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 38 Status2: 0
+Range1: 0 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 0 Status1: 12 Range2: 38 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 2 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 37 Status2: 0
+Range1: 0 Status1: 0 Range2: 36 Status2: 0
+Range1: 1 Status1: 0 Range2: 39 Status2: 0
+Range1: 0 Status1: 0 Range2: 38 Status2: 0
+Range1: 1 Status1: 0 Range2: 36 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 4 Status1: 0 Range2: 42 Status2: 0
+Range1: 3 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 39 Status2: 0
+Range1: 2 Status1: 0 Range2: 46 Status2: 0
+Range1: 1 Status1: 0 Range2: 45 Status2: 0
+Range1: 1 Status1: 0 Range2: 42 Status2: 0
+Range1: 2 Status1: 0 Range2: 44 Status2: 0
+Range1: 3 Status1: 0 Range2: 45 Status2: 0
+Range1: 2 Status1: 0 Range2: 49 Status2: 0
+Range1: 1 Status1: 0 Range2: 48 Status2: 0
+Range1: 1 Status1: 0 Range2: 47 Status2: 0
+Range1: 1 Status1: 0 Range2: 50 Status2: 0
+Range1: 1 Status1: 0 Range2: 46 Status2: 0
+Range1: 1 Status1: 0 Range2: 45 Status2: 0
+Range1: 2 Status1: 0 Range2: 46 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 3 Status1: 0 Range2: 51 Status2: 0
+Range1: 0 Status1: 0 Range2: 48 Status2: 0
+Range1: 3 Status1: 0 Range2: 51 Status2: 0
+Range1: 2 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 3 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 1 Status1: 0 Range2: 50 Status2: 0
+Range1: 2 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 47 Status2: 0
+Range1: 3 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 0 Status1: 0 Range2: 47 Status2: 0
+Range1: 0 Status1: 0 Range2: 48 Status2: 0
+Range1: 2 Status1: 0 Range2: 50 Status2: 0
+Range1: 2 Status1: 0 Range2: 50 Status2: 0
+Range1: 3 Status1: 0 Range2: 46 Status2: 0
+Range1: 0 Status1: 0 Range2: 47 Status2: 0
+Range1: 1 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 1 Status1: 0 Range2: 45 Status2: 0
+Range1: 1 Status1: 0 Range2: 48 Status2: 0
+Range1: 3 Status1: 0 Range2: 47 Status2: 0
+Range1: 3 Status1: 0 Range2: 48 Status2: 0
+Range1: 2 Status1: 0 Range2: 47 Status2: 0
+Range1: 2 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 46 Status2: 0
+Range1: 3 Status1: 0 Range2: 43 Status2: 0
+Range1: 3 Status1: 0 Range2: 46 Status2: 0
+Range1: 2 Status1: 0 Range2: 46 Status2: 0
+Range1: 2 Status1: 0 Range2: 46 Status2: 0
+Range1: 1 Status1: 0 Range2: 45 Status2: 0
+Range1: 3 Status1: 0 Range2: 46 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 3 Status1: 0 Range2: 50 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 1 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 47 Status2: 0
+Range1: 1 Status1: 0 Range2: 47 Status2: 0
+Range1: 3 Status1: 0 Range2: 50 Status2: 0
+Range1: 3 Status1: 0 Range2: 49 Status2: 0
+Range1: 3 Status1: 0 Range2: 48 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 1 Status1: 0 Range2: 48 Status2: 0
+Range1: 2 Status1: 0 Range2: 47 Status2: 0
+Range1: 2 Status1: 0 Range2: 49 Status2: 0
+Range1: 1 Status1: 0 Range2: 48 Status2: 0
+Range1: 0 Status1: 0 Range2: 46 Status2: 0
+Range1: 1 Status1: 0 Range2: 48 Status2: 0
+Range1: 2 Status1: 0 Range2: 49 Status2: 0
+Range1: 2 Status1: 0 Range2: 47 Status2: 0
+Range1: 1 Status1: 0 Range2: 48 Status2: 0
+Range1: 4 Status1: 0 Range2: 48 Status2: 0
+Range1: 2 Status1: 0 Range2: 46 Status2: 0
+Range1: 3 Status1: 0 Range2: 45 Status2: 0
+Range1: 3 Status1: 0 Range2: 50 Status2: 0
+Range1: 0 Status1: 0 Range2: 48 Status2: 0
+Range1: 1 Status1: 0 Range2: 45 Status2: 0
+Range1: 2 Status1: 0 Range2: 48 Status2: 0
+Range1: 1 Status1: 0 Range2: 44 Status2: 0
+Range1: 3 Status1: 0 Range2: 43 Status2: 0
+Range1: 2 Status1: 0 Range2: 44 Status2: 0
+Range1: 1 Status1: 0 Range2: 43 Status2: 0
+Range1: 2 Status1: 0 Range2: 40 Status2: 0
+Range1: 1 Status1: 0 Range2: 45 Status2: 0
+Range1: 2 Status1: 0 Range2: 41 Status2: 0
+Range1: 1 Status1: 0 Range2: 45 Status2: 0
+Range1: 2 Status1: 0 Range2: 42 Status2: 0
+1: 255r 255g 255b 2: 0r 128g 0b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Rescan 0 badges...
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Rescan 0 badges...
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 255r 255g 255b 2: 0r 128g 0b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Rescan 0 badges...
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Rescan 0 badges...
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Button was 24
+1: 255r 255g 255b 2: 0r 128g 0b
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 255r 255g 255b 2: 0r 128g 0b
+Byte: FF
+11111111
+Byte: FF
+11111111
+Byte: FF
+11111111
+Byte: 80
+00000001
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+00000010
+Byte: 80
+00000001
+Byte: 20
+00000100
+Byte: 80
+00000001
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Button was 24
+1: 128r 64g 32b 2: 0r 128g 0b
+Byte: 40
+01000000
+Byte: 80
+10000000
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+0000001: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 85r 240g 32b 2: 0r 128g 0b
+Byte: F0
+11110000
+Byte: 55
+01010101
+Byte: 20
+00100000
+Byte: 80
+10000000
+Byte: 0
+00000000
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 255r 0g 0b 2: 255r 0g 0b
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 255r 0g 0b 2: 255r 0g 0b
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 255r 0g 0b 2: 255r 0g 0b
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 255r 0g 0b 2: 255r 0g 0b
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 255r 0g 0b 2: 255r 0g 0b
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 255r 0g 0b 2: 255r 0g 0b
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Button D
+Button was 24
+1: 255r 0g 0b 2: 255r 0g 0b
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Byte: 0
+00000000
+Byte: FF
+11111111
+Byte: 0
+00000000
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 255r 0g 0b 2: 255r 0g 0b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+1: 0r 255g 0b 2: 255r 0g 0b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+1: 0r 0g 128b 2: 128r 0g 0b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+1: 0r 0g 64b 2: 32r 0g 64b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Button was 24
+1: 0r 0g 64b 2: 32r 0g 64b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 32r 0g 64b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 32r 0g 64b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 32r 0g 64b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 32r 0g 64b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 32r 0g 64b
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+1: 0r 0g 64b 2: 0r 0g 64b
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Rescan 0 badges...
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Rescan 0 badges...
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Button was 24
+1: 0r 0g 64b 2: 0r 0g 64b
+1: 0r 0g 0b 2: 0r 0g 0b
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Rescan 0 badges...
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Rescan 0 badges...
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Rescan 0 badges...
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Rescan 0 badges...
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 22
+Button C
+Button was 22
+Button C
+Button was 22
+Button C
+Button was 22
+Button C
+Button was 22
+Button C
+Button was 22
+Button C
+Button was 22
+Button C
+Button was 22
+Button C
+Button was 22
+Button C
+Rescan 0 badges...
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Sensor 1 setup: complete
+Sensor 2 setup: complete
+Booted!
+Looping...
+Rescan 0 badges...
+Button was 22
+Button C
+Button was 24
+Button D
+Button was 22
+Button C
+Button was 19
+Button Z
+Button was 17
+Button I
+Button was 15
+Button A
+Button was 15
+Button A
+Button was 15
+Button A
+Button was 15
+Button A
+Button was 15
+Button A
+Rescan 0 badges...
+Button was 15
+Button A
+Button was 17
+Button I
+Button was 19
+Button Z
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Rescan 0 badges...
+Button was 24
+Button D
+Button was 24
+Button D
+Button was 24
+Button D
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
+Rescan 0 badges...
