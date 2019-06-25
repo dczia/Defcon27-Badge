@@ -59,7 +59,7 @@ This year we wanted to do something different. Our idea is to use two laser time
 
 - Uses Nordic SoftDevice version XXX
 
-- See [EnvironmentSetup](EnvironmentSetup.md) for more info
+- See [EnvironmentSetup](Software/EnvironmentSetup.md) for more info
 
 
 # Board
