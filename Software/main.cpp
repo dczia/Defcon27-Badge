@@ -3,7 +3,7 @@
  * @file main.c
  *
  * @date May 24, 2017
- * @author hamster
+ * @author hamster, rehr
  *
  * @brief This is the entry point for the DC801 DC26 party badge
  *
@@ -159,6 +159,50 @@ int main(){
     pixels->setColor(0, COLOR_GREEN);
     pixels->setColor(1, COLOR_GREEN);
     pixels->show();
+
+    // pwm test
+    uint16_t pwm_top = 10000;
+    uint32_t err_code;
+    nrf_drv_pwm_config_t const config0 = {
+        { // .output_pins
+            LED_D_PIN | NRF_DRV_PWM_PIN_INVERTED, // channel 0
+            NRF_DRV_PWM_PIN_NOT_USED,             // channel 1
+            NRF_DRV_PWM_PIN_NOT_USED,             // channel 2
+            NRF_DRV_PWM_PIN_NOT_USED,             // channel 3
+        },
+        APP_IRQ_PRIORITY_LOW, // .irq_priority
+        NRF_PWM_CLK_1MHz, // .base_clock
+        NRF_PWM_MODE_UP, // .count_mode
+        pwm_top, // .top_value
+        NRF_PWM_LOAD_COMMON, // .load_mode
+        NRF_PWM_STEP_AUTO // .step_mode
+    };
+    err_code = nrf_drv_pwm_init(&m_pwm0, &config0, NULL);
+    if (err_code != NRF_SUCCESS) {
+        // Initialization failed. Turn left RGB LED red as alert
+        pixels->setColor(0, COLOR_RED);
+        pixels->show();
+    }
+    
+    uint16_t const step_count = 25;
+    static nrf_pwm_values_common_t seq0_values[step_count];
+    uint16_t value = 0;
+    uint16_t step  = pwm_top / step_count;
+    uint8_t  i;
+    for (i = 0; i < step_count; ++i) {
+        value += step;
+        seq0_values[i] = value;
+    }
+
+    nrf_pwm_sequence_t const seq0 =
+    {
+        { seq0_values }, // values.p_common
+        NRF_PWM_VALUES_LENGTH(seq0_values), // length
+        1, // repeats
+        0 // end_delay
+    };
+
+    (void)nrf_drv_pwm_simple_playback(&m_pwm0, &seq0, 1, NRF_DRV_PWM_FLAG_LOOP);
 
     // Delay for the OLED screen to boot and be ready for commands
     // It needs about 2.5 seconds for reliable operation from a cold power on

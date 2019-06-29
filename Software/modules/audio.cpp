@@ -3,12 +3,11 @@
  * Audio driver
  *
  * @date 6/21/2019
- * @author hamster
+ * @author hamster, rehr
  *
  */
 
 #include "audio.h"
-#include "common.h"
 
 /**
  * Create the object and initialize the port

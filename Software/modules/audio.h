@@ -3,12 +3,16 @@
  * Audio driver
  *
  * @date 6/21/2019
- * @author hamster
+ * @author hamster, rehr
  *
  */
 
 #ifndef MODULE_AUDIO_H
 #define MODULE_AUDIO_H
+
+#include "common.h"
+
+static nrf_drv_pwm_t m_pwm0 = NRF_DRV_PWM_INSTANCE(0);
 
 class Audio {
 

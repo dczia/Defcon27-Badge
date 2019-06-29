@@ -2,7 +2,7 @@
  * @file common.h
  *
  * @date June 20 2019
- * @author hamster
+ * @author hamster, rehr
  *
  * Common header file included by all files in the project
  *
@@ -62,6 +62,7 @@
 #include "nrf_drv_ppi.h"
 #include "nrf_drv_timer.h"
 #include "nrf_drv_pwm.h"
+#include "nrfx_pwm.h"
 #include "app_uart.h"
 
 #include "nrf_log.h"
