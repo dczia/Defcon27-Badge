@@ -156,53 +156,18 @@ int main(){
     }
 
     leds->allOff();
-    pixels->setColor(0, COLOR_GREEN);
-    pixels->setColor(1, COLOR_GREEN);
+    pixels->setColor(0, {0, 1, 0});
+    pixels->setColor(1, {0, 1, 0});
     pixels->show();
 
-    // pwm test
-    uint16_t pwm_top = 10000;
-    uint32_t err_code;
-    nrf_drv_pwm_config_t const config0 = {
-        { // .output_pins
-            LED_D_PIN | NRF_DRV_PWM_PIN_INVERTED, // channel 0
-            NRF_DRV_PWM_PIN_NOT_USED,             // channel 1
-            NRF_DRV_PWM_PIN_NOT_USED,             // channel 2
-            NRF_DRV_PWM_PIN_NOT_USED,             // channel 3
-        },
-        APP_IRQ_PRIORITY_LOW, // .irq_priority
-        NRF_PWM_CLK_1MHz, // .base_clock
-        NRF_PWM_MODE_UP, // .count_mode
-        pwm_top, // .top_value
-        NRF_PWM_LOAD_COMMON, // .load_mode
-        NRF_PWM_STEP_AUTO // .step_mode
-    };
-    err_code = nrf_drv_pwm_init(&m_pwm0, &config0, NULL);
-    if (err_code != NRF_SUCCESS) {
-        // Initialization failed. Turn left RGB LED red as alert
-        pixels->setColor(0, COLOR_RED);
-        pixels->show();
-    }
-    
-    uint16_t const step_count = 25;
-    static nrf_pwm_values_common_t seq0_values[step_count];
-    uint16_t value = 0;
-    uint16_t step  = pwm_top / step_count;
-    uint8_t  i;
-    for (i = 0; i < step_count; ++i) {
-        value += step;
-        seq0_values[i] = value;
-    }
+    // pwm init + test
+    audio->initPWM();
+    audio->setPWMCh0Value(0);
+    audio->setPWMCh1Value(0);
 
-    nrf_pwm_sequence_t const seq0 =
-    {
-        { seq0_values }, // values.p_common
-        NRF_PWM_VALUES_LENGTH(seq0_values), // length
-        1, // repeats
-        0 // end_delay
-    };
-
-    (void)nrf_drv_pwm_simple_playback(&m_pwm0, &seq0, 1, NRF_DRV_PWM_FLAG_LOOP);
+    // timer init + test
+    audio->initTimer();
+    // audio->setTimerWithPeriod_ms(500/32);
 
     // Delay for the OLED screen to boot and be ready for commands
     // It needs about 2.5 seconds for reliable operation from a cold power on
@@ -260,6 +225,8 @@ int main(){
 
     uint8_t range1 = 0, range2 = 0;
     uint8_t status1= 0, status2 = 0;
+    uint8_t range1_cm = 0, range2_cm = 0;
+    uint8_t prevRange1_cm = 26, prevRange2_cm = 26; // nothing in front defaults to 25.5cm
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
@@ -272,11 +239,34 @@ int main(){
 
     while(true) {
 
+        // set frequency/period with sensor1 (right sensor)
         range1 = TOF->readRange(TOF_SENSOR1);
         //status1 = TOF->readRangeStatus(TOF_SENSOR1);
+        range1_cm = range1 / 10 + 1;
+        if (range1_cm != prevRange1_cm) {
+            if (range1_cm == 26) {
+                audio->disableTimer();
+                audio->setPWMCh0Value(0);
+            } else {
+                audio->setTimerWithPeriod_ms(500/32/range1_cm);
+            }
+            prevRange1_cm = range1_cm;
+        }
 
+        // set volume with sensor2 (left sensor)
         range2 = TOF->readRange(TOF_SENSOR2);
         //status2 = TOF->readRangeStatus(TOF_SENSOR2);
+        range2_cm = range2 / 10 + 1;
+        if (range2_cm != prevRange2_cm) {
+            if (range2_cm == 26) {
+                audio->setPWMCh1Value(0);
+            } else {
+                uint16_t LEDValue = range2_cm * 60;
+                if (LEDValue > 1023) { LEDValue = 1023; }
+                audio->setPWMCh1Value(LEDValue);
+            }
+            prevRange2_cm = range2_cm;
+        }
 
         snprintf(display2, 20, "%03dmm  %03dmm", range2, range1);
         snprintf(display1, 20, "%d %dv", counter++, adc->getBatteryVoltage());
