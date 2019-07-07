@@ -161,13 +161,13 @@ int main(){
     pixels->show();
 
     // pwm init + test
-    audio->initPWM();
-    audio->setPWMCh0Value(0);
-    audio->setPWMCh1Value(0);
+    audio->initPWM0();
+    audio->setPWM0Ch0Value(0);
+    // audio->setPWM0Ch1Value(0);
+    audio->setVolume(0);
 
     // timer init + test
-    audio->initTimer();
-    // audio->setTimerWithPeriod_ms(500/32);
+    audio->initTimer1();
 
     // Delay for the OLED screen to boot and be ready for commands
     // It needs about 2.5 seconds for reliable operation from a cold power on
@@ -225,8 +225,9 @@ int main(){
 
     uint8_t range1 = 0, range2 = 0;
     uint8_t status1= 0, status2 = 0;
-    uint8_t range1_cm = 0, range2_cm = 0;
-    uint8_t prevRange1_cm = 26, prevRange2_cm = 26; // nothing in front defaults to 25.5cm
+    uint8_t range1_2mm = 0, prevRange1_2mm = 128;
+    uint8_t range2_cm = 0, prevRange2_cm = 26;
+    uint32_t newPeriod = 0;
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
@@ -239,31 +240,80 @@ int main(){
 
     while(true) {
 
-        // set frequency/period with sensor1 (right sensor)
+        // read right sensor
         range1 = TOF->readRange(TOF_SENSOR1);
-        //status1 = TOF->readRangeStatus(TOF_SENSOR1);
-        range1_cm = range1 / 10 + 1;
-        if (range1_cm != prevRange1_cm) {
-            if (range1_cm == 26) {
-                audio->disableTimer();
-                audio->setPWMCh0Value(0);
+
+        // set pitch with right sensor
+        // range1_2mm splits range1 into 2mm chunks
+        range1_2mm = ( range1 >> 1 ) + 1; // +1 prevents divide by 0 x_x
+
+        // only change timer/pitch if hand position changes
+        if (range1_2mm != prevRange1_2mm) {
+            // check if range is at max (255mm)
+            if (range1_2mm == 128) {
+                // if yes, disable audio
+                audio->enable(false); // turn off amp
+                audio->disableTimer(); // disable timer1
+                audio->setPWM0Ch0Value(0); // turn off PWM0 ch0
             } else {
-                audio->setTimerWithPeriod_ms(500/32/range1_cm);
+                // if no, get note that corresponds hand position
+                // calculate hand position
+                // TOF sensor dies off around 17cm
+                uint8_t handPosition = 0;
+                if (range1_2mm > 57) { // about 11cm...could be higher
+                    handPosition = 48;
+                } else if (range1_2mm >= 10) { // 2cm of padding close to the sensor
+                    handPosition = range1_2mm - 10; // start hand position calc at 2cm
+                }
+
+                bool halfNote = handPosition & 0x1; // check if this is an inbetween note
+                uint8_t noteIndex = handPosition >> 1; // divide handpositin by 2 to get note
+                uint8_t octave = 5, octavesUp = 0;
+
+                // if note is beyond current octave, move to next octave
+                if (noteIndex > 12) {
+                    noteIndex -= 12;
+                    octavesUp++;
+                }
+
+                // get period from note lookup
+                if (halfNote) {
+                    // get note between (note + (next_note))/ 2
+                    newPeriod = (notes[octave + octavesUp][noteIndex] + notes[octave + octavesUp][noteIndex + 1]) >> 1;
+                } else {
+                    newPeriod = notes[octave + octavesUp][noteIndex];
+                }
+
+                // set new timer1 period
+                audio->setTimerWithPeriod_us(newPeriod);
+                // make sure timer1 is enabled
+                if (!audio->isEnabled()) {
+                    audio->enable(true);
+                }
             }
-            prevRange1_cm = range1_cm;
+            // store current hand distance
+            prevRange1_2mm = range1_2mm;
         }
 
-        // set volume with sensor2 (left sensor)
+        // read left sensor
         range2 = TOF->readRange(TOF_SENSOR2);
         //status2 = TOF->readRangeStatus(TOF_SENSOR2);
+        
+        // set volume with sensor2 (left sensor)
         range2_cm = range2 / 10 + 1;
         if (range2_cm != prevRange2_cm) {
             if (range2_cm == 26) {
-                audio->setPWMCh1Value(0);
+                // audio->setPWM0Ch1Value(0);
+                audio->setVolume(0);
             } else {
-                uint16_t LEDValue = range2_cm * 60;
-                if (LEDValue > 1023) { LEDValue = 1023; }
-                audio->setPWMCh1Value(LEDValue);
+                // uint16_t LEDValue = range2_cm * 67;
+                // if (LEDValue >= 1000) { LEDValue = 1000; }
+                // audio->setPWM0Ch1Value(LEDValue);
+                uint8_t newVolume = range2_cm << 1;
+                if (newVolume > 31) {
+                    newVolume = 31;
+                }
+                audio->setVolume(newVolume);
             }
             prevRange2_cm = range2_cm;
         }
@@ -329,4 +379,3 @@ int main(){
 #pragma clang diagnostic pop
 
 }
-

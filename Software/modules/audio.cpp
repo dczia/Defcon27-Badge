@@ -18,14 +18,25 @@
  */
 void Audio::timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
     static uint32_t i = 0;
+    static bool countUp = true; // true: up, false: down
 
     switch (event_type) {
         case NRF_TIMER_EVENT_COMPARE0:
-            ((Audio *)p_context)->setPWMCh0Value(sineTable[i]);
-            i++;
-            if (i >= 32) {
-                i = 0;
+            // ((Audio *)p_context)->setPWM0Ch0Value(sineTable[i]);
+            // i++;
+            // if (i >= 64) {
+            //     i = 0;
+            // }
+            if (countUp) {
+                if (++i >= 32) {
+                    countUp = false;
+                }
+            } else {
+                if (--i <= 0) {
+                    countUp = true;
+                }
             }
+            ((Audio *)p_context)->setPWM0Ch0Value(i*((Audio *)p_context)->getVolume());
             break;
 
         default:
@@ -41,10 +52,7 @@ void Audio::timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
 Audio::Audio(){
     enabled = false;
     headphones = false;
-
-    // initPWM();
-
-    initTimer();
+    volume = 0;
 
     nrf_gpio_cfg_input(AUDIO_HP_DETECT_PIN, NRF_GPIO_PIN_NOPULL);
 
@@ -109,7 +117,6 @@ void Audio::beep(int duration, int frequency){
         nrf_gpio_pin_write(AUDIO_PWM_PIN, 0);
         nrf_delay_us(delay * 1000);
     }
-
 }
 
 /**
@@ -117,7 +124,7 @@ void Audio::beep(int duration, int frequency){
  * 
  * @return error code value from nrf_drv_pwm_init
  */
-uint32_t Audio::initPWM() {
+uint32_t Audio::initPWM0() {
     pwm0 = NRF_DRV_PWM_INSTANCE(0); // PWM0
     pwm0_seq_values.channel_0 = 0; // start with off/0V
     pwm0_seq_values.channel_1 = 0; // start with off/0V
@@ -135,40 +142,64 @@ uint32_t Audio::initPWM() {
     
     nrf_drv_pwm_config_t const pwm0_config = {
         { // .output_pins
-            LED_D_PIN | NRF_DRV_PWM_PIN_INVERTED, // channel 0
-            LED_C_PIN | NRF_DRV_PWM_PIN_INVERTED, // channel 1
+            AUDIO_PWM_PIN,// | NRF_DRV_PWM_PIN_INVERTED, // channel 0
+            // LED_D_PIN | NRF_DRV_PWM_PIN_INVERTED, // channel 0
+            LED_A_PIN,// | NRF_DRV_PWM_PIN_INVERTED, // channel 1
             NRF_DRV_PWM_PIN_NOT_USED,             // channel 2
             NRF_DRV_PWM_PIN_NOT_USED,             // channel 3
         },
         APP_IRQ_PRIORITY_LOW, // .irq_priority
-        NRF_PWM_CLK_1MHz, // .base_clock
+        NRF_PWM_CLK_16MHz, // .base_clock
         NRF_PWM_MODE_UP, // .count_mode
-        pwm_top, // .top_value
+        1000, // .top_value
         NRF_PWM_LOAD_INDIVIDUAL, // .load_mode
         NRF_PWM_STEP_AUTO // .step_mode
     };
 
-    return nrf_drv_pwm_init(&pwm0, &pwm0_config, NULL);
+    uint32_t err_code = nrf_drv_pwm_init(&pwm0, &pwm0_config, NULL);
+    if (err_code != NRF_SUCCESS) {
+        return err_code;
+    } else {
+        nrf_drv_pwm_simple_playback(&pwm0, &pwm0_seq, 1, NRF_DRV_PWM_FLAG_LOOP);
+    }
+
+    return NRF_SUCCESS;
 }
 
 /**
  * set PWM0 channel 0 value
  * 
- * @param value New PWM0 channel 0 value between 0 and 1023
+ * @param value New PWM0 channel 0 value between 0 and 1000
  */
-void Audio::setPWMCh0Value(uint16_t value) {
+void Audio::setPWM0Ch0Value(uint16_t value) {
     pwm0_seq_values.channel_0 = value;
-    (void)nrf_drv_pwm_simple_playback(&pwm0, &pwm0_seq, 1, NRF_DRV_PWM_FLAG_LOOP);
 }
 
 /**
  * set PWM0 channel 1 value
  * 
- * @param value New PWM0 channel 1 value between 0 and 1023
+ * @param value New PWM0 channel 1 value between 0 and 1000
  */
-void Audio::setPWMCh1Value(uint16_t value) {
+void Audio::setPWM0Ch1Value(uint16_t value) {
     pwm0_seq_values.channel_1 = value;
-    (void)nrf_drv_pwm_simple_playback(&pwm0, &pwm0_seq, 1, NRF_DRV_PWM_FLAG_LOOP);
+}
+
+/**
+ * set audio volume
+ * 
+ * @param newVolume New volume between 0 and 31
+ */
+void Audio::setVolume(uint8_t newVolume) {
+    volume = newVolume;
+}
+
+/**
+ * get audio volume
+ * 
+ * @return current volume value between 0 and 31
+ */
+uint8_t Audio::getVolume() {
+    return volume;
 }
 
 /**
@@ -178,7 +209,7 @@ void Audio::setPWMCh1Value(uint16_t value) {
  * 
  * @note Timer1 is not enabled yet. Call one of the setTimer functions to enable.
  */
-uint32_t Audio::initTimer() {
+uint32_t Audio::initTimer1() {
     timer1 = NRF_DRV_TIMER_INSTANCE(1);
 
     nrf_drv_timer_config_t timer1_config = NRF_DRV_TIMER_DEFAULT_CONFIG;
@@ -187,9 +218,28 @@ uint32_t Audio::initTimer() {
 }
 
 /**
+ * set Timer1 frequency in hertz
+ * 
+ * @param frequency Frequency in hertz to set Timer1 interrupt
+ */
+void Audio::setTimerWithFreq(uint16_t frequency) {
+    if (nrf_drv_timer_is_enabled(&timer1)) {
+        // disable timer while changing (not necessary, but doing it just in case)
+        nrf_drv_timer_disable(&timer1);
+    }
+    
+    double period = 1/frequency;
+    uint32_t time_ticks = nrf_drv_timer_ms_to_ticks(&timer1, period);
+
+    nrf_drv_timer_extended_compare(&timer1, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
+
+    nrf_drv_timer_enable(&timer1);
+}
+
+/**
  * set Timer1 period in milliseconds
  * 
- * @param period Timer1 period in milliseconds
+ * @param period Period in milliseconds to set Timer1 interrupt
  */
 void Audio::setTimerWithPeriod_ms(uint32_t period) {
     if (nrf_drv_timer_is_enabled(&timer1)) {
@@ -207,7 +257,9 @@ void Audio::setTimerWithPeriod_ms(uint32_t period) {
 /**
  * set Timer1 period in microseconds
  * 
- * @param period Timer1 period in microseconds
+ * @param period Period in microseconds to set Timer1 interrupt
+ * 
+ * @note this assumes Timer1 is running at 16MHz
  */
 void Audio::setTimerWithPeriod_us(uint32_t period) {
     if (nrf_drv_timer_is_enabled(&timer1)) {
@@ -215,7 +267,15 @@ void Audio::setTimerWithPeriod_us(uint32_t period) {
         nrf_drv_timer_disable(&timer1);
     }
 
-    uint32_t time_ticks = nrf_drv_timer_us_to_ticks(&timer1, period);
+    // this loses resolution when we have to down convert then up convert in this function so we do it ourselves below
+    // period = period >> 6;
+    // uint32_t time_ticks = nrf_drv_timer_us_to_ticks(&timer1, period);
+
+    // period needs be divided by 64 for sampling ( >> 6 )
+    // then multiplied by 16 for clock speed ( << 4 )
+    // those can be combined to result in only shifting period right by 2 bits and saving some resolution :D
+    uint32_t time_ticks = period  >> 2;
+    NRFX_ASSERT(time_ticks <= UINT32_MAX);
 
     nrf_drv_timer_extended_compare(&timer1, NRF_TIMER_CC_CHANNEL0, time_ticks, NRF_TIMER_SHORT_COMPARE0_CLEAR_MASK, true);
 
