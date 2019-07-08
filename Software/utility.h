@@ -18,6 +18,15 @@
 
 #define POLYNOM		0x0801
 
+enum {
+    BUTTON_D_PRESSED,
+    BUTTON_C_PRESSED,
+    BUTTON_Z_PRESSED,
+    BUTTON_I_PRESSED,
+    BUTTON_A_PRESSED,
+    ENC_SW_PRESSED
+};
+
 uint16_t calcCRC(uint8_t *data, uint8_t len);
 uint16_t crc16(uint16_t crcValue, uint8_t newByte);
 

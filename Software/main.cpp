@@ -68,8 +68,14 @@ int main(){
 
     // Setup the system
 
-
     button_init();
+    bool DButtonPressed = false;
+    bool CButtonPressed = false;
+    bool ZButtonPressed = false;
+    bool IButtonPressed = false;
+    bool AButtonPressed = false;
+    bool encSwPressed   = false;
+
     log_init();
 
     // Timers
@@ -343,34 +349,107 @@ int main(){
         nrf_gpio_pin_set(LED_I);
         nrf_gpio_pin_set(LED_A);
 
-        if(button == BUTTON_D_PIN){
-            pixels->setColor(0, { 0, 0, 64 });
-            pixels->setColor(1, { 0, 0, 64});
-            pixels->show();
-            while(getButton() == BUTTON_D_PIN);
+        if (button & (1 << BUTTON_D_PRESSED)) {
+            if (!DButtonPressed) {
+                pixels->setColor(0, { 0, 0, 64 });
+                pixels->setColor(1, { 0, 0, 64});
+                pixels->show();
+                while(getButton() == BUTTON_D_PIN);
 
-            pixels->setColor(0, { 0, 0, 0 });
-            pixels->setColor(1, { 0, 0, 0});
-            pixels->show();
+                leds->set(LED_D, ON);
+                printf("Button D Pressed\n");
 
-            leds->set(LED_D, TOGGLE);
-            printf("Button D\n");
+                DButtonPressed = true;
+            }
+        } else {
+            if (DButtonPressed) {
+                pixels->setColor(0, { 0, 0, 0 });
+                pixels->setColor(1, { 0, 0, 0});
+                pixels->show();
+
+                leds->set(LED_D, OFF);
+                printf("Button D Released\n");
+
+                DButtonPressed = false;
+            }
         }
-        if(button == BUTTON_C_PIN){
-            leds->set(LED_C, TOGGLE);
-            printf("Button C\n");
+
+        if (button & (1 << BUTTON_C_PRESSED)) {
+            if (!CButtonPressed) {
+                leds->set(LED_C, ON);
+                printf("Button C Pressed\n");
+                
+                CButtonPressed = true;
+            }
+        } else {
+            if (CButtonPressed) {
+                leds->set(LED_C, OFF);
+                printf("Button C Released\n");
+
+                CButtonPressed = false;
+            }
         }
-        if(button == BUTTON_Z_PIN){
-            leds->set(LED_Z, TOGGLE);
-            printf("Button Z\n");
+
+        if (button & (1 << BUTTON_Z_PRESSED)) {
+            if (!ZButtonPressed) {
+                leds->set(LED_Z, ON);
+                printf("Button Z Pressed\n");
+
+                ZButtonPressed = true;
+            }
+        } else {
+            if (ZButtonPressed) {
+                leds->set(LED_Z, OFF);
+                printf("Button Z Released\n");
+
+                ZButtonPressed = false;
+            }
         }
-        if(button == BUTTON_I_PIN){
-            leds->set(LED_I, TOGGLE);
-            printf("Button I\n");
+
+        if (button & (1 << BUTTON_I_PRESSED)) {
+            if (!IButtonPressed) {
+                leds->set(LED_I, ON);
+                printf("Button I Pressed\n");
+
+                IButtonPressed = true;
+            };
+        } else {
+            if (IButtonPressed) {
+                leds->set(LED_I, OFF);
+                printf("Button I Released\n");
+
+                IButtonPressed = false;
+            }
         }
-        if(button == BUTTON_A_PIN){
-            leds->set(LED_A, TOGGLE);
-            printf("Button A\n");
+
+        if (button & (1 << BUTTON_A_PRESSED)) {
+            if (!AButtonPressed) {
+                leds->set(LED_A, ON);
+                printf("Button A Pressed\n");
+
+                AButtonPressed = true;
+            }
+        } else {
+            if (AButtonPressed) {
+                leds->set(LED_A, OFF);
+                printf("Button A Released\n");
+
+                AButtonPressed = false;
+            }
+        }
+
+        if (button & (1 << ENC_SW_PRESSED)) {
+            if (!encSwPressed) {
+                printf("Encoder Switch Pressed\n");
+
+                encSwPressed = true;
+            }
+        } else {
+            if (encSwPressed) {
+                printf("Encoder Switch Released\n");
+
+                encSwPressed = false;
+            }
         }
 
         nrf_delay_ms(10);
