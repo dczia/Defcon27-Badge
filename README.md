@@ -14,7 +14,7 @@
 This year we wanted to do something different. Our idea is to use two laser time of flight sensors that can measure the distance of your hands moving around infront of the badge to control a synthesizer to create a laser theremin.
 
 - 64Mhz Arm CortexM4F with Bluetooth 5
-- 5 Mechanical Clicky Key Switches
+- 5 Mechanical Clicky Low Profile Key Switches
 - Rotary Encoder with Click Button
 - OLED Display
 - Onboard Speaker and Amplifier!
@@ -69,7 +69,8 @@ This year we wanted to do something different. Our idea is to use two laser time
 
 # Documentation
 
-- Coming Soon!
+- [Board Build Guide](BuildGuide.md)
+- [EnvironmentSetup](Software/EnvironmentSetup.md)
 
 
 # Links to relevant information
