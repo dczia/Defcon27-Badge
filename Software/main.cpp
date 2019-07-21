@@ -304,7 +304,7 @@ int main(){
         // read left sensor
         range2 = TOF->readRange(TOF_SENSOR2);
         //status2 = TOF->readRangeStatus(TOF_SENSOR2);
-        
+
         // set volume with sensor2 (left sensor)
         range2_cm = range2 / 10 + 1;
         if (range2_cm != prevRange2_cm) {
@@ -378,7 +378,7 @@ int main(){
             if (!CButtonPressed) {
                 leds->set(LED_C, ON);
                 printf("Button C Pressed\n");
-                
+
                 CButtonPressed = true;
             }
         } else {
