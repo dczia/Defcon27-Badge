@@ -3,18 +3,21 @@ TARGETS          := lasertheremin
 OUTPUT_DIRECTORY := _build
 BOOTLOADER       := bootloader/_build/bootloader.hex
 
-SDK_ROOT 		 := $(HOME)/dev/nordic-sdk15/
+# Swap and set to your nordic-sdk directory
+#SDK_ROOT         := $(HOME)/dev/nordic-sdk15/
+SDK_ROOT         := /sdk/
+
 PROJ_DIR         := $(shell pwd)
 NRFJPROG         := /usr/bin/nrfjprog
 MERGEHEX         := /usr/bin/mergehex
 
-SOFTDEVICE	     := $(SDK_ROOT)/components/softdevice/s140/hex/s140_nrf52_6.1.1_softdevice.hex
+SOFTDEVICE       := $(SDK_ROOT)/components/softdevice/s140/hex/s140_nrf52_6.1.1_softdevice.hex
 MBR              := $(SDK_ROOT)/components/softdevice/mbr/nrf52840/hexmbr_nrf52_2.4.1_mbr.hex
 
 $(OUTPUT_DIRECTORY)/lasertheremin.out:
   LINKER_SCRIPT  := dczia_gcc_nrf52.ld
 
-PRETTY := 1
+PRETTY  := 1
 VERBOSE := 0
 
 # Source files common to all targets
@@ -129,7 +132,7 @@ SRC_FILES += \
   $(PROJ_DIR)/modules/ws2812b.cpp \
   $(PROJ_DIR)/modules/VL6180X.cpp \
   $(PROJ_DIR)/main.cpp \
-  
+
 
 # Include folders common to all targets
 INC_FOLDERS += \
@@ -364,7 +367,7 @@ flash: $(OUTPUT_DIRECTORY)/lasertheremin.hex
 
 erase:
 	$(NRFJPROG) --eraseall -f nrf52
-	
+
 recover:
 	$(NRFJPROG) --recover -f nrf52
 
@@ -372,5 +375,3 @@ SDK_CONFIG_FILE := config/sdk_config.h
 CMSIS_CONFIG_TOOL := $(SDK_ROOT)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard.jar
 sdk_config:
 	java -jar $(CMSIS_CONFIG_TOOL) $(SDK_CONFIG_FILE)
-
-	
