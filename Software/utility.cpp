@@ -49,52 +49,52 @@ void sysTickHandler(void * p_context){
  */
 uint8_t getButton(void){
 
-	uint8_t button = 0;
+    uint8_t button = 0;
 
-	if(isButtonDown(BUTTON_D_PIN)){
-		// Debounce
-		nrf_delay_ms(BUTTON_DEBOUNCE_MS);
-		if(isButtonDown(BUTTON_D_PIN)) {
+    if(isButtonDown(BUTTON_D_PIN)){
+        // Debounce
+        nrf_delay_ms(BUTTON_DEBOUNCE_MS);
+        if(isButtonDown(BUTTON_D_PIN)) {
             button |= 1 << BUTTON_D_PRESSED;
-		}
-	}
-	if(isButtonDown(BUTTON_C_PIN)){
-		// Debounce
-		nrf_delay_ms(BUTTON_DEBOUNCE_MS);
-		if(isButtonDown(BUTTON_C_PIN)){
-			button |= 1 << BUTTON_C_PRESSED;
-		}
-	}
-	if(isButtonDown(BUTTON_Z_PIN)){
-		// Debounce
-		nrf_delay_ms(BUTTON_DEBOUNCE_MS);
-		if(isButtonDown(BUTTON_Z_PIN)){
-			button |= 1 << BUTTON_Z_PRESSED;
-		}
-	}
-	if(isButtonDown(BUTTON_I_PIN)){
-		// Debounce
-		nrf_delay_ms(BUTTON_DEBOUNCE_MS);
-		if(isButtonDown(BUTTON_I_PIN)){
-			button |= 1 << BUTTON_I_PRESSED;
-		}
-	}
-	if(isButtonDown(BUTTON_A_PIN)){
-		// Debounce
-		nrf_delay_ms(BUTTON_DEBOUNCE_MS);
-		if(isButtonDown(BUTTON_A_PIN)){
-			button |= 1 << BUTTON_A_PRESSED;
-		}
-	}
-	if(isButtonDown(ENC_SW_PIN)){
-		// Debounce
-		nrf_delay_ms(BUTTON_DEBOUNCE_MS);
-		if(isButtonDown(ENC_SW_PIN)){
-			button |= 1 << ENC_SW_PRESSED;
-		}
-	}
+        }
+    }
+    if(isButtonDown(BUTTON_C_PIN)){
+        // Debounce
+        nrf_delay_ms(BUTTON_DEBOUNCE_MS);
+        if(isButtonDown(BUTTON_C_PIN)){
+            button |= 1 << BUTTON_C_PRESSED;
+        }
+    }
+    if(isButtonDown(BUTTON_Z_PIN)){
+        // Debounce
+        nrf_delay_ms(BUTTON_DEBOUNCE_MS);
+        if(isButtonDown(BUTTON_Z_PIN)){
+            button |= 1 << BUTTON_Z_PRESSED;
+        }
+    }
+    if(isButtonDown(BUTTON_I_PIN)){
+        // Debounce
+        nrf_delay_ms(BUTTON_DEBOUNCE_MS);
+        if(isButtonDown(BUTTON_I_PIN)){
+            button |= 1 << BUTTON_I_PRESSED;
+        }
+    }
+    if(isButtonDown(BUTTON_A_PIN)){
+        // Debounce
+        nrf_delay_ms(BUTTON_DEBOUNCE_MS);
+        if(isButtonDown(BUTTON_A_PIN)){
+            button |= 1 << BUTTON_A_PRESSED;
+        }
+    }
+    if(isButtonDown(ENC_SW_PIN)){
+        // Debounce
+        nrf_delay_ms(BUTTON_DEBOUNCE_MS);
+        if(isButtonDown(ENC_SW_PIN)){
+            button |= 1 << ENC_SW_PRESSED;
+        }
+    }
 
-	return button;
+    return button;
 }
 
 
@@ -105,11 +105,11 @@ uint8_t getButton(void){
  */
 bool isButtonDown(int button){
 
-	if(nrf_gpio_pin_read(button) == BUTTON_PRESSED){
-		return true;
-	}
+    if(nrf_gpio_pin_read(button) == BUTTON_PRESSED){
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 
@@ -119,16 +119,16 @@ bool isButtonDown(int button){
  */
 void pauseUntilPress(int button){
 
-	while(true){
-		if(nrf_gpio_pin_read(button) == BUTTON_PRESSED){
-			// Debounce
-			nrf_delay_ms(button);
-			if(nrf_gpio_pin_read(button) == BUTTON_PRESSED){
-				while(nrf_gpio_pin_read(button) == BUTTON_PRESSED);
-				return;
-			}
-		}
-	}
+    while(true){
+        if(nrf_gpio_pin_read(button) == BUTTON_PRESSED){
+            // Debounce
+            nrf_delay_ms(button);
+            if(nrf_gpio_pin_read(button) == BUTTON_PRESSED){
+                while(nrf_gpio_pin_read(button) == BUTTON_PRESSED);
+                return;
+            }
+        }
+    }
 }
 
 
