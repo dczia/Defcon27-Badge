@@ -4,8 +4,8 @@ OUTPUT_DIRECTORY := _build
 BOOTLOADER       := bootloader/_build/bootloader.hex
 
 # Swap and set to your nordic-sdk directory
-#SDK_ROOT         := $(HOME)/dev/nordic-sdk15/
-SDK_ROOT         := /sdk/
+SDK_ROOT         := $(HOME)/dev/nordic-sdk15/
+#SDK_ROOT         := /sdk/
 
 PROJ_DIR         := $(shell pwd)
 NRFJPROG         := /usr/bin/nrfjprog
