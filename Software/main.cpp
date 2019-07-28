@@ -148,6 +148,26 @@ int main(){
         }else{
             audio_off();
             snprintf(display2, 20, "Mode: %03d", mode);
+            uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
+            uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
+            if (LEDrange1 > 190) { LEDrange1 = 190; }
+            if (LEDrange2 > 190) { LEDrange2 = 190; }
+            snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
+            //output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
+            uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72; //ReMap Sensor Values
+            uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72; //ReMap Sensor Values
+            uint8_t outhalf = output1 / 4;
+            printf("Output Range 1  = %d\n", output2);
+            printf("Output Range 2  = %d\n", output1);
+            pixels->setColor(0, {output2, 0, output2});
+            pixels->setColor(1, {0, outhalf, output1});
+            pixels->show();
+            leds->set(LED_D, ON);
+            leds->set(LED_C, ON);
+            leds->set(LED_Z, ON);
+            leds->set(LED_I, ON);
+            leds->set(LED_A, ON);
+
         }
         snprintf(display1, 20, "%d %dv", counter++, adc->getBatteryVoltage());
         SSD1306_clearDisplay();
@@ -290,24 +310,24 @@ void startup_sequence(){
     // Pop pop!
     audio->enable(true);
     leds->set(LED_D, ON);
-    audio->beep(10, 200);
+    //audio->beep(10, 200);
     nrf_delay_ms(50);
     leds->set(LED_D, OFF);
     leds->set(LED_C, ON);
-    audio->beep(25, 400);
+    //audio->beep(25, 400);
     nrf_delay_ms(50);
     leds->set(LED_C, OFF);
     leds->set(LED_Z, ON);
-    audio->beep(75, 600);
+    //audio->beep(75, 600);
     nrf_delay_ms(50);
     leds->set(LED_Z, OFF);
     leds->set(LED_I, ON);
-    audio->beep(150, 800);
+    //audio->beep(150, 800);
     nrf_delay_ms(50);
     leds->set(LED_I, OFF);
     leds->set(LED_A, ON);
-    audio->beep(200, 1000);
-    audio->enable(false);
+    //audio->beep(200, 1000);
+    //audio->enable(false);
     nrf_delay_ms(50);
     leds->set(LED_A, OFF);
 
@@ -388,6 +408,9 @@ void startup_sequence(){
     util_gfx_print("DCZia Test", COLOR_WHITE);
     util_gfx_set_cursor(10, 12);
     util_gfx_print("defcon 27", COLOR_WHITE);
+
+   
+ 
 }
 
 uint8_t tof_pitch(uint8_t prevRange){
