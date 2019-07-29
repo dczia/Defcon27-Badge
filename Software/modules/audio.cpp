@@ -144,7 +144,7 @@ uint32_t Audio::initPWM0() {
         { // .output_pins
             AUDIO_PWM_PIN,// | NRF_DRV_PWM_PIN_INVERTED, // channel 0
             // LED_D_PIN | NRF_DRV_PWM_PIN_INVERTED, // channel 0
-            LED_A_PIN,// | NRF_DRV_PWM_PIN_INVERTED, // channel 1
+            // LED_A_PIN,// | NRF_DRV_PWM_PIN_INVERTED, // channel 1
             NRF_DRV_PWM_PIN_NOT_USED,             // channel 2
             NRF_DRV_PWM_PIN_NOT_USED,             // channel 3
         },

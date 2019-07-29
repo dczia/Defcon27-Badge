@@ -40,7 +40,10 @@ bool IButtonPressed;
 bool AButtonPressed;
 bool encSwPressed;
 
-
+    // Setup for LED modes 
+    bool status = false;
+    bool cylonGoDown = false;
+    int cylonCurLED = LED_D;
 
 /**
  * Initialize the buttons
@@ -129,6 +132,8 @@ int main(){
     uint8_t status1= 0, status2 = 0;
     printf("Looping...\n");
 
+
+
     char display2[20];
     char display1[20];
     uint8_t counter = 0;
@@ -145,28 +150,11 @@ int main(){
             snprintf(display2, 20, "Fixed  %03dmm", range1);
         }else if(mode == 3){
             snprintf(display2, 20, "HOLDING", range1);
-        }else{
-            audio_off();
-            snprintf(display2, 20, "Mode: %03d", mode);
-            uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
-            uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
-            if (LEDrange1 > 190) { LEDrange1 = 190; }
-            if (LEDrange2 > 190) { LEDrange2 = 190; }
-            snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
-            //output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
-            uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72; //ReMap Sensor Values
-            uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72; //ReMap Sensor Values
-            uint8_t outhalf = output1 / 4;
-            printf("Output Range 1  = %d\n", output2);
-            printf("Output Range 2  = %d\n", output1);
-            pixels->setColor(0, {output2, 0, output2});
-            pixels->setColor(1, {0, outhalf, output1});
-            pixels->show();
-            leds->set(LED_D, ON);
-            leds->set(LED_C, ON);
-            leds->set(LED_Z, ON);
-            leds->set(LED_I, ON);
-            leds->set(LED_A, ON);
+        }else{   // Default mode the badge boots into
+            audio_off();  // STFU
+            led_theramin();  // Enables LED Thearamin Mode
+            snprintf(display2, 20, "LED Mode");
+            //snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
 
         }
         snprintf(display1, 20, "%d %dv", counter++, adc->getBatteryVoltage());
@@ -181,7 +169,7 @@ int main(){
         if(mode > 3){
             mode = 0;
         }
-        nrf_delay_ms(10);
+        nrf_delay_ms(10);  // Do we really need this?
 
     }
 }
@@ -418,7 +406,7 @@ uint8_t tof_pitch(uint8_t prevRange){
     uint8_t range = TOF->readRange(TOF_SENSOR1);
 
     // Enable this to smooth the sampling a bit
-    //range = uint8_t(uint16_t(range + prevRange) >> 1);
+    range = uint8_t(uint16_t(range + prevRange) >> 1);
 
     // set pitch with right sensor
     // range_2mm splits range into 2mm chunks
@@ -499,4 +487,86 @@ uint8_t tof_volume(uint8_t prevRange){
     audio->setVolume(newVolume);
     return range;
 }
+
+void led_theramin() {
+
+            uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
+            uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
+            if (LEDrange1 > 190) { LEDrange1 = 190; }  // Rounding as TOF sensor will not measure much past here
+            if (LEDrange2 > 190) { LEDrange2 = 190; }
+
+            //output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
+            uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72; //ReMap Sensor Values
+            uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72; //ReMap Sensor Values
+            uint8_t outhalf = output1 / 4;
+            printf("Output Range 1  = %d\n", output2);  //Debug
+            printf("Output Range 2  = %d\n", output1);
+            pixels->setColor(0, {output2, 0, output2});
+            pixels->setColor(1, {0, outhalf, output1});
+            pixels->show();
+            led_walk();
+
+}
+
+
+void led_handler_blink(void *p_context) {
+    status = !status;
+
+    if (status == true){
+    leds->set(LED_D, ON);
+    leds->set(LED_C, ON);
+    leds->set(LED_Z, ON);
+    leds->set(LED_I, ON);
+    leds->set(LED_A, ON);
+    }
+    else {
+    leds->set(LED_D, OFF);
+    leds->set(LED_C, OFF);
+    leds->set(LED_Z, OFF);
+    leds->set(LED_I, OFF);
+    leds->set(LED_A, OFF);
+    }
+}
+    void led_handler_cylon(void *p_context) {
+
+        
+            if(!cylonGoDown && cylonCurLED > 0){
+                leds->set((LEDS)(cylonCurLED - 1), OFF);
+            }
+            if(cylonGoDown && cylonCurLED < 4){
+                leds->set((LEDS)(cylonCurLED + 1), OFF);
+            }
+            leds->set((LEDS)cylonCurLED, ON);
+
+
+            if(cylonGoDown){
+                if(cylonCurLED == LED_D){
+                    cylonGoDown = false;
+                }
+                else{
+                    cylonCurLED -= 1;
+                }
+            }
+            else {
+                if (cylonCurLED == LED_A) {
+                    cylonGoDown = true;
+                }
+                else{
+                    cylonCurLED += 1;
+                }
+            }
+        
+    }
+
+void led_walk(){
+ 
+    // Create a timer, in repeated mode, and register the callback
+    app_timer_create(&m_led_timer_id, APP_TIMER_MODE_REPEATED, led_handler_cylon);
+
+    // Start the timer, fire every 100ms
+    app_timer_start(m_led_timer_id, APP_TIMER_TICKS(100), nullptr);                
+            
+}
+
+
 

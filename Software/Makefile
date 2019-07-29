@@ -8,8 +8,8 @@ SDK_ROOT         := $(HOME)/dev/nordic-sdk15/
 #SDK_ROOT         := /sdk/
 
 PROJ_DIR         := $(shell pwd)
-NRFJPROG         := /usr/bin/nrfjprog
-MERGEHEX         := /usr/bin/mergehex
+NRFJPROG         := $(HOME)/dev/bin/nrfjprog/nrfjprog
+MERGEHEX         := $(HOME)/dev/bin/mergehex/mergehex
 
 SOFTDEVICE       := $(SDK_ROOT)/components/softdevice/s140/hex/s140_nrf52_6.1.1_softdevice.hex
 MBR              := $(SDK_ROOT)/components/softdevice/mbr/nrf52840/hexmbr_nrf52_2.4.1_mbr.hex

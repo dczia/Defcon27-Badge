@@ -35,9 +35,9 @@ The following parts should be included with your badge:
 - Step 7. Place DCZIA stickers on the keycaps
 - Step 6. Install Batteries
 
---- Initial Badge Flash Instructions ---
+--- Initial Development Badge Flash Instructions ---
+  - **Note** Production boards will come pre flashed.
 
 - Step 1. Attach board to segger J-Link with cable
-  - **Note** Production boards will come pre flashed.
-- Step 2. make flash-sd
-- Step 3. make flash
+- Step 2. 'make flash-sd' this will flash the initial soft-device needed for bluetooth
+- Step 3. 'make flash' this will compile and flash our badge code
