@@ -1,4 +1,4 @@
-/**
+ /**
  *
  * @file main.c
  *
@@ -40,7 +40,7 @@ bool IButtonPressed;
 bool AButtonPressed;
 bool encSwPressed;
 
-    // Setup for LED modes 
+    // Setup for LED modes
     bool status = false;
     bool cylonGoDown = false;
     int cylonCurLED = LED_D;
@@ -150,6 +150,10 @@ int main(){
             snprintf(display2, 20, "Fixed  %03dmm", range1);
         }else if(mode == 3){
             snprintf(display2, 20, "HOLDING", range1);
+        }else if(mode == 4){
+            snprintf(display2, 20, "Year Of Doom", range1);
+            audio_off();
+            e1m1();
         }else{   // Default mode the badge boots into
             audio_off();  // STFU
             led_theramin();  // Enables LED Thearamin Mode
@@ -166,7 +170,7 @@ int main(){
 
         SSD1306_display();
         mode = button_handler(mode);
-        if(mode > 3){
+        if(mode > 4){
             mode = 0;
         }
         nrf_delay_ms(10);  // Do we really need this?
@@ -298,23 +302,23 @@ void startup_sequence(){
     // Pop pop!
     audio->enable(true);
     leds->set(LED_D, ON);
-    //audio->beep(10, 200);
+    audio->beep(10, 200);
     nrf_delay_ms(50);
     leds->set(LED_D, OFF);
     leds->set(LED_C, ON);
-    //audio->beep(25, 400);
+    audio->beep(25, 400);
     nrf_delay_ms(50);
     leds->set(LED_C, OFF);
     leds->set(LED_Z, ON);
-    //audio->beep(75, 600);
+    audio->beep(75, 600);
     nrf_delay_ms(50);
     leds->set(LED_Z, OFF);
     leds->set(LED_I, ON);
-    //audio->beep(150, 800);
+    audio->beep(150, 800);
     nrf_delay_ms(50);
     leds->set(LED_I, OFF);
     leds->set(LED_A, ON);
-    //audio->beep(200, 1000);
+    audio->beep(200, 1000);
     //audio->enable(false);
     nrf_delay_ms(50);
     leds->set(LED_A, OFF);
@@ -397,8 +401,8 @@ void startup_sequence(){
     util_gfx_set_cursor(10, 12);
     util_gfx_print("defcon 27", COLOR_WHITE);
 
-   
- 
+
+
 }
 
 uint8_t tof_pitch(uint8_t prevRange){
@@ -418,8 +422,8 @@ uint8_t tof_pitch(uint8_t prevRange){
     if (range_2mm == prevRange_2mm) {
         return prevRange;
     }
-    // check if range is at max (255mm)
-    if (range == 255) {
+    // check if range is around max (255mm)
+    if (range >= 250) {
         audio_off();
         return range;
     }
@@ -529,7 +533,7 @@ void led_handler_blink(void *p_context) {
 }
     void led_handler_cylon(void *p_context) {
 
-        
+
             if(!cylonGoDown && cylonCurLED > 0){
                 leds->set((LEDS)(cylonCurLED - 1), OFF);
             }
@@ -555,18 +559,78 @@ void led_handler_blink(void *p_context) {
                     cylonCurLED += 1;
                 }
             }
-        
+
     }
 
 void led_walk(){
- 
+
     // Create a timer, in repeated mode, and register the callback
     app_timer_create(&m_led_timer_id, APP_TIMER_MODE_REPEATED, led_handler_cylon);
 
     // Start the timer, fire every 100ms
-    app_timer_start(m_led_timer_id, APP_TIMER_TICKS(100), nullptr);                
-            
+    app_timer_start(m_led_timer_id, APP_TIMER_TICKS(100), nullptr);
+
 }
 
+// Doom Music
+// Based on http://vbstudio.hu/en/blog/20190330-Playing-DOOM-on-an-Arduino
+void e1m1(){
+    if (!audio->isEnabled()) {
+        audio->enable(true);
+    }
+    pixels->setColor(0, { 64, 0, 0});
+    pixels->setColor(1, { 64, 0, 0});
+    pixels->show();
+    int myVolume = 63;
+    int octave = 5;
+    int timeStep = 100;
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_E]);
+    nrf_delay_ms(timeStep);
 
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_D]);
+    nrf_delay_ms(timeStep);
 
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_C]);
+    nrf_delay_ms(timeStep);
+
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_AS]);
+    nrf_delay_ms(timeStep);
+
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_B]);
+    nrf_delay_ms(timeStep);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_C]);
+    nrf_delay_ms(timeStep);
+
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_E]);
+    nrf_delay_ms(timeStep);
+
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_D]);
+    nrf_delay_ms(timeStep);
+
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_C]);
+    nrf_delay_ms(timeStep);
+
+    noteDoomBase(octave, timeStep, myVolume);
+    audio->setTimerWithPeriod_us(notes[octave][NOTE_AS]);
+    nrf_delay_ms(timeStep);
+    audio->setVolume(0);
+    nrf_delay_ms(timeStep*2);
+}
+
+void noteDoomBase(int octave, int speed,int volume) {
+  audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
+  nrf_delay_ms(int(speed/2));
+  audio->setVolume(0);
+  nrf_delay_ms(int(speed/2));
+  audio->setVolume(volume);
+  audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
+  nrf_delay_ms(speed);
+}
