@@ -60,6 +60,7 @@
 #include "nrf_drv_saadc.h"
 #include "nrf_saadc.h"
 #include "nrf_drv_ppi.h"
+#include "nrf_drv_gpiote.h"
 #include "nrf_drv_timer.h"
 #include "nrf_drv_pwm.h"
 #include "nrfx_pwm.h"
