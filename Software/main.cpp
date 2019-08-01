@@ -39,7 +39,7 @@ WS2812S *pixels;
 bool status = false;
 bool cylonGoDown = false;
 int cylonCurLED = LED_D;
-
+int led_mode = 1;
 uint8_t octave = 5;
 
 /**
@@ -253,6 +253,8 @@ int main(){
         } else {
             /* default mode */
             audio_off();  // STFU <- "i feel personally attacked" - rehr
+                         // No offense intended, just wanted it to boot into a quiet mode :)
+            
             led_theramin();  // Enables LED Thearamin Mode
             snprintf(display2, 20, "LED Mode");
             //snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
@@ -302,7 +304,10 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
                 // add code that runs one time when button is pressed
-                
+                //led_flash_yellow();
+                 //snprintf(display2, 20, "Vapor Mode");
+                  led_mode_vapor();
+                  led_mode = 1;
                 leds->set(LED_D, ON);
                 printf("Button D Pressed\n");
 
@@ -324,7 +329,9 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_C_PIN) == false) {
             if (!CButtonPressed) {
                 // add code that runs one time when button is pressed
-                
+                //led_flash_yellow();
+               // led_mode_chile();
+                led_mode = 2;
                 leds->set(LED_C, ON);
                 printf("Button C Pressed\n");
 
@@ -346,7 +353,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_Z_PIN) == false) {
             if (!ZButtonPressed) {
                 // add code that runs one time when button is pressed
-                
+                led_mode = 3;
                 leds->set(LED_Z, ON);
                 printf("Button Z Pressed\n");
 
@@ -368,7 +375,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_I_PIN) == false) {
             if (!IButtonPressed) {
                 // add code that runs one time when button is pressed
-                
+                led_mode = 4;
                 leds->set(LED_I, ON);
                 printf("Button I Pressed\n");
 
@@ -390,7 +397,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_A_PIN) == false) {
             if (!AButtonPressed) {
                 // add code that runs one time when button is pressed
-                
+                led_mode = 5;
                 leds->set(LED_A, ON);
                 printf("Button A Pressed\n");
 
@@ -428,25 +435,25 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 
 void startup_sequence() {
     // Pop pop!
-    audio->enable(true);
+   // audio->enable(true);
     leds->set(LED_D, ON);
-    audio->beep(10, 200);
+    //audio->beep(10, 200);
     nrf_delay_ms(50);
     leds->set(LED_D, OFF);
     leds->set(LED_C, ON);
-    audio->beep(25, 400);
+    //audio->beep(25, 400);
     nrf_delay_ms(50);
     leds->set(LED_C, OFF);
     leds->set(LED_Z, ON);
-    audio->beep(75, 600);
+    //audio->beep(75, 600);
     nrf_delay_ms(50);
     leds->set(LED_Z, OFF);
     leds->set(LED_I, ON);
-    audio->beep(150, 800);
+    //audio->beep(150, 800);
     nrf_delay_ms(50);
     leds->set(LED_I, OFF);
     leds->set(LED_A, ON);
-    audio->beep(200, 1000);
+   // audio->beep(200, 1000);
     //audio->enable(false);
     nrf_delay_ms(50);
     leds->set(LED_A, OFF);
@@ -620,6 +627,25 @@ uint8_t tof_volume(uint8_t prevRange) {
     return range;
 }
 
+//
+// Light modes
+//
+
+void led_flash_yellow() {
+            pixels->setColor(0, { 200, 200, 0});
+            pixels->setColor(1, { 200, 200, 0});
+            pixels->show();
+}
+
+void led_mode_vapor() {
+    led_mode = 1;
+    
+}
+
+void led_mode_chile() {
+    led_mode = 2;
+    //snprintf(display2, 20, "Chile Mode");
+}
 void led_theramin() {
     uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
     uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
@@ -632,9 +658,33 @@ void led_theramin() {
     uint8_t outhalf = output1 >> 2; // divide by 4
     printf("Output Range 1  = %d\n", output2);  //Debug
     printf("Output Range 2  = %d\n", output1);
-    pixels->setColor(0, {output2, 0, output2});
-    pixels->setColor(1, {0, outhalf, output1});
-    pixels->show();
+    led_walk(); // Start LED cylon scroll
+
+            if (led_mode == 1) { //Vapor Mode
+            pixels->setColor(0, {output2, 0, output2});
+            pixels->setColor(1, {0, 0, output1});
+            pixels->show();
+            }
+            if (led_mode == 2) { // Chile Mode
+            pixels->setColor(0, {output2, 0, 0});
+            pixels->setColor(1, {0, output1, 0});
+            pixels->show();
+            }
+            if (led_mode == 3) { //VaporMode2
+            pixels->setColor(0, {outhalf, output2, 0});
+            pixels->setColor(1, {output2, 5, output2});
+            pixels->show();
+            }
+            if (led_mode == 4) { //VaporMode2
+            pixels->setColor(0, {19, output2, output2});
+            pixels->setColor(1, {output2, 5, 39});
+            pixels->show();
+            }
+            if (led_mode == 5) { //VaporMode2
+            pixels->setColor(0, {1, output2, 33});
+            pixels->setColor(1, {output2, output2, 9});
+            pixels->show();
+            } 
     led_walk();
 }
 
