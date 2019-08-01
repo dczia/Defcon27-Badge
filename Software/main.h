@@ -15,8 +15,17 @@
 #define VERSION "1.00"
 #endif /* MAIN_H_ */
 
+/* badge modes */
+const uint8_t DEFAULT_BADGE_MODE   = 0;
+const uint8_t THEREMIN_BADGE_MODE  = 1;
+const uint8_t FIXED_VOL_BADGE_MODE = 2;
+const uint8_t HOLDING_BADGE_MODE   = 3;
+const uint8_t DOOM_BADGE_MODE      = 4;
+const uint8_t TOTAL_BADGE_MODES    = 5;
+
 void audio_off();
-uint8_t button_handler(uint8_t mode);
+void incrementBadgeMode();
+void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action);
 void startup_sequence();
 void led_theramin();
 void led_walk();

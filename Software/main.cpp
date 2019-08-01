@@ -27,35 +27,129 @@
 #include "modules/VL6180X.h"
 #include "modules/ws2812b.h"
 
+uint8_t badgeMode;
+
 ADC *adc;
 VL6180X *TOF;
 Audio *audio;
 LED *leds;
 WS2812S *pixels;
-uint8_t mode;
-bool DButtonPressed;
-bool CButtonPressed;
-bool ZButtonPressed;
-bool IButtonPressed;
-bool AButtonPressed;
-bool encSwPressed;
 
-    // Setup for LED modes
-    bool status = false;
-    bool cylonGoDown = false;
-    int cylonCurLED = LED_D;
+// Setup for LED modes
+bool status = false;
+bool cylonGoDown = false;
+int cylonCurLED = LED_D;
+
+uint8_t octave = 5;
 
 /**
- * Initialize the buttons
+ * Initialize the button pins
  */
 static void button_init(){
-    // Setup the buttons
+    /* set encoder pin directions and states */
     nrf_gpio_cfg_input(BUTTON_D_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(BUTTON_C_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(BUTTON_Z_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(BUTTON_I_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(BUTTON_A_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(ENC_SW_PIN, NRF_GPIO_PIN_NOPULL);
+
+   /* initialize interrupt driver */
+    if (nrfx_gpiote_is_init() == false) {
+        if (nrf_drv_gpiote_init() != NRF_SUCCESS) {
+            printf("ERROR: Initializing button interrupts!\n");
+            return;
+        }
+    }
+
+    /* set config for button pin interrupt */
+    nrf_drv_gpiote_in_config_t pin_config = {
+        NRF_GPIOTE_POLARITY_TOGGLE, // sense
+        NRF_GPIO_PIN_NOPULL, // pull
+        true, // is_watcher
+        true // hi_accuracy
+    };
+
+    /* init and enable encoder pin A interrupt */
+    nrf_drv_gpiote_in_init(BUTTON_D_PIN, &pin_config, button_handler);
+    nrf_drv_gpiote_in_init(BUTTON_C_PIN, &pin_config, button_handler);
+    nrf_drv_gpiote_in_init(BUTTON_Z_PIN, &pin_config, button_handler);
+    nrf_drv_gpiote_in_init(BUTTON_I_PIN, &pin_config, button_handler);
+    nrf_drv_gpiote_in_init(BUTTON_A_PIN, &pin_config, button_handler);
+    nrf_drv_gpiote_in_init(ENC_SW_PIN, &pin_config, button_handler);
+    nrf_drv_gpiote_in_event_enable(BUTTON_D_PIN, true);
+    nrf_drv_gpiote_in_event_enable(BUTTON_C_PIN, true);
+    nrf_drv_gpiote_in_event_enable(BUTTON_Z_PIN, true);
+    nrf_drv_gpiote_in_event_enable(BUTTON_I_PIN, true);
+    nrf_drv_gpiote_in_event_enable(BUTTON_A_PIN, true);
+    nrf_drv_gpiote_in_event_enable(ENC_SW_PIN, true);
+}
+
+
+/**
+ * Handler for encoder pin A change events
+ */
+void encoder_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
+    static bool prevPinAState = false;
+
+    if (pin == ENC_A_PIN) {
+        // grab states for pins A and B
+        bool pinBState = nrfx_gpiote_in_is_set(ENC_B_PIN);
+        bool pinAState = nrfx_gpiote_in_is_set(ENC_A_PIN);
+
+        // double check for a change on pin A
+        if (prevPinAState != pinAState) {
+            if (prevPinAState == false) {
+                if (pinBState) {
+                    // counter-clockwise turn
+                    // octave--;
+                    // if (octave < 0) {
+                    //     octave = 0;
+                    // }
+                } else {
+                    // clockwise turn
+                    // octave++;
+                    // if (octave > 9) {
+                    //     octave = 9; // have to stop at 9 since theremin audio spans two octaves
+                    // }
+                }
+            }
+
+            prevPinAState = pinAState;
+        }
+    }
+}
+
+
+/**
+ * Initialize the encoder pins
+ */
+static void encoder_init() {
+    /* set encoder pin directions and states */
+    nrf_gpio_cfg_output(ENC_C_PIN);
+    nrf_gpio_pin_clear(ENC_C_PIN); // set pin C as 0V
+    nrf_gpio_cfg_input(ENC_A_PIN, NRF_GPIO_PIN_PULLUP);
+    nrf_gpio_cfg_input(ENC_B_PIN, NRF_GPIO_PIN_PULLUP);
+
+    /* initialize interrupt driver */
+    if (nrfx_gpiote_is_init() == false) {
+        if (nrf_drv_gpiote_init() != NRF_SUCCESS) {
+            printf("ERROR: Initializing encoder interrupts!\n");
+            return;
+        }
+    }
+
+    /* set config for encoder pin A interrupt */
+    nrf_drv_gpiote_in_config_t pin_config = {
+        NRF_GPIOTE_POLARITY_TOGGLE, // sense
+        NRF_GPIO_PIN_PULLUP, // pull
+        true, // is_watcher
+        true // hi_accuracy
+    };
+
+    /* init and enable encoder pin A interrupt */
+    nrf_drv_gpiote_in_init(ENC_A_PIN, &pin_config, encoder_handler);
+    nrf_drv_gpiote_in_event_enable(ENC_A_PIN, true);
 }
 
 
@@ -80,12 +174,8 @@ int main(){
 
     // Set up buttons
     button_init();
-    DButtonPressed = false;
-    CButtonPressed = false;
-    ZButtonPressed = false;
-    IButtonPressed = false;
-    AButtonPressed = false;
-    encSwPressed   = false;
+
+    encoder_init();
 
     log_init();
 
@@ -129,38 +219,45 @@ int main(){
 
     // Setup TOF range variables
     uint8_t range1 = 0, range2 = 0;
-    uint8_t status1= 0, status2 = 0;
+    uint8_t status1 = 0, status2 = 0;
     printf("Looping...\n");
-
-
 
     char display2[20];
     char display1[20];
     uint8_t counter = 0;
-    uint8_t mode = 0;
+
+    badgeMode = DEFAULT_BADGE_MODE;
 
     while(true) {
-        if(mode == 1){
+        if (badgeMode == THEREMIN_BADGE_MODE) {
+            /* theremin mode */
+            // pixels->setColor(0, {8, 0, 8});
+            // pixels->setColor(1, {0, 2, 8});
+            // pixels->show();
             range1 = tof_pitch(range1);
             range2 = tof_volume(range2);
             snprintf(display2, 20, "%03dmm  %03dmm", range2, range1);
-        }else if(mode == 2){
+        } else if(badgeMode == FIXED_VOL_BADGE_MODE) {
+            /* fixed volume mode */
             range1 = tof_pitch(range1);
             audio->setVolume(127);
             snprintf(display2, 20, "Fixed  %03dmm", range1);
-        }else if(mode == 3){
+        } else if(badgeMode == HOLDING_BADGE_MODE) {
+            /* holding mode */
             snprintf(display2, 20, "HOLDING", range1);
-        }else if(mode == 4){
+        } else if(badgeMode == DOOM_BADGE_MODE) {
+            /* doom mode */
             snprintf(display2, 20, "Year Of Doom", range1);
             audio_off();
             e1m1();
-        }else{   // Default mode the badge boots into
-            audio_off();  // STFU
+        } else {
+            /* default mode */
+            audio_off();  // STFU <- "i feel personally attacked" - rehr
             led_theramin();  // Enables LED Thearamin Mode
             snprintf(display2, 20, "LED Mode");
             //snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
-
         }
+
         snprintf(display1, 20, "%d %dv", counter++, adc->getBatteryVoltage());
         SSD1306_clearDisplay();
         util_gfx_set_cursor(10, 1);
@@ -169,136 +266,167 @@ int main(){
         util_gfx_print(display2, COLOR_WHITE);
 
         SSD1306_display();
-        mode = button_handler(mode);
-        if(mode > 4){
-            mode = 0;
-        }
+        // button_handler();
+
         nrf_delay_ms(10);  // Do we really need this?
 
     }
 }
 
-void audio_off(){
+void incrementBadgeMode() {
+    badgeMode++;
+    if (badgeMode >= TOTAL_BADGE_MODES) {
+        badgeMode = 0;
+    }
+}
+
+void audio_off() {
     audio->enable(false); // turn off amp
     audio->disableTimer(); // disable timer1
     audio->setPWM0Ch0Value(0); // turn off PWM0 ch0
 }
 
-uint8_t button_handler(uint8_t mode){
-    uint8_t button = getButton();
 
-    nrf_gpio_pin_set(LED_D);
-    nrf_gpio_pin_set(LED_C);
-    nrf_gpio_pin_set(LED_Z);
-    nrf_gpio_pin_set(LED_I);
-    nrf_gpio_pin_set(LED_A);
+/**
+ * Handler for encoder pin A change events
+ */
+void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
+    static bool DButtonPressed = false;
+    static bool CButtonPressed = false;
+    static bool ZButtonPressed = false;
+    static bool IButtonPressed = false;
+    static bool AButtonPressed = false;
+    static bool encSwPressed = false;
 
-    if (button & (1 << BUTTON_D_PRESSED)) {
-        if (!DButtonPressed) {
-            pixels->setColor(0, { 0, 0, 64 });
-            pixels->setColor(1, { 0, 0, 64});
-            pixels->show();
-            while(getButton() == BUTTON_D_PIN);
+    if (pin == BUTTON_D_PIN) {
+        if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
+            if (!DButtonPressed) {
+                // add code that runs one time when button is pressed
+                
+                leds->set(LED_D, ON);
+                printf("Button D Pressed\n");
 
-            leds->set(LED_D, ON);
-            printf("Button D Pressed\n");
+                DButtonPressed = true;
+            }
+        } else {
+            if (DButtonPressed) {
+                // add code that runs one time when button is release
 
-            DButtonPressed = true;
-        }
-    } else {
-        if (DButtonPressed) {
-            pixels->setColor(0, { 0, 0, 0 });
-            pixels->setColor(1, { 0, 0, 0});
-            pixels->show();
+                leds->set(LED_D, OFF);
+                printf("Button D Released\n");
 
-            leds->set(LED_D, OFF);
-            printf("Button D Released\n");
-
-            DButtonPressed = false;
-        }
-    }
-
-    if (button & (1 << BUTTON_C_PRESSED)) {
-        if (!CButtonPressed) {
-            leds->set(LED_C, ON);
-            printf("Button C Pressed\n");
-
-            CButtonPressed = true;
-        }
-    } else {
-        if (CButtonPressed) {
-            leds->set(LED_C, OFF);
-            printf("Button C Released\n");
-
-            CButtonPressed = false;
+                DButtonPressed = false;
+            }
         }
     }
 
-    if (button & (1 << BUTTON_Z_PRESSED)) {
-        if (!ZButtonPressed) {
-            leds->set(LED_Z, ON);
-            printf("Button Z Pressed\n");
+    if (pin == BUTTON_C_PIN) {
+        if (nrfx_gpiote_in_is_set(BUTTON_C_PIN) == false) {
+            if (!CButtonPressed) {
+                // add code that runs one time when button is pressed
+                
+                leds->set(LED_C, ON);
+                printf("Button C Pressed\n");
 
-            ZButtonPressed = true;
-        }
-    } else {
-        if (ZButtonPressed) {
-            leds->set(LED_Z, OFF);
-            printf("Button Z Released\n");
+                CButtonPressed = true;
+            }
+        } else {
+            if (CButtonPressed) {
+                // add code that runs one time when button is release
 
-            ZButtonPressed = false;
-        }
-    }
+                leds->set(LED_C, OFF);
+                printf("Button C Released\n");
 
-    if (button & (1 << BUTTON_I_PRESSED)) {
-        if (!IButtonPressed) {
-            leds->set(LED_I, ON);
-            printf("Button I Pressed\n");
-
-            IButtonPressed = true;
-        };
-    } else {
-        if (IButtonPressed) {
-            leds->set(LED_I, OFF);
-            printf("Button I Released\n");
-
-            IButtonPressed = false;
+                CButtonPressed = false;
+            }
         }
     }
 
-    if (button & (1 << BUTTON_A_PRESSED)) {
-        if (!AButtonPressed) {
-            leds->set(LED_A, ON);
-            printf("Button A Pressed\n");
+    if (pin == BUTTON_Z_PIN) {
+        if (nrfx_gpiote_in_is_set(BUTTON_Z_PIN) == false) {
+            if (!ZButtonPressed) {
+                // add code that runs one time when button is pressed
+                
+                leds->set(LED_Z, ON);
+                printf("Button Z Pressed\n");
 
-            AButtonPressed = true;
+                ZButtonPressed = true;
+            }
+        } else {
+            if (ZButtonPressed) {
+                // add code that runs one time when button is release
+
+                leds->set(LED_Z, OFF);
+                printf("Button Z Released\n");
+
+                ZButtonPressed = false;
+            }
         }
-    } else {
-        if (AButtonPressed) {
-            leds->set(LED_A, OFF);
-            printf("Button A Released\n");
+    }
 
-            AButtonPressed = false;
+    if (pin == BUTTON_I_PIN) {
+        if (nrfx_gpiote_in_is_set(BUTTON_I_PIN) == false) {
+            if (!IButtonPressed) {
+                // add code that runs one time when button is pressed
+                
+                leds->set(LED_I, ON);
+                printf("Button I Pressed\n");
+
+                IButtonPressed = true;
+            }
+        } else {
+            if (IButtonPressed) {
+                // add code that runs one time when button is release
+
+                leds->set(LED_I, OFF);
+                printf("Button I Released\n");
+
+                IButtonPressed = false;
+            }
         }
     }
 
-    if (button & (1 << ENC_SW_PRESSED)) {
-        if (!encSwPressed) {
-            printf("Encoder Switch Pressed\n");
-            mode++;
-            encSwPressed = true;
-        }
-    } else {
-        if (encSwPressed) {
-            printf("Encoder Switch Released\n");
+    if (pin == BUTTON_A_PIN) {
+        if (nrfx_gpiote_in_is_set(BUTTON_A_PIN) == false) {
+            if (!AButtonPressed) {
+                // add code that runs one time when button is pressed
+                
+                leds->set(LED_A, ON);
+                printf("Button A Pressed\n");
 
-            encSwPressed = false;
+                AButtonPressed = true;
+            }
+        } else {
+            if (AButtonPressed) {
+                // add code that runs one time when button is release
+
+                leds->set(LED_A, OFF);
+                printf("Button A Released\n");
+
+                AButtonPressed = false;
+            }
         }
     }
-    return mode;
+
+    if (pin == ENC_SW_PIN) {
+        if (nrfx_gpiote_in_is_set(ENC_SW_PIN)) {
+            if (!encSwPressed) {
+                printf("Encoder Switch Pressed\n");
+                incrementBadgeMode();
+                encSwPressed = true;
+            }
+        } else {
+            if (encSwPressed) {
+                printf("Encoder Switch Released\n");
+
+                encSwPressed = false;
+            }
+        }
+    }
 }
 
-void startup_sequence(){
+
+void startup_sequence() {
     // Pop pop!
     audio->enable(true);
     leds->set(LED_D, ON);
@@ -405,12 +533,12 @@ void startup_sequence(){
 
 }
 
-uint8_t tof_pitch(uint8_t prevRange){
+uint8_t tof_pitch(uint8_t prevRange) {
     // read right sensor
     uint8_t range = TOF->readRange(TOF_SENSOR1);
 
     // Enable this to smooth the sampling a bit
-    range = uint8_t(uint16_t(range + prevRange) >> 1);
+    // range = uint8_t(uint16_t(range + prevRange) >> 1);
 
     // set pitch with right sensor
     // range_2mm splits range into 2mm chunks
@@ -439,8 +567,8 @@ uint8_t tof_pitch(uint8_t prevRange){
     }
 
     bool halfNote = handPosition & 0x1; // check if this is an inbetween note
-    uint8_t noteIndex = handPosition >> 1; // divide handpositin by 2 to get note
-    uint8_t octave = 5, octavesUp = 0;
+    uint8_t noteIndex = handPosition >> 1; // divide hand position by 2 to get note
+    uint8_t octavesUp = 0;
 
     // if note is beyond current octave, move to next octave
     if (noteIndex > 12) {
@@ -467,7 +595,7 @@ uint8_t tof_pitch(uint8_t prevRange){
     return range;
 }
 
-uint8_t tof_volume(uint8_t prevRange){
+uint8_t tof_volume(uint8_t prevRange) {
     // read left sensor
     uint8_t range = TOF->readRange(TOF_SENSOR2);
 
@@ -493,23 +621,21 @@ uint8_t tof_volume(uint8_t prevRange){
 }
 
 void led_theramin() {
+    uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
+    uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
+    if (LEDrange1 > 190) { LEDrange1 = 190; }  // Rounding as TOF sensor will not measure much past here
+    if (LEDrange2 > 190) { LEDrange2 = 190; }
 
-            uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
-            uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
-            if (LEDrange1 > 190) { LEDrange1 = 190; }  // Rounding as TOF sensor will not measure much past here
-            if (LEDrange2 > 190) { LEDrange2 = 190; }
-
-            //output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
-            uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72; //ReMap Sensor Values
-            uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72; //ReMap Sensor Values
-            uint8_t outhalf = output1 / 4;
-            printf("Output Range 1  = %d\n", output2);  //Debug
-            printf("Output Range 2  = %d\n", output1);
-            pixels->setColor(0, {output2, 0, output2});
-            pixels->setColor(1, {0, outhalf, output1});
-            pixels->show();
-            led_walk();
-
+    //output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
+    uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72; //ReMap Sensor Values
+    uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72; //ReMap Sensor Values
+    uint8_t outhalf = output1 >> 2; // divide by 4
+    printf("Output Range 1  = %d\n", output2);  //Debug
+    printf("Output Range 2  = %d\n", output1);
+    pixels->setColor(0, {output2, 0, output2});
+    pixels->setColor(1, {0, outhalf, output1});
+    pixels->show();
+    led_walk();
 }
 
 
@@ -531,38 +657,36 @@ void led_handler_blink(void *p_context) {
     leds->set(LED_A, OFF);
     }
 }
-    void led_handler_cylon(void *p_context) {
 
-
-            if(!cylonGoDown && cylonCurLED > 0){
-                leds->set((LEDS)(cylonCurLED - 1), OFF);
-            }
-            if(cylonGoDown && cylonCurLED < 4){
-                leds->set((LEDS)(cylonCurLED + 1), OFF);
-            }
-            leds->set((LEDS)cylonCurLED, ON);
-
-
-            if(cylonGoDown){
-                if(cylonCurLED == LED_D){
-                    cylonGoDown = false;
-                }
-                else{
-                    cylonCurLED -= 1;
-                }
-            }
-            else {
-                if (cylonCurLED == LED_A) {
-                    cylonGoDown = true;
-                }
-                else{
-                    cylonCurLED += 1;
-                }
-            }
-
+void led_handler_cylon(void *p_context) {
+    if(!cylonGoDown && cylonCurLED > 0){
+        leds->set((LEDS)(cylonCurLED - 1), OFF);
     }
+    if(cylonGoDown && cylonCurLED < 4){
+        leds->set((LEDS)(cylonCurLED + 1), OFF);
+    }
+    leds->set((LEDS)cylonCurLED, ON);
 
-void led_walk(){
+
+    if(cylonGoDown){
+        if(cylonCurLED == LED_D){
+            cylonGoDown = false;
+        }
+        else{
+            cylonCurLED -= 1;
+        }
+    }
+    else {
+        if (cylonCurLED == LED_A) {
+            cylonGoDown = true;
+        }
+        else{
+            cylonCurLED += 1;
+        }
+    }
+}
+
+void led_walk() {
 
     // Create a timer, in repeated mode, and register the callback
     app_timer_create(&m_led_timer_id, APP_TIMER_MODE_REPEATED, led_handler_cylon);
@@ -574,10 +698,11 @@ void led_walk(){
 
 // Doom Music
 // Based on http://vbstudio.hu/en/blog/20190330-Playing-DOOM-on-an-Arduino
-void e1m1(){
+void e1m1() {
     if (!audio->isEnabled()) {
         audio->enable(true);
     }
+
     pixels->setColor(0, { 64, 0, 0});
     pixels->setColor(1, { 64, 0, 0});
     pixels->show();
@@ -626,11 +751,11 @@ void e1m1(){
 }
 
 void noteDoomBase(int octave, int speed,int volume) {
-  audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
-  nrf_delay_ms(int(speed/2));
-  audio->setVolume(0);
-  nrf_delay_ms(int(speed/2));
-  audio->setVolume(volume);
-  audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
-  nrf_delay_ms(speed);
+    audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
+    nrf_delay_ms(int(speed/2));
+    audio->setVolume(0);
+    nrf_delay_ms(int(speed/2));
+    audio->setVolume(volume);
+    audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
+    nrf_delay_ms(speed);
 }

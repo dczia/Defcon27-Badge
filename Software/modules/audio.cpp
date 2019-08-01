@@ -142,11 +142,10 @@ uint32_t Audio::initPWM0() {
     
     nrf_drv_pwm_config_t const pwm0_config = {
         { // .output_pins
-            AUDIO_PWM_PIN,// | NRF_DRV_PWM_PIN_INVERTED, // channel 0
-            // LED_D_PIN | NRF_DRV_PWM_PIN_INVERTED, // channel 0
-            // LED_A_PIN,// | NRF_DRV_PWM_PIN_INVERTED, // channel 1
-            NRF_DRV_PWM_PIN_NOT_USED,             // channel 2
-            NRF_DRV_PWM_PIN_NOT_USED,             // channel 3
+            AUDIO_PWM_PIN,              // channel 0
+            NRF_DRV_PWM_PIN_NOT_USED,   // channel 1
+            NRF_DRV_PWM_PIN_NOT_USED,   // channel 2
+            NRF_DRV_PWM_PIN_NOT_USED,   // channel 3
         },
         APP_IRQ_PRIORITY_LOW, // .irq_priority
         NRF_PWM_CLK_16MHz, // .base_clock
