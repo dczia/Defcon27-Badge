@@ -415,29 +415,93 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 
 
 void startup_sequence() {
-    // Pop pop!
-    // audio->enable(true);
+    audio->enable(true);
     leds->set(LED_D, ON);
-    // audio->beep(10, 200);
-    nrf_delay_ms(50);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
     leds->set(LED_D, OFF);
     leds->set(LED_C, ON);
-    // audio->beep(25, 400);
-    nrf_delay_ms(50);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, OFF);
     leds->set(LED_C, OFF);
     leds->set(LED_Z, ON);
-    // audio->beep(75, 600);
-    nrf_delay_ms(50);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, OFF);
+    leds->set(LED_C, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, OFF);
+    leds->set(LED_C, OFF);
     leds->set(LED_Z, OFF);
     leds->set(LED_I, ON);
-    // audio->beep(150, 800);
-    nrf_delay_ms(50);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, OFF);
+    leds->set(LED_C, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, OFF);
+    leds->set(LED_C, OFF);
+    leds->set(LED_Z, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, OFF);
+    leds->set(LED_C, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, OFF);
+    leds->set(LED_C, OFF);
+    leds->set(LED_Z, OFF);
     leds->set(LED_I, OFF);
     leds->set(LED_A, ON);
-    // audio->beep(200, 1000);
-    // audio->enable(false);
-    nrf_delay_ms(50);
-    leds->set(LED_A, OFF);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_I, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_Z, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_C, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->set(LED_D, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(60);
+    leds->allOff();
+    nrf_delay_ms(500);
+    leds->set(LED_D, ON);
+    leds->set(LED_C, ON);
+    leds->set(LED_Z, ON);
+    leds->set(LED_I, ON);
+    leds->set(LED_A, ON);
+    audio->beep(1, 450);
+    nrf_delay_ms(500);
+    leds->allOff();
+    audio->beep(1, 450);
 
     // RGB LEDs
     pixels = new WS2812S(2);
@@ -481,13 +545,13 @@ void startup_sequence() {
         pixels->setColor(0, colors[0]);
         pixels->setColor(1, colors[1]);
         pixels->show();
+        audio->beep(1, 425);
     }
-
     leds->allOff();
     pixels->setColor(0, {0, 1, 0});
     pixels->setColor(1, {0, 1, 0});
     pixels->show();
-
+    audio->beep(50, 800);
     // pwm init + test
     audio->initPWM0();
     audio->setPWM0Ch0Value(0);
@@ -511,9 +575,11 @@ void startup_sequence() {
 
     util_gfx_set_font(FONT_MONO55_8PT);
     util_gfx_set_cursor(10, 1);
-    util_gfx_print("DCZia Test", COLOR_WHITE);
+    util_gfx_print("DCZia", COLOR_WHITE);
     util_gfx_set_cursor(10, 12);
-    util_gfx_print("defcon 27", COLOR_WHITE);
+    util_gfx_print("DEFCON 27", COLOR_WHITE);
+    SSD1306_display();
+    nrf_delay_ms(1500);
 }
 
 uint8_t tof_pitch(uint8_t prevRange) {
