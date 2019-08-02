@@ -192,6 +192,9 @@ int main(){
     // LEDs
     leds = new LED();
 
+    // RGB LEDs
+    pixels = new WS2812S(2);
+
     // Setup the audio
     audio = new Audio();
 
@@ -458,8 +461,7 @@ void startup_sequence() {
     nrf_delay_ms(50);
     leds->set(LED_A, OFF);
 
-    // RGB LEDs
-    pixels = new WS2812S(2);
+
 
     PIXEL colors[] = { { 0, 64, 96 }, { 128, 160, 192}};
     pixels->setColor(0, colors[0]);
