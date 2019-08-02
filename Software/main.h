@@ -38,5 +38,6 @@ void e1m1();
 void noteDoomBase(int octave, int speed,int volume);
 uint8_t tof_pitch(uint8_t prevRange);
 uint8_t tof_volume(uint8_t prevRange);
+void oled_init();
 
 APP_TIMER_DEF(m_led_timer_id);

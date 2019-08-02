@@ -199,7 +199,7 @@ int main(){
     startup_sequence();
 
     // Setup the OLED display
-    SSD1306_display();
+    oled_init();
 
     // Setup the TOF
     TOF = new VL6180X();
@@ -588,17 +588,23 @@ void startup_sequence() {
     // The above stuff takes up enough time, but make sure you account for this if you change the
     // power on sequence
 
+
+}
+
+void oled_init(){
     // Setup the display
     SSD1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS, false);
     SSD1306_setRotation(ROTATION_180);
 
+    // Default text
     util_gfx_init();
-
     util_gfx_set_font(FONT_MONO55_8PT);
     util_gfx_set_cursor(10, 1);
     util_gfx_print("DCZia", COLOR_WHITE);
     util_gfx_set_cursor(10, 12);
     util_gfx_print("DEFCON 27", COLOR_WHITE);
+
+    // Display the thing
     SSD1306_display();
     nrf_delay_ms(1500);
 }
