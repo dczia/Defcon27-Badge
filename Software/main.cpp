@@ -797,51 +797,12 @@ void led_handler_cylon(void *p_context) {
     }
 
     if (led_mode == 3) {  // Alternating Blink
-        switch (led_pattern_step) {
-        case 1:
-        leds->set(LED_D, ON);
-        leds->set(LED_C, OFF);
-        leds->set(LED_Z, OFF);
-        leds->set(LED_I, OFF);
-        leds->set(LED_A, OFF);
-        led_pattern_step++;
-        break;
-
-        case 2:
-        leds->set(LED_D, OFF);
-        leds->set(LED_C, ON);
-        leds->set(LED_Z, OFF);
-        leds->set(LED_I, OFF);
-        leds->set(LED_A, OFF);
-        led_pattern_step++;
-        break;
-
-        case 3:
-        leds->set(LED_D, OFF);
-        leds->set(LED_C, OFF);
-        leds->set(LED_Z, ON);
-        leds->set(LED_I, OFF);
-        leds->set(LED_A, OFF);
-        led_pattern_step++;
-        break;
-
-        case 4:
-        leds->set(LED_D, OFF);
-        leds->set(LED_C, OFF);
-        leds->set(LED_Z, OFF);
-        leds->set(LED_I, ON);
-        leds->set(LED_A, OFF);
-        led_pattern_step++;
-        break;
-
-        case 5:
-        leds->set(LED_D, OFF);
-        leds->set(LED_C, OFF);
-        leds->set(LED_Z, OFF);
-        leds->set(LED_I, OFF);
-        leds->set(LED_A, ON);
-        led_pattern_step = 1;
-        break;
+        if(led_pattern_step < 5){
+            uint8_t i = (1 << led_pattern_step);
+            leds->bitmap(i);
+            led_pattern_step++;
+        } else {
+            led_pattern_step = 0;
         }
     }
 }
