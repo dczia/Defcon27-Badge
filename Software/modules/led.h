@@ -36,9 +36,9 @@ class LED{
         void set(LEDS led, LED_STATE state);
         void allOn();
         void allOff();
+        void bitmap(uint8_t state);
 
     private:
 };
-
 
 #endif //MODULE_LED_H
