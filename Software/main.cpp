@@ -2,31 +2,14 @@
  *
  * @file main.c
  *
- * @date May 24, 2017
- * @author hamster, rehr
+ * @date August 2, 2019
+ * @author hamster, rehr, ancients, lithochasm
  *
- * @brief This is the entry point for the DC801 DC26 party badge
+ * @brief This is the entry point for the DCZia DC27 Theremin badge
  *
  */
 
-#include <stdint.h>
-#include "common.h"
-
-// Includes for our app
-#include "utility.h"
-#include "main.h"
-#include "modules/audio.h"
-#include "modules/ble.h"
-#include "modules/sd.h"
-#include "modules/adc.h"
-#include "modules/uart.h"
-#include "modules/i2c.h"
-#include "modules/led.h"
-#include "modules/gfx.h"
-#include "modules/drv_ssd1306.h"
-#include "modules/VL6180X.h"
-#include "modules/ws2812b.h"
-
+#include "./main.h"
 uint8_t badgeMode;
 
 ADC *adc;
@@ -43,13 +26,13 @@ int led_mode = 1;
 uint16_t led_speed;
 int led_pattern_step = 1;
 
-//Audio Variables
+// Audio Variables
 uint8_t octave = 5;
 
 /**
  * Initialize the button pins
  */
-static void button_init(){
+static void button_init() {
     /* set encoder pin directions and states */
     nrf_gpio_cfg_input(BUTTON_D_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(BUTTON_C_PIN, NRF_GPIO_PIN_NOPULL);
@@ -58,7 +41,7 @@ static void button_init(){
     nrf_gpio_cfg_input(BUTTON_A_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(ENC_SW_PIN, NRF_GPIO_PIN_NOPULL);
 
-   /* initialize interrupt driver */
+    /* initialize interrupt driver */
     if (nrfx_gpiote_is_init() == false) {
         if (nrf_drv_gpiote_init() != NRF_SUCCESS) {
             printf("ERROR: Initializing button interrupts!\n");
@@ -68,10 +51,10 @@ static void button_init(){
 
     /* set config for button pin interrupt */
     nrf_drv_gpiote_in_config_t pin_config = {
-        NRF_GPIOTE_POLARITY_TOGGLE, // sense
-        NRF_GPIO_PIN_NOPULL, // pull
-        true, // is_watcher
-        true // hi_accuracy
+        NRF_GPIOTE_POLARITY_TOGGLE,  // sense
+        NRF_GPIO_PIN_NOPULL,  // pull
+        true,  // is_watcher
+        true  // hi_accuracy
     };
 
     /* init and enable encoder pin A interrupt */
@@ -131,7 +114,7 @@ void encoder_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 static void encoder_init() {
     /* set encoder pin directions and states */
     nrf_gpio_cfg_output(ENC_C_PIN);
-    nrf_gpio_pin_clear(ENC_C_PIN); // set pin C as 0V
+    nrf_gpio_pin_clear(ENC_C_PIN);  // set pin C as 0V
     nrf_gpio_cfg_input(ENC_A_PIN, NRF_GPIO_PIN_PULLUP);
     nrf_gpio_cfg_input(ENC_B_PIN, NRF_GPIO_PIN_PULLUP);
 
@@ -145,10 +128,10 @@ static void encoder_init() {
 
     /* set config for encoder pin A interrupt */
     nrf_drv_gpiote_in_config_t pin_config = {
-        NRF_GPIOTE_POLARITY_TOGGLE, // sense
-        NRF_GPIO_PIN_PULLUP, // pull
-        true, // is_watcher
-        true // hi_accuracy
+        NRF_GPIOTE_POLARITY_TOGGLE,  // sense
+        NRF_GPIO_PIN_PULLUP,  // pull
+        true,  // is_watcher
+        true  // hi_accuracy
     };
 
     /* init and enable encoder pin A interrupt */
@@ -160,7 +143,7 @@ static void encoder_init() {
 /**
  * Initialize the logging backend for logging over JTAG
  */
-static void log_init(){
+static void log_init() {
     ret_code_t err_code = NRF_LOG_INIT(NULL);
     APP_ERROR_CHECK(err_code);
 
@@ -172,8 +155,7 @@ static void log_init(){
  * @brief Main app
  * @return Not used
  */
-int main(){
-
+int main() {
     // Setup the system
 
     // Set up buttons
@@ -232,7 +214,7 @@ int main(){
 
     badgeMode = DEFAULT_BADGE_MODE;
 
-    while(true) {
+    while (true) {
         if (badgeMode == THEREMIN_BADGE_MODE) {
             /* theremin mode */
             // pixels->setColor(0, {8, 0, 8});
@@ -241,15 +223,15 @@ int main(){
             range1 = tof_pitch(range1);
             range2 = tof_volume(range2);
             snprintf(display2, 20, "%03dmm  %03dmm", range2, range1);
-        } else if(badgeMode == FIXED_VOL_BADGE_MODE) {
+        } else if (badgeMode == FIXED_VOL_BADGE_MODE) {
             /* fixed volume mode */
             range1 = tof_pitch(range1);
             audio->setVolume(127);
             snprintf(display2, 20, "Fixed  %03dmm", range1);
-        } else if(badgeMode == HOLDING_BADGE_MODE) {
+        } else if (badgeMode == HOLDING_BADGE_MODE) {
             /* holding mode */
             snprintf(display2, 20, "HOLDING", range1);
-        } else if(badgeMode == DOOM_BADGE_MODE) {
+        } else if (badgeMode == DOOM_BADGE_MODE) {
             /* doom mode */
             snprintf(display2, 20, "Year Of Doom", range1);
             audio_off();
@@ -258,10 +240,10 @@ int main(){
             /* default mode */
             audio_off();  // STFU <- "i feel personally attacked" - rehr
                          // No offense intended, just wanted it to boot into a quiet mode :)
-            
+
             led_theramin();  // Enables LED Thearamin Mode
             snprintf(display2, 20, "LED Mode");
-            //snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
+            // snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
         }
 
         snprintf(display1, 20, "%d %dv", counter++, adc->getBatteryVoltage());
@@ -275,7 +257,6 @@ int main(){
         // button_handler();
 
         nrf_delay_ms(10);  // Do we really need this?
-
     }
 }
 
@@ -287,9 +268,9 @@ void incrementBadgeMode() {
 }
 
 void audio_off() {
-    audio->enable(false); // turn off amp
-    audio->disableTimer(); // disable timer1
-    audio->setPWM0Ch0Value(0); // turn off PWM0 ch0
+    audio->enable(false);  // turn off amp
+    audio->disableTimer();  // disable timer1
+    audio->setPWM0Ch0Value(0);  // turn off PWM0 ch0
 }
 
 
@@ -308,8 +289,8 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
                 // add code that runs one time when button is pressed
-                 //snprintf(display2, 20, "Vapor Mode");
-                  led_mode = 1;
+                // snprintf(display2, 20, "Vapor Mode");
+                led_mode = 1;
                 leds->set(LED_D, ON);
                 printf("Button D Pressed\n");
 
@@ -435,26 +416,26 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 
 void startup_sequence() {
     // Pop pop!
-   // audio->enable(true);
+    // audio->enable(true);
     leds->set(LED_D, ON);
-    //audio->beep(10, 200);
+    // audio->beep(10, 200);
     nrf_delay_ms(50);
     leds->set(LED_D, OFF);
     leds->set(LED_C, ON);
-    //audio->beep(25, 400);
+    // audio->beep(25, 400);
     nrf_delay_ms(50);
     leds->set(LED_C, OFF);
     leds->set(LED_Z, ON);
-    //audio->beep(75, 600);
+    // audio->beep(75, 600);
     nrf_delay_ms(50);
     leds->set(LED_Z, OFF);
     leds->set(LED_I, ON);
-    //audio->beep(150, 800);
+    // audio->beep(150, 800);
     nrf_delay_ms(50);
     leds->set(LED_I, OFF);
     leds->set(LED_A, ON);
-   // audio->beep(200, 1000);
-    //audio->enable(false);
+    // audio->beep(200, 1000);
+    // audio->enable(false);
     nrf_delay_ms(50);
     leds->set(LED_A, OFF);
 
@@ -468,29 +449,26 @@ void startup_sequence() {
 
     bool goDown = false;
     int curLED = LED_D;
-    for(int i = 0; i < 20; i++){
-        if(!goDown && curLED > 0){
+    for (int i = 0; i < 20; i++) {
+        if (!goDown && curLED > 0) {
             leds->set((LEDS)(curLED - 1), OFF);
         }
-        if(goDown && curLED < 4){
+        if (goDown && curLED < 4) {
             leds->set((LEDS)(curLED + 1), OFF);
         }
         leds->set((LEDS)curLED, ON);
         nrf_delay_ms(40);
 
-        if(goDown){
-            if(curLED == LED_D){
+        if (goDown) {
+            if (curLED == LED_D) {
                 goDown = false;
-            }
-            else{
+            } else {
                 curLED -= 1;
             }
-        }
-        else {
+        } else {
             if (curLED == LED_A) {
                 goDown = true;
-            }
-            else{
+            } else {
                 curLED += 1;
             }
         }
@@ -525,6 +503,7 @@ void startup_sequence() {
     // power on sequence
 
     // Setup the display
+    nrf_delay_ms(1500);
     SSD1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS, false);
     SSD1306_setRotation(ROTATION_180);
 
@@ -535,9 +514,6 @@ void startup_sequence() {
     util_gfx_print("DCZia Test", COLOR_WHITE);
     util_gfx_set_cursor(10, 12);
     util_gfx_print("defcon 27", COLOR_WHITE);
-
-
-
 }
 
 uint8_t tof_pitch(uint8_t prevRange) {
@@ -550,8 +526,8 @@ uint8_t tof_pitch(uint8_t prevRange) {
     // set pitch with right sensor
     // range_2mm splits range into 2mm chunks
     // +1 prevents divide by 0 x_x
-    uint8_t range_2mm     = ( range     >> 1 ) + 1;
-    uint8_t prevRange_2mm = ( prevRange >> 1 ) + 1;
+    uint8_t range_2mm = (range >> 1) + 1;
+    uint8_t prevRange_2mm = (prevRange >> 1) + 1;
 
     // only change timer/pitch if hand position changes
     if (range_2mm == prevRange_2mm) {
@@ -567,14 +543,14 @@ uint8_t tof_pitch(uint8_t prevRange) {
     // calculate hand position
     // TOF sensor dies off around 17cm
     uint8_t handPosition = 0;
-    if (range_2mm > 57) { // about 11cm...could be higher
+    if (range_2mm > 57) {  // about 11cm...could be higher
         handPosition = 48;
-    } else if (range_2mm >= 10) { // 2cm of padding close to the sensor
-        handPosition = range_2mm - 10; // start hand position calc at 2cm
+    } else if (range_2mm >= 10) {  // 2cm of padding close to the sensor
+        handPosition = range_2mm - 10;  // start hand position calc at 2cm
     }
 
-    bool halfNote = handPosition & 0x1; // check if this is an inbetween note
-    uint8_t noteIndex = handPosition >> 1; // divide hand position by 2 to get note
+    bool halfNote = handPosition & 0x1;  // check if this is an inbetween note
+    uint8_t noteIndex = handPosition >> 1;  // divide hand position by 2 to get note
     uint8_t octavesUp = 0;
 
     // if note is beyond current octave, move to next octave
@@ -609,7 +585,7 @@ uint8_t tof_volume(uint8_t prevRange) {
     uint8_t range_cm = range / 10 + 1;
     uint8_t prevRange_cm = prevRange / 10 + 1;
 
-    if (range_cm == prevRange_cm){
+    if (range_cm == prevRange_cm) {
         return prevRange;
     }
 
@@ -643,106 +619,101 @@ void led_theramin() {
     if (LEDrange1 > 190) { LEDrange1 = 190; }  // Rounding as TOF sensor will not measure much past here
     if (LEDrange2 > 190) { LEDrange2 = 190; }
 
-    //output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
-    uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72; //ReMap Sensor Values
-    uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72; //ReMap Sensor Values
-    uint8_t outhalf = output1 >> 2; // divide by 4
-    uint8_t outhalf2 = output2 >> 2; // divide by 4
-    printf("Output Range 1  = %d\n", output2);  //Debug
+    // output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
+    uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72;  // ReMap Sensor Values
+    uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72;  // ReMap Sensor Values
+    uint8_t outhalf = output1 >> 2;  // divide by 4
+    uint8_t outhalf2 = output2 >> 2;  // divide by 4
+    printf("Output Range 1  = %d\n", output2);  // Debug
     printf("Output Range 2  = %d\n", output1);
-    
 
-            if (led_mode == 1) { //Vapor Mode
-            pixels->setColor(0, {output2, 0, output2});
-            pixels->setColor(1, {0, 0, output1});
-            pixels->show();
-            //app_timer_stop(m_led_timer_id);
-            led_animation(100); // Start LED cylon scroll
-            }
-            if (led_mode == 2) { // Chile Mode
-            pixels->setColor(0, {output2, 0, 0});
-            pixels->setColor(1, {0, output1, 0});
-            pixels->show();
-            }
-            if (led_mode == 3) { //VaporMode2
-            pixels->setColor(0, {outhalf, output2, 0});
-            pixels->setColor(1, {output2, outhalf2, output2});
-            pixels->show();
-            //app_timer_stop(m_led_timer_id);
-            led_animation(100); // Start LED cylon scroll
-            }
-            if (led_mode == 4) { //VaporMode2
-            pixels->setColor(0, {19, output2, output2});
-            pixels->setColor(1, {output2, 5, 39});
-            pixels->show();
-            }
-            if (led_mode == 5) { //VaporMode2
-            pixels->setColor(0, {1, output2, 33});
-            pixels->setColor(1, {output2, output2, 9});
-            pixels->show();
-            } 
+
+    if (led_mode == 1) {  // Vapor Mode
+        pixels->setColor(0, {output2, 0, output2});
+        pixels->setColor(1, {0, 0, output1});
+        pixels->show();
+        // app_timer_stop(m_led_timer_id);
+        led_animation(100);  // Start LED cylon scroll
+    }
+    if (led_mode == 2) {  // Chile Mode
+        pixels->setColor(0, {output2, 0, 0});
+        pixels->setColor(1, {0, output1, 0});
+        pixels->show();
+    }
+    if (led_mode == 3) {  // VaporMode2
+        pixels->setColor(0, {outhalf, output2, 0});
+        pixels->setColor(1, {output2, outhalf2, output2});
+        pixels->show();
+        // app_timer_stop(m_led_timer_id);
+        led_animation(100);  // Start LED cylon scroll
+    }
+    if (led_mode == 4) {  // VaporMode2
+        pixels->setColor(0, {19, output2, output2});
+        pixels->setColor(1, {output2, 5, 39});
+        pixels->show();
+    }
+    if (led_mode == 5) {  // VaporMode2
+        pixels->setColor(0, {1, output2, 33});
+        pixels->setColor(1, {output2, output2, 9});
+        pixels->show();
+    }
 }
 
 
 void led_handler_blink(void *p_context) {
     led_status = !led_status;
 
-    if (led_status == true){
-    leds->set(LED_D, ON);
-    leds->set(LED_C, ON);
-    leds->set(LED_Z, ON);
-    leds->set(LED_I, ON);
-    leds->set(LED_A, ON);
-    }
-    else {
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, OFF);
-    leds->set(LED_Z, OFF);
-    leds->set(LED_I, OFF);
-    leds->set(LED_A, OFF);
+    if (led_status == true) {
+        leds->set(LED_D, ON);
+        leds->set(LED_C, ON);
+        leds->set(LED_Z, ON);
+        leds->set(LED_I, ON);
+        leds->set(LED_A, ON);
+    } else {
+        leds->set(LED_D, OFF);
+        leds->set(LED_C, OFF);
+        leds->set(LED_Z, OFF);
+        leds->set(LED_I, OFF);
+        leds->set(LED_A, OFF);
     }
 }
 
 void led_handler_cylon(void *p_context) {
     if (led_mode == 1) {  // Cylon Scroll
-        if(!cylonGoDown && cylonCurLED > 0){
+        if (!cylonGoDown && cylonCurLED > 0) {
             leds->set((LEDS)(cylonCurLED - 1), OFF);
         }
-        if(cylonGoDown && cylonCurLED < 4){
+        if (cylonGoDown && cylonCurLED < 4) {
             leds->set((LEDS)(cylonCurLED + 1), OFF);
         }
         leds->set((LEDS)cylonCurLED, ON);
 
 
-        if(cylonGoDown){
-            if(cylonCurLED == LED_D){
+        if (cylonGoDown) {
+            if (cylonCurLED == LED_D) {
                 cylonGoDown = false;
-            }
-            else{
+            } else {
                 cylonCurLED -= 1;
             }
-        }
-        else {
+        } else {
             if (cylonCurLED == LED_A) {
                 cylonGoDown = true;
-            }
-            else{
+            } else {
                 cylonCurLED += 1;
             }
         }
     }
 
-    if (led_mode == 2) { // Alternating Blink
+    if (led_mode == 2) {  // Alternating Blink
     led_status = !led_status;
 
-        if (led_status == true){
+        if (led_status == true) {
         leds->set(LED_D, ON);
         leds->set(LED_C, OFF);
         leds->set(LED_Z, ON);
         leds->set(LED_I, OFF);
         leds->set(LED_A, ON);
-        }
-        else {
+        } else {
         leds->set(LED_D, OFF);
         leds->set(LED_C, ON);
         leds->set(LED_Z, OFF);
@@ -751,9 +722,8 @@ void led_handler_cylon(void *p_context) {
         }
     }
 
-    if (led_mode == 3) { // Alternating Blink
-    
-        switch(led_pattern_step) {
+    if (led_mode == 3) {  // Alternating Blink
+        switch (led_pattern_step) {
         case 1:
         leds->set(LED_D, ON);
         leds->set(LED_C, OFF);
@@ -762,7 +732,7 @@ void led_handler_cylon(void *p_context) {
         leds->set(LED_A, OFF);
         led_pattern_step++;
         break;
-        
+
         case 2:
         leds->set(LED_D, OFF);
         leds->set(LED_C, ON);
@@ -799,24 +769,16 @@ void led_handler_cylon(void *p_context) {
         led_pattern_step = 1;
         break;
         }
-
     }
-
-    if (led_mode == 4) {
-        
-
-    }
-
 }
 
 void led_animation(uint16_t led_speed) {
-    //app_timer_stop(m_led_timer_id);
+    // app_timer_stop(m_led_timer_id);
     // Create a timer, in repeated mode, and register the callback
     app_timer_create(&m_led_timer_id, APP_TIMER_MODE_REPEATED, led_handler_cylon);
 
     // Start the timer, fire every 100ms
     app_timer_start(m_led_timer_id, APP_TIMER_TICKS(led_speed), nullptr);
-
 }
 
 // Doom Music
@@ -873,11 +835,11 @@ void e1m1() {
     nrf_delay_ms(timeStep*2);
 }
 
-void noteDoomBase(int octave, int speed,int volume) {
+void noteDoomBase(int octave, int speed, int volume) {
     audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
-    nrf_delay_ms(int(speed/2));
+    nrf_delay_ms(static_cast<int>(speed/2));
     audio->setVolume(0);
-    nrf_delay_ms(int(speed/2));
+    nrf_delay_ms(static_cast<int>(speed/2));
     audio->setVolume(volume);
     audio->setTimerWithPeriod_us(notes[octave - 1][NOTE_E]);
     nrf_delay_ms(speed);

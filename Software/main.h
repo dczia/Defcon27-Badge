@@ -12,8 +12,27 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#include <stdint.h>
+#include "./common.h"
+
+// Includes for our app
+#include "./utility.h"
+#include "./modules/audio.h"
+#include "./modules/ble.h"
+#include "./modules/sd.h"
+#include "./modules/adc.h"
+#include "./modules/uart.h"
+#include "./modules/i2c.h"
+#include "./modules/led.h"
+#include "./modules/gfx.h"
+#include "./modules/drv_ssd1306.h"
+#include "./modules/VL6180X.h"
+#include "./modules/ws2812b.h"
+
 #define VERSION "1.00"
 #endif /* MAIN_H_ */
+
+
 
 /* badge modes */
 const uint8_t DEFAULT_BADGE_MODE   = 0;
@@ -35,7 +54,7 @@ void led_handler_cylon();
 void led_flash_yellow();
 
 void e1m1();
-void noteDoomBase(int octave, int speed,int volume);
+void noteDoomBase(int octave, int speed, int volume);
 uint8_t tof_pitch(uint8_t prevRange);
 uint8_t tof_volume(uint8_t prevRange);
 
