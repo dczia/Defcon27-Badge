@@ -419,94 +419,32 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 
 void startup_sequence() {
     audio->enable(true);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, OFF);
-    leds->set(LED_Z, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, OFF);
-    leds->set(LED_Z, OFF);
+    int speed = 100;
+    for (uint8_t i = 0; i <= 16; ++i) {
+        leds->bitmap(i);
+        audio->beep(1, 450);
+        nrf_delay_ms(50);
+    }
     leds->set(LED_I, ON);
     audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, OFF);
+    nrf_delay_ms(50);
     leds->set(LED_Z, ON);
     audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
+    nrf_delay_ms(50);
     leds->set(LED_C, ON);
     audio->beep(1, 450);
-    nrf_delay_ms(60);
+    nrf_delay_ms(50);
     leds->set(LED_D, ON);
     audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, OFF);
-    leds->set(LED_C, OFF);
-    leds->set(LED_Z, OFF);
-    leds->set(LED_I, OFF);
-    leds->set(LED_A, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_I, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_Z, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_C, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->set(LED_D, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(60);
-    leds->allOff();
-    nrf_delay_ms(500);
-    leds->set(LED_D, ON);
-    leds->set(LED_C, ON);
-    leds->set(LED_Z, ON);
-    leds->set(LED_I, ON);
-    leds->set(LED_A, ON);
-    audio->beep(1, 450);
-    nrf_delay_ms(500);
+    nrf_delay_ms(50);
     leds->allOff();
     audio->beep(1, 450);
-
-
+    nrf_delay_ms(300);
+    leds->allOn();
+    audio->beep(1, 450);
+    nrf_delay_ms(300);
+    leds->allOff();
+    audio->beep(1, 450);
 
     PIXEL colors[] = { { 0, 64, 96 }, { 128, 160, 192}};
     pixels->setColor(0, colors[0]);
@@ -573,7 +511,6 @@ void startup_sequence() {
 
 void oled_init(){
     // Setup the display
-    nrf_delay_ms(1500);
     SSD1306_begin(SSD1306_SWITCHCAPVCC, SSD1306_I2C_ADDRESS, false);
     SSD1306_setRotation(ROTATION_180);
 
