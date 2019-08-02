@@ -29,12 +29,10 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action);
 void startup_sequence();
 
 void led_theramin();
-void led_walk();
+void led_animation(uint16_t led_speed);
 void led_handler_blink();
 void led_handler_cylon();
 void led_flash_yellow();
-void led_mode_vapor();
-void led_mode_chile();
 
 void e1m1();
 void noteDoomBase(int octave, int speed,int volume);

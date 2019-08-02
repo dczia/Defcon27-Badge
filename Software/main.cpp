@@ -35,11 +35,15 @@ Audio *audio;
 LED *leds;
 WS2812S *pixels;
 
-// Setup for LED modes
-bool status = false;
+// Variables for LED modes
+bool led_status = false;
 bool cylonGoDown = false;
 int cylonCurLED = LED_D;
 int led_mode = 1;
+uint16_t led_speed;
+int led_pattern_step = 1;
+
+//Audio Variables
 uint8_t octave = 5;
 
 /**
@@ -304,9 +308,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
                 // add code that runs one time when button is pressed
-                //led_flash_yellow();
                  //snprintf(display2, 20, "Vapor Mode");
-                  led_mode_vapor();
                   led_mode = 1;
                 leds->set(LED_D, ON);
                 printf("Button D Pressed\n");
@@ -329,8 +331,6 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_C_PIN) == false) {
             if (!CButtonPressed) {
                 // add code that runs one time when button is pressed
-                //led_flash_yellow();
-               // led_mode_chile();
                 led_mode = 2;
                 leds->set(LED_C, ON);
                 printf("Button C Pressed\n");
@@ -637,15 +637,6 @@ void led_flash_yellow() {
             pixels->show();
 }
 
-void led_mode_vapor() {
-    led_mode = 1;
-    
-}
-
-void led_mode_chile() {
-    led_mode = 2;
-    //snprintf(display2, 20, "Chile Mode");
-}
 void led_theramin() {
     uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
     uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
@@ -656,14 +647,17 @@ void led_theramin() {
     uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72; //ReMap Sensor Values
     uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72; //ReMap Sensor Values
     uint8_t outhalf = output1 >> 2; // divide by 4
+    uint8_t outhalf2 = output2 >> 2; // divide by 4
     printf("Output Range 1  = %d\n", output2);  //Debug
     printf("Output Range 2  = %d\n", output1);
-    led_walk(); // Start LED cylon scroll
+    
 
             if (led_mode == 1) { //Vapor Mode
             pixels->setColor(0, {output2, 0, output2});
             pixels->setColor(1, {0, 0, output1});
             pixels->show();
+            //app_timer_stop(m_led_timer_id);
+            led_animation(100); // Start LED cylon scroll
             }
             if (led_mode == 2) { // Chile Mode
             pixels->setColor(0, {output2, 0, 0});
@@ -672,8 +666,10 @@ void led_theramin() {
             }
             if (led_mode == 3) { //VaporMode2
             pixels->setColor(0, {outhalf, output2, 0});
-            pixels->setColor(1, {output2, 5, output2});
+            pixels->setColor(1, {output2, outhalf2, output2});
             pixels->show();
+            //app_timer_stop(m_led_timer_id);
+            led_animation(100); // Start LED cylon scroll
             }
             if (led_mode == 4) { //VaporMode2
             pixels->setColor(0, {19, output2, output2});
@@ -685,14 +681,13 @@ void led_theramin() {
             pixels->setColor(1, {output2, output2, 9});
             pixels->show();
             } 
-    led_walk();
 }
 
 
 void led_handler_blink(void *p_context) {
-    status = !status;
+    led_status = !led_status;
 
-    if (status == true){
+    if (led_status == true){
     leds->set(LED_D, ON);
     leds->set(LED_C, ON);
     leds->set(LED_Z, ON);
@@ -709,40 +704,118 @@ void led_handler_blink(void *p_context) {
 }
 
 void led_handler_cylon(void *p_context) {
-    if(!cylonGoDown && cylonCurLED > 0){
-        leds->set((LEDS)(cylonCurLED - 1), OFF);
-    }
-    if(cylonGoDown && cylonCurLED < 4){
-        leds->set((LEDS)(cylonCurLED + 1), OFF);
-    }
-    leds->set((LEDS)cylonCurLED, ON);
+    if (led_mode == 1) {  // Cylon Scroll
+        if(!cylonGoDown && cylonCurLED > 0){
+            leds->set((LEDS)(cylonCurLED - 1), OFF);
+        }
+        if(cylonGoDown && cylonCurLED < 4){
+            leds->set((LEDS)(cylonCurLED + 1), OFF);
+        }
+        leds->set((LEDS)cylonCurLED, ON);
 
 
-    if(cylonGoDown){
-        if(cylonCurLED == LED_D){
-            cylonGoDown = false;
+        if(cylonGoDown){
+            if(cylonCurLED == LED_D){
+                cylonGoDown = false;
+            }
+            else{
+                cylonCurLED -= 1;
+            }
         }
-        else{
-            cylonCurLED -= 1;
+        else {
+            if (cylonCurLED == LED_A) {
+                cylonGoDown = true;
+            }
+            else{
+                cylonCurLED += 1;
+            }
         }
     }
-    else {
-        if (cylonCurLED == LED_A) {
-            cylonGoDown = true;
+
+    if (led_mode == 2) { // Alternating Blink
+    led_status = !led_status;
+
+        if (led_status == true){
+        leds->set(LED_D, ON);
+        leds->set(LED_C, OFF);
+        leds->set(LED_Z, ON);
+        leds->set(LED_I, OFF);
+        leds->set(LED_A, ON);
         }
-        else{
-            cylonCurLED += 1;
+        else {
+        leds->set(LED_D, OFF);
+        leds->set(LED_C, ON);
+        leds->set(LED_Z, OFF);
+        leds->set(LED_I, ON);
+        leds->set(LED_A, OFF);
         }
     }
+
+    if (led_mode == 3) { // Alternating Blink
+    
+        switch(led_pattern_step) {
+        case 1:
+        leds->set(LED_D, ON);
+        leds->set(LED_C, OFF);
+        leds->set(LED_Z, OFF);
+        leds->set(LED_I, OFF);
+        leds->set(LED_A, OFF);
+        led_pattern_step++;
+        break;
+        
+        case 2:
+        leds->set(LED_D, OFF);
+        leds->set(LED_C, ON);
+        leds->set(LED_Z, OFF);
+        leds->set(LED_I, OFF);
+        leds->set(LED_A, OFF);
+        led_pattern_step++;
+        break;
+
+        case 3:
+        leds->set(LED_D, OFF);
+        leds->set(LED_C, OFF);
+        leds->set(LED_Z, ON);
+        leds->set(LED_I, OFF);
+        leds->set(LED_A, OFF);
+        led_pattern_step++;
+        break;
+
+        case 4:
+        leds->set(LED_D, OFF);
+        leds->set(LED_C, OFF);
+        leds->set(LED_Z, OFF);
+        leds->set(LED_I, ON);
+        leds->set(LED_A, OFF);
+        led_pattern_step++;
+        break;
+
+        case 5:
+        leds->set(LED_D, OFF);
+        leds->set(LED_C, OFF);
+        leds->set(LED_Z, OFF);
+        leds->set(LED_I, OFF);
+        leds->set(LED_A, ON);
+        led_pattern_step = 1;
+        break;
+        }
+
+    }
+
+    if (led_mode == 4) {
+        
+
+    }
+
 }
 
-void led_walk() {
-
+void led_animation(uint16_t led_speed) {
+    //app_timer_stop(m_led_timer_id);
     // Create a timer, in repeated mode, and register the callback
     app_timer_create(&m_led_timer_id, APP_TIMER_MODE_REPEATED, led_handler_cylon);
 
     // Start the timer, fire every 100ms
-    app_timer_start(m_led_timer_id, APP_TIMER_TICKS(100), nullptr);
+    app_timer_start(m_led_timer_id, APP_TIMER_TICKS(led_speed), nullptr);
 
 }
 
