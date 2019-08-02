@@ -69,6 +69,34 @@ void LED::set(LEDS led, LED_STATE state){
 
 }
 
+
+void LED::bitmap(uint8_t state) {
+    if (state & 1) {
+        nrf_gpio_pin_write(LED_D_PIN, 0);
+    } else {
+        nrf_gpio_pin_write(LED_D_PIN, 1);
+    }
+    if (state & 2) {
+        nrf_gpio_pin_write(LED_C_PIN, 0);
+    } else {
+        nrf_gpio_pin_write(LED_C_PIN, 1);
+    }
+    if (state & 4) {
+        nrf_gpio_pin_write(LED_Z_PIN, 0);
+    } else {
+        nrf_gpio_pin_write(LED_Z_PIN, 1);
+    }
+    if (state & 8) {
+        nrf_gpio_pin_write(LED_I_PIN, 0);
+    } else {
+        nrf_gpio_pin_write(LED_I_PIN, 1);
+    }
+    if (state & 16) {
+        nrf_gpio_pin_write(LED_A_PIN, 0);
+    } else {
+        nrf_gpio_pin_write(LED_A_PIN, 1);
+    }
+}
 /**
  * Turn all the LEDs on
  */
