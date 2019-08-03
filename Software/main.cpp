@@ -230,54 +230,62 @@ int main() {
 
     char display2[20];
     char display1[20];
+    char voltageDisp[5];
     uint8_t counter = 0;
+    uint8_t voltageOnes = 0;
+    uint8_t voltageDecimal = 0;
 
-    badgeMode = DEFAULT_BADGE_MODE;
+    badgeMode = BADGE_MODE_DEFAULT;
 
     while (true) {
-        if (badgeMode == THEREMIN_BADGE_MODE) {
+        uint16_t voltage = adc->getBatteryVoltage();
+        voltageOnes = voltage / 1000;
+        voltageDecimal = (voltage % 1000) / 100;
+        if (badgeMode == BADGE_MODE_THEREMIN) {
             /* theremin mode */
-            // pixels->setColor(0, {8, 0, 8});
-            // pixels->setColor(1, {0, 2, 8});
-            // pixels->show();
             range1 = tof_pitch(range1);
             range2 = tof_volume(range2);
-            snprintf(display2, 20, "%03dmm  %03dmm", range2, range1);
-        } else if (badgeMode == FIXED_VOL_BADGE_MODE) {
+            snprintf(display1, 20, "THEREMIN");
+            snprintf(display2, 20, "%03dmm    %03dmm", range2, range1);
+        } else if (badgeMode == BADGE_MODE_FIXED_VOL) {
             /* fixed volume mode */
             range1 = tof_pitch(range1);
             audio->setVolume(127);
-            snprintf(display2, 20, "Fixed  %03dmm", range1);
-        } else if (badgeMode == HOLDING_BADGE_MODE) {
-            /* holding mode */
-            snprintf(display2, 20, "HOLDING", range1);
-        } else if (badgeMode == DOOM_BADGE_MODE) {
-            /* doom mode */
-            snprintf(display2, 20, "Year Of Doom", range1);
-            // audio_off();
+            snprintf(display1, 20, "THEREMIN");
+            snprintf(display2, 20, "Vol Fixd %03dmm", range1);
+        } else if (badgeMode == BADGE_MODE_CREDITS) {
+            /* credits mode / music playback */
+            snprintf(display1, 20, "Credits...");
+            snprintf(display2, 20, " Malort", range1);
+            // something cool
             if (!audio->songIsPlaying()) {
                 audio_off();
                 audio->startSongPlayback();
                 leds->set(LED_D, ON);
                 app_timer_start(m_audio_step_timer_id, APP_TIMER_TICKS(50), nullptr);
             }
-            // e1m1();
         } else {
             /* default mode */
             audio_off();  // STFU <- "i feel personally attacked" - rehr
                          // No offense intended, just wanted it to boot into a quiet mode :)
 
             led_theramin();  // Enables LED Thearamin Mode
-            snprintf(display2, 20, "LED Mode");
+            snprintf(display1, 20, "LED Mode");
+            snprintf(display2, 20, "");
             // snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
         }
 
-        snprintf(display1, 20, "%d %dv", counter++, adc->getBatteryVoltage());
+        snprintf(voltageDisp, 5, "%d.%dv", voltageOnes, voltageDecimal);
+
         SSD1306_clearDisplay();
+        util_gfx_set_font(FONT_MONO55_8PT);
         util_gfx_set_cursor(10, 1);
         util_gfx_print(display1, COLOR_WHITE);
-        util_gfx_set_cursor(10, 12);
+        util_gfx_set_cursor(10, 14);
         util_gfx_print(display2, COLOR_WHITE);
+        util_gfx_set_font(FONT_VERAMONO_5PT);
+        util_gfx_set_cursor(100, 1);
+        util_gfx_print(voltageDisp, COLOR_WHITE);
 
         SSD1306_display();
         checkButtonHolds();
@@ -288,7 +296,7 @@ int main() {
 
 void incrementBadgeMode() {
     badgeMode++;
-    if (badgeMode >= TOTAL_BADGE_MODES) {
+    if (badgeMode >= ( BADGE_MODES - 1)) {
         badgeMode = 0;
     }
 }
@@ -305,7 +313,7 @@ void audio_off() {
  */
 void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
     nrf_delay_us(2000); // lil' debounce
-    
+
     if (pin == BUTTON_D_PIN) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
@@ -436,8 +444,8 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 
 
 void checkButtonHolds() {
-    if (DButtonPressed && CButtonPressed) {
-        leds->set(LED_A, ON);
+    if (DButtonPressed && CButtonPressed && ZButtonPressed) {
+        badgeMode = BADGE_MODE_CREDITS;
     }
 }
 
@@ -584,6 +592,7 @@ void startup_sequence() {
     audio->setPWM0Ch0Value(0);
     // audio->setPWM0Ch1Value(0);
     audio->setVolume(0);
+    audio->enable(false);
 
     // timer init + test
     audio->initTimer1();
@@ -592,8 +601,6 @@ void startup_sequence() {
     // It needs about 2.5 seconds for reliable operation from a cold power on
     // The above stuff takes up enough time, but make sure you account for this if you change the
     // power on sequence
-
-
 }
 
 void oled_init(){
@@ -604,10 +611,11 @@ void oled_init(){
 
     // Default text
     util_gfx_init();
-    util_gfx_set_font(FONT_MONO55_8PT);
-    util_gfx_set_cursor(10, 1);
+    util_gfx_set_font(FONT_COMPUTER_12PT);
+    util_gfx_set_cursor(35, 1);
     util_gfx_print("DCZia", COLOR_WHITE);
-    util_gfx_set_cursor(10, 12);
+    util_gfx_set_font(FONT_MONO55_8PT);
+    util_gfx_set_cursor(35, 18);
     util_gfx_print("DEFCON 27", COLOR_WHITE);
 
     // Display the thing
