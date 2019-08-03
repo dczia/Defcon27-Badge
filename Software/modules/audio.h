@@ -13,7 +13,10 @@
 #include "nrf_drv_pwm.h"
 #include "nrf_drv_timer.h"
 
-static uint16_t sineTable[64] = { 500, 549, 598, 645, 691, 736, 778, 817, 854, 887, 916, 941, 962, 978, 990, 998, 1000, 998, 990, 978, 962, 941, 916, 887, 854, 817, 778, 736, 691, 645, 598, 549, 500, 451, 402, 355, 309, 264, 222, 183, 146, 113, 84, 59, 38, 22, 10, 2, 0, 2, 10, 22, 38, 59, 84, 113, 146, 183, 222, 264, 309, 355, 402, 451 };
+static uint8_t sineTable[64] = { 32, 35, 38, 41, 44, 47, 50, 52, 55, 57, 59, 60, 62, 63, 63, 64, 64, 64, 63, 63, 62, 60, 59, 57, 55, 52, 50, 47, 44, 41, 38, 35, 32, 29, 26, 23, 20, 17, 14, 12, 9, 7, 5, 4, 2, 1, 1, 0, 0, 0, 1, 1, 2, 4, 5, 7, 9, 12, 14, 17, 20, 23, 26, 29 };
+static uint8_t triTable[64]  = { 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2 };
+static uint8_t noizTable[64] = { 38, 33, 38, 23, 53, 50, 8, 47, 1, 27, 43, 17, 30, 28, 17, 21, 40, 12, 7, 1, 44, 48, 47, 47, 34, 12, 31, 38, 15, 38, 24, 21, 14, 54, 56, 24, 14, 57, 19, 11, 50, 45, 28, 30, 22, 58, 49, 50, 61, 42, 0, 53, 2, 29, 10, 38, 5, 37, 16, 0, 3, 1, 10, 26 };
+
 static uint32_t notes[11][13] = {
     { 122312, 115447, 108968, 102852, 97079, 91631, 86488, 81634, 77052, 72727, 68645, 64793, 61156 }, // C1
     { 61156, 57724, 54484, 51426, 48540, 45815, 43244, 40817, 38526, 36364, 34323, 32396, 30578 }, // C2
@@ -27,6 +30,12 @@ static uint32_t notes[11][13] = {
     { 239, 225, 213, 201, 190, 179, 169, 159, 150, 142, 134, 127, 119 }, // C10
     { 119, 113, 106, 100, 95, 89, 84, 80, 80, 80, 80, 80, 80 } // C11
 };
+
+const uint8_t WAVE_SINE = 0;
+const uint8_t WAVE_TRI  = 1;
+const uint8_t WAVE_RAMP = 2;
+const uint8_t WAVE_SQR  = 3;
+const uint8_t WAVE_NOIZ = 4;
 
 const uint8_t NOTE_C  = 0;
 const uint8_t NOTE_CS = 1;
@@ -53,9 +62,10 @@ const uint8_t doomSong[] = {
     NOTE_E, REST, NOTE_E, NOTE_E, NOTE_E, NOTE_E,
     NOTE_E, REST, NOTE_E, NOTE_E, NOTE_D, NOTE_D,
     NOTE_E, REST, NOTE_E, NOTE_E, NOTE_C, NOTE_C,
-    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_AS, NOTE_AS
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_AS, NOTE_AS,
+    REST, REST, REST, REST, REST, REST
 };
-const uint8_t doomSongLength = 56; // number of notes
+const uint8_t doomSongLength = 62; // number of notes
 
 class Audio {
 
@@ -79,6 +89,8 @@ class Audio {
         void setTimerWithFreq(uint16_t frequency);
         void setTimerWithPeriod_ms(uint32_t period);
         void setTimerWithPeriod_us(uint32_t period);
+        void setWaveform(uint8_t newWaveform);
+        uint8_t getWaveform(void);
         void disableTimer(void);
 
         void startSongPlayback(void);
@@ -93,6 +105,7 @@ class Audio {
         bool enabled;
         bool headphones;
 
+        uint8_t waveform;
         uint8_t volume;
         // uint8_t octave;
 
