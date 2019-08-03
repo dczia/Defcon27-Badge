@@ -304,6 +304,8 @@ void audio_off() {
  * Handler for encoder pin A change events
  */
 void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
+    nrf_delay_us(2000); // lil' debounce
+    
     if (pin == BUTTON_D_PIN) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
