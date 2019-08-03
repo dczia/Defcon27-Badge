@@ -42,6 +42,8 @@ const uint8_t NOTE_AS = 10;
 const uint8_t NOTE_B  = 11;
 const uint8_t REST    = 255;
 
+// Doom Music
+// Based on http://vbstudio.hu/en/blog/20190330-Playing-DOOM-on-an-Arduino
 const uint8_t doomSong[] = {
     NOTE_E, REST, NOTE_E, NOTE_E, NOTE_E, NOTE_E,
     NOTE_E, REST, NOTE_E, NOTE_E, NOTE_D, NOTE_D,

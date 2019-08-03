@@ -35,12 +35,11 @@
 
 
 /* badge modes */
-const uint8_t DEFAULT_BADGE_MODE   = 0;
-const uint8_t THEREMIN_BADGE_MODE  = 1;
-const uint8_t FIXED_VOL_BADGE_MODE = 2;
-const uint8_t HOLDING_BADGE_MODE   = 3;
-const uint8_t DOOM_BADGE_MODE      = 4;
-const uint8_t TOTAL_BADGE_MODES    = 5;
+const uint8_t BADGE_MODE_DEFAULT   = 0;
+const uint8_t BADGE_MODE_THEREMIN  = 1;
+const uint8_t BADGE_MODE_FIXED_VOL = 2;
+const uint8_t BADGE_MODE_CREDITS   = 3;
+const uint8_t BADGE_MODES          = 4;
 
 void audio_off();
 void incrementBadgeMode();
