@@ -45,7 +45,14 @@ uint8_t octave = 5;
 /**
  * Initialize the button pins
  */
-static void button_init(){
+static void button_init() {
+    DButtonPressed = false;
+    CButtonPressed = false;
+    ZButtonPressed = false;
+    IButtonPressed = false;
+    AButtonPressed = false;
+    encSwPressed = false;
+    
     /* set encoder pin directions and states */
     nrf_gpio_cfg_input(BUTTON_D_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(BUTTON_C_PIN, NRF_GPIO_PIN_NOPULL);
@@ -163,24 +170,33 @@ static void log_init(){
     NRF_LOG_DEFAULT_BACKENDS_INIT();
 }
 
+void createTimers() {
+    // Create a timer in repeated mode for LEDs
+    app_timer_create(&m_led_timer_id, APP_TIMER_MODE_REPEATED, led_handler_cylon);
+
+    // Create a timer for audio node stepping
+    app_timer_create(&m_audio_step_timer_id, APP_TIMER_MODE_REPEATED, audio_timer_handler);
+}
+
 
 /**
  * @brief Main app
  * @return Not used
  */
 int main(){
-
     // Setup the system
 
     // Set up buttons
     button_init();
 
+    // set up encoder
     encoder_init();
 
     log_init();
 
     // Timers
     app_timer_init();
+    createTimers();
 
     // Setup I2C
     twi_master_init();
@@ -248,8 +264,14 @@ int main(){
         } else if(badgeMode == DOOM_BADGE_MODE) {
             /* doom mode */
             snprintf(display2, 20, "Year Of Doom", range1);
-            audio_off();
-            e1m1();
+            // audio_off();
+            if (!audio->songIsPlaying()) {
+                audio_off();
+                audio->startSongPlayback();
+                leds->set(LED_D, ON);
+                app_timer_start(m_audio_step_timer_id, APP_TIMER_TICKS(50), nullptr);
+            }
+            // e1m1();
         } else {
             /* default mode */
             audio_off();  // STFU <- "i feel personally attacked" - rehr
@@ -268,7 +290,7 @@ int main(){
         util_gfx_print(display2, COLOR_WHITE);
 
         SSD1306_display();
-        // button_handler();
+        checkButtonHolds();
 
         nrf_delay_ms(10);  // Do we really need this?
 
@@ -293,13 +315,6 @@ void audio_off() {
  * Handler for encoder pin A change events
  */
 void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
-    static bool DButtonPressed = false;
-    static bool CButtonPressed = false;
-    static bool ZButtonPressed = false;
-    static bool IButtonPressed = false;
-    static bool AButtonPressed = false;
-    static bool encSwPressed = false;
-
     if (pin == BUTTON_D_PIN) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
@@ -433,6 +448,13 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
 }
 
 
+void checkButtonHolds() {
+    if (DButtonPressed && CButtonPressed) {
+        leds->set(LED_A, ON);
+    }
+}
+
+
 void startup_sequence() {
     // Pop pop!
    // audio->enable(true);
@@ -535,9 +557,6 @@ void startup_sequence() {
     util_gfx_print("DCZia Test", COLOR_WHITE);
     util_gfx_set_cursor(10, 12);
     util_gfx_print("defcon 27", COLOR_WHITE);
-
-
-
 }
 
 uint8_t tof_pitch(uint8_t prevRange) {
@@ -632,9 +651,9 @@ uint8_t tof_volume(uint8_t prevRange) {
 //
 
 void led_flash_yellow() {
-            pixels->setColor(0, { 200, 200, 0});
-            pixels->setColor(1, { 200, 200, 0});
-            pixels->show();
+    pixels->setColor(0, { 200, 200, 0});
+    pixels->setColor(1, { 200, 200, 0});
+    pixels->show();
 }
 
 void led_mode_vapor() {
@@ -660,31 +679,27 @@ void led_theramin() {
     printf("Output Range 2  = %d\n", output1);
     led_walk(); // Start LED cylon scroll
 
-            if (led_mode == 1) { //Vapor Mode
-            pixels->setColor(0, {output2, 0, output2});
-            pixels->setColor(1, {0, 0, output1});
-            pixels->show();
-            }
-            if (led_mode == 2) { // Chile Mode
-            pixels->setColor(0, {output2, 0, 0});
-            pixels->setColor(1, {0, output1, 0});
-            pixels->show();
-            }
-            if (led_mode == 3) { //VaporMode2
-            pixels->setColor(0, {outhalf, output2, 0});
-            pixels->setColor(1, {output2, 5, output2});
-            pixels->show();
-            }
-            if (led_mode == 4) { //VaporMode2
-            pixels->setColor(0, {19, output2, output2});
-            pixels->setColor(1, {output2, 5, 39});
-            pixels->show();
-            }
-            if (led_mode == 5) { //VaporMode2
-            pixels->setColor(0, {1, output2, 33});
-            pixels->setColor(1, {output2, output2, 9});
-            pixels->show();
-            } 
+    if (led_mode == 1) { //Vapor Mode
+        pixels->setColor(0, {output2, 0, output2});
+        pixels->setColor(1, {0, 0, output1});
+        pixels->show();
+    } else if (led_mode == 2) { // Chile Mode
+        pixels->setColor(0, {output2, 0, 0});
+        pixels->setColor(1, {0, output1, 0});
+        pixels->show();
+    } else if (led_mode == 3) { //VaporMode2
+        pixels->setColor(0, {outhalf, output2, 0});
+        pixels->setColor(1, {output2, 5, output2});
+        pixels->show();
+    } else if (led_mode == 4) { //VaporMode2
+        pixels->setColor(0, {19, output2, output2});
+        pixels->setColor(1, {output2, 5, 39});
+        pixels->show();
+    } else if (led_mode == 5) { //VaporMode2
+        pixels->setColor(0, {1, output2, 33});
+        pixels->setColor(1, {output2, output2, 9});
+        pixels->show();
+    } 
     led_walk();
 }
 
@@ -721,29 +736,33 @@ void led_handler_cylon(void *p_context) {
     if(cylonGoDown){
         if(cylonCurLED == LED_D){
             cylonGoDown = false;
-        }
-        else{
+        } else{
             cylonCurLED -= 1;
         }
-    }
-    else {
+    } else {
         if (cylonCurLED == LED_A) {
             cylonGoDown = true;
-        }
-        else{
+        } else{
             cylonCurLED += 1;
         }
     }
 }
 
 void led_walk() {
-
-    // Create a timer, in repeated mode, and register the callback
-    app_timer_create(&m_led_timer_id, APP_TIMER_MODE_REPEATED, led_handler_cylon);
-
     // Start the timer, fire every 100ms
     app_timer_start(m_led_timer_id, APP_TIMER_TICKS(100), nullptr);
+}
 
+void audio_timer_handler(void *p_context) {
+    leds->set(LED_A, ON);
+    if (audio->incStepPosition() == 0) {
+        /* song is over */
+        audio->stopSongPlayback();
+        app_timer_stop(m_audio_step_timer_id);
+        leds->set(LED_Z, ON);
+    } else {
+        leds->set(LED_I, ON);
+    }
 }
 
 // Doom Music

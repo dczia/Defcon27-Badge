@@ -27,6 +27,13 @@ enum {
     ENC_SW_PRESSED
 };
 
+extern bool DButtonPressed;
+extern bool CButtonPressed;
+extern bool ZButtonPressed;
+extern bool IButtonPressed;
+extern bool AButtonPressed;
+extern bool encSwPressed;
+
 uint16_t calcCRC(uint8_t *data, uint8_t len);
 uint16_t crc16(uint16_t crcValue, uint8_t newByte);
 

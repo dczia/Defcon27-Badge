@@ -53,6 +53,8 @@ Audio::Audio(){
     enabled = false;
     headphones = false;
     volume = 0;
+    songStepPosition = 0;
+    songPlaying = false;
 
     nrf_gpio_cfg_input(AUDIO_HP_DETECT_PIN, NRF_GPIO_PIN_NOPULL);
 
@@ -289,3 +291,49 @@ void Audio::disableTimer() {
         nrf_drv_timer_disable(&timer1);
     }
 }
+
+void Audio::startSongPlayback() {
+    songPlaying = true;
+    resetStepPosition();
+
+    enable(true);    
+    setVolume(63);
+
+    uint8_t note = doomSong[0];
+    setTimerWithPeriod_us(notes[5][note]);
+}
+
+void Audio::stopSongPlayback() {
+    enable(false);
+    disableTimer();
+    setPWM0Ch0Value(0);
+    songPlaying = false;
+}
+
+bool Audio::songIsPlaying() {
+    return songPlaying;
+}
+
+void Audio::resetStepPosition() {
+    songStepPosition = 0;
+}
+
+uint8_t Audio::incStepPosition() {
+    songStepPosition++;
+    if (songStepPosition > doomSongLength) {
+        /* relay to main that song is over */
+        return 0;
+    } else {
+        /* play next note in song */
+        uint8_t note = doomSong[songStepPosition];
+        if (note != REST) {
+            setVolume(63);
+            setTimerWithPeriod_us(notes[5][note]);
+        } else {
+            setVolume(0);
+        }
+    }
+
+    return 1;
+}
+

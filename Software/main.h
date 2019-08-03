@@ -27,11 +27,12 @@ void audio_off();
 void incrementBadgeMode();
 void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action);
 void startup_sequence();
+void checkButtonHolds();
 
 void led_theramin();
 void led_walk();
-void led_handler_blink();
-void led_handler_cylon();
+void led_handler_blink(void *p_context);
+void led_handler_cylon(void *p_context);
 void led_flash_yellow();
 void led_mode_vapor();
 void led_mode_chile();
@@ -42,3 +43,5 @@ uint8_t tof_pitch(uint8_t prevRange);
 uint8_t tof_volume(uint8_t prevRange);
 
 APP_TIMER_DEF(m_led_timer_id);
+APP_TIMER_DEF(m_audio_step_timer_id);
+void audio_timer_handler(void *p_context);

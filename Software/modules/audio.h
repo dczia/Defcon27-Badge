@@ -28,18 +28,32 @@ static uint32_t notes[11][13] = {
     { 119, 113, 106, 100, 95, 89, 84, 80, 80, 80, 80, 80, 80 } // C11
 };
 
-#define NOTE_C 0
-#define NOTE_CS 1
-#define NOTE_D 2
-#define NOTE_DS 3
-#define NOTE_E 4
-#define NOTE_F 5
-#define NOTE_FS 6
-#define NOTE_G 7
-#define NOTE_GS 8
-#define NOTE_A 9
-#define NOTE_AS 10
-#define NOTE_B 11
+const uint8_t NOTE_C  = 0;
+const uint8_t NOTE_CS = 1;
+const uint8_t NOTE_D  = 2;
+const uint8_t NOTE_DS = 3;
+const uint8_t NOTE_E  = 4;
+const uint8_t NOTE_F  = 5;
+const uint8_t NOTE_FS = 6;
+const uint8_t NOTE_G  = 7;
+const uint8_t NOTE_GS = 8;
+const uint8_t NOTE_A  = 9;
+const uint8_t NOTE_AS = 10;
+const uint8_t NOTE_B  = 11;
+const uint8_t REST    = 255;
+
+const uint8_t doomSong[] = {
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_E, NOTE_E,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_D, NOTE_D,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_C, NOTE_C,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_AS, NOTE_AS,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_B, NOTE_B, NOTE_C, NOTE_C,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_E, NOTE_E,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_D, NOTE_D,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_C, NOTE_C,
+    NOTE_E, REST, NOTE_E, NOTE_E, NOTE_AS, NOTE_AS
+};
+const uint8_t doomSongLength = 56; // number of notes
 
 class Audio {
 
@@ -65,6 +79,12 @@ class Audio {
         void setTimerWithPeriod_us(uint32_t period);
         void disableTimer(void);
 
+        void startSongPlayback(void);
+        void stopSongPlayback(void);
+        bool songIsPlaying(void);
+        void resetStepPosition(void);
+        uint8_t incStepPosition(void);
+
     private:
         static void timer_event_handler(nrf_timer_event_t event_type, void* p_context);
 
@@ -72,6 +92,11 @@ class Audio {
         bool headphones;
 
         uint8_t volume;
+        // uint8_t octave;
+
+        uint8_t songStepPosition;
+        uint8_t songSteps;
+        bool songPlaying;
 
         nrf_drv_pwm_t pwm0;
         nrf_pwm_values_individual_t pwm0_seq_values;

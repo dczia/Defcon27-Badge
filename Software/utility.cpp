@@ -13,6 +13,13 @@
 
 volatile static uint32_t systick = 0;
 
+bool DButtonPressed = false;
+bool CButtonPressed = false;
+bool ZButtonPressed = false;
+bool IButtonPressed = false;
+bool AButtonPressed = false;
+bool encSwPressed = false;
+
 /**
  * Start the local time reference
  */
