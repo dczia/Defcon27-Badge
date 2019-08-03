@@ -25,6 +25,9 @@ int cylonCurLED = LED_D;
 int led_mode = 1;
 uint16_t led_speed;
 int led_pattern_step = 1;
+int led_pattern2_step = 1;
+uint8_t output1;
+uint8_t output2;
 
 // Audio Variables
 uint8_t octave = 5;
@@ -651,12 +654,6 @@ uint8_t tof_volume(uint8_t prevRange) {
 // Light modes
 //
 
-void led_flash_yellow() {
-    pixels->setColor(0, { 200, 200, 0});
-    pixels->setColor(1, { 200, 200, 0});
-    pixels->show();
-}
-
 void led_theramin() {
     uint8_t LEDrange1 = TOF->readRange(TOF_SENSOR1);
     uint8_t LEDrange2 = TOF->readRange(TOF_SENSOR2);
@@ -664,8 +661,8 @@ void led_theramin() {
     if (LEDrange2 > 190) { LEDrange2 = 190; }
 
     // output = output_start + ((output_end - output_start) / (input_end - input_start)) * (input - input_start)
-    uint8_t output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72;  // ReMap Sensor Values
-    uint8_t output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72;  // ReMap Sensor Values
+    output1 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange1 - 8) + -72;  // ReMap Sensor Values
+    output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72;  // ReMap Sensor Values
     uint8_t outhalf = output1 >> 2;  // divide by 4
     uint8_t outhalf2 = output2 >> 2;  // divide by 4
     printf("Output Range 1  = %d\n", output2);  // Debug
@@ -683,43 +680,23 @@ void led_theramin() {
         pixels->setColor(1, {0, output1, 0});
         pixels->show();
     }
-    if (led_mode == 3) {  // VaporMode2
-        pixels->setColor(0, {outhalf, output2, 0});
-        pixels->setColor(1, {output2, outhalf2, output2});
+    if (led_mode == 3) {  // VaporMode1
+        pixels->setColor(0, {outhalf2, output2, 0});
+        pixels->setColor(1, {output1, outhalf, output1});
         pixels->show();
-        // app_timer_stop(m_led_timer_id);
-        led_animation(100);  // Start LED cylon scroll
     }
     if (led_mode == 4) {  // VaporMode2
         pixels->setColor(0, {19, output2, output2});
-        pixels->setColor(1, {output2, 5, 39});
+        pixels->setColor(1, {output1, 5, 39});
         pixels->show();
     }
-    if (led_mode == 5) {  // VaporMode2
-        pixels->setColor(0, {1, output2, 33});
-        pixels->setColor(1, {output2, output2, 9});
-        pixels->show();
+    if (led_mode == 5) {  // VaporMode3
+            pixels->setColor(0, {100, 0, 0});
+            pixels->setColor(1, {0, 10, 100});
+            pixels->show();
     }
 }
 
-
-void led_handler_blink(void *p_context) {
-    led_status = !led_status;
-
-    if (led_status == true) {
-        leds->set(LED_D, ON);
-        leds->set(LED_C, ON);
-        leds->set(LED_Z, ON);
-        leds->set(LED_I, ON);
-        leds->set(LED_A, ON);
-    } else {
-        leds->set(LED_D, OFF);
-        leds->set(LED_C, OFF);
-        leds->set(LED_Z, OFF);
-        leds->set(LED_I, OFF);
-        leds->set(LED_A, OFF);
-    }
-}
 
 void led_handler_cylon(void *p_context) {
     if (led_mode == 1) {  // Cylon Scroll
@@ -764,7 +741,7 @@ void led_handler_cylon(void *p_context) {
         }
     }
 
-    if (led_mode == 3) {  // Alternating Blink
+    if (led_mode == 3) {  // Increment
         if(led_pattern_step < 5){
             uint8_t i = (1 << led_pattern_step);
             leds->bitmap(i);
@@ -773,6 +750,87 @@ void led_handler_cylon(void *p_context) {
             led_pattern_step = 0;
         }
     }
+
+     if (led_mode == 4) {  // Warp Core
+        switch(led_pattern2_step) {
+            case 1:
+                leds->bitmap(17);
+                led_pattern2_step++;
+                break;
+            
+            case 2:
+                leds->bitmap(10);
+                led_pattern2_step++;
+                break;
+        
+            case 3:
+                leds->bitmap(4);
+                led_pattern2_step++;
+                break;
+        
+            case 4:
+                leds->bitmap(10);
+                led_pattern2_step++;
+                break;
+        
+            case 5:
+                leds->bitmap(17);
+                led_pattern2_step = 1;
+                break;
+        }
+    }
+
+    if (led_mode == 5) {  // Party Mode
+            //output1 = output1 + 3;
+            //output2 = output2 + 3;
+            //if (output1 > 255) { output1 = 0; }
+            //if (output2 > 255) { output2 = 0; }
+        switch(led_pattern2_step) {
+            
+            case 1:
+                leds->bitmap(3);
+                led_pattern2_step++;
+              //  pixels->setColor(0, {1, output2, 33});
+              //  pixels->setColor(1, {output1, output1, 9});
+              //  pixels->show();
+                break;
+            
+            case 2:
+                leds->bitmap(24);
+                led_pattern2_step++;
+               // pixels->setColor(0, {1, output2, 33});
+               // pixels->setColor(1, {output1, output1, 9});
+               // pixels->show();
+                break;
+        
+            case 3:
+                leds->bitmap(6);
+                led_pattern2_step++;
+               // pixels->setColor(0, {1, output2, 33});
+               // pixels->setColor(1, {output1, output1, 9});
+               // pixels->show();
+                break;
+        
+            case 4:
+                leds->bitmap(12);
+                led_pattern2_step++;
+               // pixels->setColor(0, {1, output2, 33});
+               // pixels->setColor(1, {output1, output1, 9});
+               // pixels->show();
+                break;
+        
+            case 5:
+                leds->bitmap(17);
+                led_pattern2_step = 1;
+               // pixels->setColor(0, {1, output2, 33});
+               // pixels->setColor(1, {output1, output1, 9});
+               // pixels->show();
+                break;
+           
+        }
+    }
+
+
 }
 
 void audio_timer_handler(void *p_context) {

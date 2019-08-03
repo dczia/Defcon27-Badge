@@ -48,10 +48,8 @@ void startup_sequence();
 void checkButtonHolds();
 
 void led_theramin();
-void led_handler_blink(void *p_context);
 void led_handler_cylon(void *p_context);
 void led_animation(uint16_t led_speed);
-void led_flash_yellow();
 
 void e1m1();
 void noteDoomBase(int octave, int speed, int volume);
