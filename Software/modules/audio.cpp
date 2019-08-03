@@ -17,26 +17,34 @@
  * @param p_context User data, used as a pointer to the Audio instance
  */
 void Audio::timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
-    static uint32_t i = 0;
-    static bool countUp = true; // true: up, false: down
+    static uint8_t signalVal = 0;
+    static uint8_t count = 0;
+    uint8_t waveform = ((Audio *)p_context)->getWaveform();
 
     switch (event_type) {
         case NRF_TIMER_EVENT_COMPARE0:
-            // ((Audio *)p_context)->setPWM0Ch0Value(sineTable[i]);
-            // i++;
-            // if (i >= 64) {
-            //     i = 0;
-            // }
-            if (countUp) {
-                if (++i >= 32) {
-                    countUp = false;
+            if (waveform == WAVE_SINE) {
+                signalVal = sineTable[count];
+            } else if (waveform == WAVE_TRI) {
+                signalVal = triTable[count];
+            } else if (waveform == WAVE_RAMP) {
+                signalVal = count;
+            } else if (waveform == WAVE_SQR) {
+                if (count < 32) {
+                    signalVal = 0;
+                } else {
+                    signalVal = 64;
                 }
-            } else {
-                if (--i <= 0) {
-                    countUp = true;
-                }
+            } else if (waveform == WAVE_NOIZ) {
+                signalVal = noizTable[count];
             }
-            ((Audio *)p_context)->setPWM0Ch0Value(i*((Audio *)p_context)->getVolume());
+
+            count++;
+            if (count > 63) {
+                count = 0;
+            }
+
+            ((Audio *)p_context)->setPWM0Ch0Value(signalVal*((Audio *)p_context)->getVolume());
             break;
 
         default:
@@ -52,6 +60,7 @@ void Audio::timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
 Audio::Audio(){
     enabled = false;
     headphones = false;
+    waveform = WAVE_SINE;
     volume = 0;
     songStepPosition = 0;
     songPlaying = false;
@@ -139,8 +148,6 @@ uint32_t Audio::initPWM0() {
         0, // repeats
         0 // end_delay
     };
-
-    uint16_t pwm_top = 10000; // might make this a member var...
     
     nrf_drv_pwm_config_t const pwm0_config = {
         { // .output_pins
@@ -152,7 +159,7 @@ uint32_t Audio::initPWM0() {
         APP_IRQ_PRIORITY_LOW, // .irq_priority
         NRF_PWM_CLK_16MHz, // .base_clock
         NRF_PWM_MODE_UP, // .count_mode
-        1000, // .top_value
+        1024, // .top_value
         NRF_PWM_LOAD_INDIVIDUAL, // .load_mode
         NRF_PWM_STEP_AUTO // .step_mode
     };
@@ -170,7 +177,7 @@ uint32_t Audio::initPWM0() {
 /**
  * set PWM0 channel 0 value
  * 
- * @param value New PWM0 channel 0 value between 0 and 1000
+ * @param value New PWM0 channel 0 value between 0 and 1023
  */
 void Audio::setPWM0Ch0Value(uint16_t value) {
     pwm0_seq_values.channel_0 = value;
@@ -179,16 +186,36 @@ void Audio::setPWM0Ch0Value(uint16_t value) {
 /**
  * set PWM0 channel 1 value
  * 
- * @param value New PWM0 channel 1 value between 0 and 1000
+ * @param value New PWM0 channel 1 value between 0 and 1023
  */
 void Audio::setPWM0Ch1Value(uint16_t value) {
     pwm0_seq_values.channel_1 = value;
 }
 
 /**
+ * set audio waveform for output audio signal
+ * 
+ * @param value New waveform for output audio signal
+ *      available waveforms are defined in header
+ *      sine, triangle, ramp, square, and noise
+ */
+void Audio::setWaveform(uint8_t newWaveform) {
+    waveform = newWaveform;
+}
+
+/**
+ * get synthesized waveform
+ * 
+ * @return current waveform
+ */
+uint8_t Audio::getWaveform() {
+    return waveform;
+}
+
+/**
  * set audio volume
  * 
- * @param newVolume New volume between 0 and 31
+ * @param newVolume New volume between 0 and 16
  */
 void Audio::setVolume(uint8_t newVolume) {
     volume = newVolume;
@@ -197,7 +224,7 @@ void Audio::setVolume(uint8_t newVolume) {
 /**
  * get audio volume
  * 
- * @return current volume value between 0 and 31
+ * @return current volume value between 0 and 16
  */
 uint8_t Audio::getVolume() {
     return volume;
@@ -297,7 +324,7 @@ void Audio::startSongPlayback() {
     resetStepPosition();
 
     enable(true);    
-    setVolume(63);
+    setVolume(16);
 
     uint8_t note = doomSong[0];
     setTimerWithPeriod_us(notes[5][note]);
@@ -327,7 +354,7 @@ uint8_t Audio::incStepPosition() {
         /* play next note in song */
         uint8_t note = doomSong[songStepPosition];
         if (note != REST) {
-            setVolume(63);
+            setVolume(16);
             setTimerWithPeriod_us(notes[5][note]);
         } else {
             setVolume(0);

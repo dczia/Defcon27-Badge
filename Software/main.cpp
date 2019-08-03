@@ -249,11 +249,12 @@ int main() {
             range1 = tof_pitch(range1);
             range2 = tof_volume(range2);
             snprintf(display1, 20, "THEREMIN");
-            snprintf(display2, 20, "%03dmm    %03dmm", range2, range1);
+            // snprintf(display2, 20, "%03dmm    %03dmm", range2, range1);
+            snprintf(display2, 20, "%03dmm    %03dmm", audio->getVolume(), range1);
         } else if (badgeMode == BADGE_MODE_FIXED_VOL) {
             /* fixed volume mode */
             range1 = tof_pitch(range1);
-            audio->setVolume(127);
+            audio->setVolume(16);
             snprintf(display1, 20, "THEREMIN");
             snprintf(display2, 20, "Vol Fixd %03dmm", range1);
         } else if (badgeMode == BADGE_MODE_CREDITS) {
@@ -274,8 +275,19 @@ int main() {
 
             led_theramin();  // Enables LED Thearamin Mode
             snprintf(display1, 20, "LED Mode");
-            snprintf(display2, 20, "");
-            // snprintf(display2, 20, "%03dmm  %03dmm", LEDrange2, LEDrange1);
+            if (led_mode == 1) {
+                snprintf(display2, 20, "Cylon");
+            } else if (led_mode == 2) {
+                snprintf(display2, 20, "Chile");
+            } else if (led_mode == 3) {
+                snprintf(display2, 20, "Vapor");
+            } else if (led_mode == 4) {
+                snprintf(display2, 20, "Warp core");
+            } else if (led_mode == 5) {
+                snprintf(display2, 20, "Malort");
+            } else {
+                snprintf(display2, 20, "");
+            }
         }
 
         snprintf(voltageDisp, 5, "%d.%dv", voltageOnes, voltageDecimal);
@@ -321,8 +333,12 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
                 // add code that runs one time when button is pressed
-                // snprintf(display2, 20, "Vapor Mode");
-                led_mode = 1;
+                if (badgeMode == BADGE_MODE_DEFAULT) {
+                    led_mode = 1;
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                    audio->setWaveform(WAVE_SINE);
+                }
+
                 leds->set(LED_D, ON);
                 printf("Button D Pressed\n");
 
@@ -344,7 +360,12 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_C_PIN) == false) {
             if (!CButtonPressed) {
                 // add code that runs one time when button is pressed
-                led_mode = 2;
+                if (badgeMode == BADGE_MODE_DEFAULT) {
+                    led_mode = 2;
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                    audio->setWaveform(WAVE_TRI);
+                }
+
                 leds->set(LED_C, ON);
                 printf("Button C Pressed\n");
 
@@ -366,7 +387,12 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_Z_PIN) == false) {
             if (!ZButtonPressed) {
                 // add code that runs one time when button is pressed
-                led_mode = 3;
+                if (badgeMode == BADGE_MODE_DEFAULT) {
+                    led_mode = 3;
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                    audio->setWaveform(WAVE_RAMP);
+                }
+
                 leds->set(LED_Z, ON);
                 printf("Button Z Pressed\n");
 
@@ -388,7 +414,12 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_I_PIN) == false) {
             if (!IButtonPressed) {
                 // add code that runs one time when button is pressed
-                led_mode = 4;
+                if (badgeMode == BADGE_MODE_DEFAULT) {
+                    led_mode = 4;
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                    audio->setWaveform(WAVE_SQR);
+                }
+
                 leds->set(LED_I, ON);
                 printf("Button I Pressed\n");
 
@@ -410,7 +441,12 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_A_PIN) == false) {
             if (!AButtonPressed) {
                 // add code that runs one time when button is pressed
-                led_mode = 5;
+                if (badgeMode == BADGE_MODE_DEFAULT) {
+                    led_mode = 5;
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                    audio->setWaveform(WAVE_NOIZ);
+                }
+
                 leds->set(LED_A, ON);
                 printf("Button A Pressed\n");
 
@@ -641,9 +677,9 @@ uint8_t tof_volume(uint8_t prevRange) {
         return range;
     }
 
-    uint8_t newVolume = range_cm << 1;
-    if (newVolume > 63) {
-        newVolume = 63;
+    uint8_t newVolume = range_cm;
+    if (newVolume > 16) {
+        newVolume = 16;
     }
 
     audio->setVolume(newVolume);
