@@ -248,18 +248,18 @@ int main() {
             /* theremin mode */
             range1 = tof_pitch(range1);
             range2 = tof_volume(range2);
-            snprintf(display1, 20, "THEREMIN");
+            snprintf(display1, 20, " THEREMIN");
             snprintf(display2, 20, "%03dmm      %03dmm", range2, range1);
             // snprintf(display2, 20, "%03dmm Sine %03dmm", audio->getVolume(), range1);
         } else if (badgeMode == BADGE_MODE_FIXED_VOL) {
             /* fixed volume mode */
             range1 = tof_pitch(range1);
             audio->setVolume(16);
-            snprintf(display1, 20, "THEREMIN");
-            snprintf(display2, 20, "Vol:fixed  %03dmm", range1);
+            snprintf(display1, 20, " THEREMIN");
+            snprintf(display2, 20, "fixed      %03dmm", range1);
         } else if (badgeMode == BADGE_MODE_CREDITS) {
             /* credits mode / music playback */
-            snprintf(display1, 20, "Credits...");
+            snprintf(display1, 20, " Credits...");
             snprintf(display2, 20, " Malort", range1);
             // something cool
             if (!audio->songIsPlaying()) {
@@ -273,7 +273,7 @@ int main() {
                          // No offense intended, just wanted it to boot into a quiet mode :)
 
             led_theramin();  // Enables LED Thearamin Mode
-            snprintf(display1, 20, "LED Mode");
+            snprintf(display1, 20, " LED Mode");
             if (led_mode == 1) {
                 snprintf(display2, 20, " Cylon");
             } else if (led_mode == 2) {
@@ -293,10 +293,11 @@ int main() {
 
         SSD1306_clearDisplay();
         util_gfx_set_font(FONT_MONO55_8PT);
-        util_gfx_set_cursor(10, 1);
+        util_gfx_set_cursor(0, 1);
         util_gfx_print(display1, COLOR_WHITE);
         if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
-            util_gfx_set_cursor(0,20);
+            util_gfx_draw_waveform(55, 22, COLOR_WHITE, audio->getWaveform());
+            util_gfx_set_cursor(0, 20);
         } else {
             util_gfx_set_cursor(0, 15);
         }
