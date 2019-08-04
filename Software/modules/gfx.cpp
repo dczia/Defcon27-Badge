@@ -188,6 +188,131 @@ void util_gfx_cursor_area_reset() {
 
 
 /**
+ * Draw the DCZia logo at x,y with color
+ * NOTE: Color is 16-bit (565)
+ */
+extern void util_gfx_draw_dczia(int16_t x0, int16_t y0, SSD1306_COLOR color) {
+	/* left lines */
+	SSD1306_drawFastHLine(x0 + 2, y0 + 10, 10, color);
+	SSD1306_drawFastHLine(x0, y0 + 12, 10, color);
+	SSD1306_drawFastHLine(x0, y0 + 14, 10, color);
+	SSD1306_drawFastHLine(x0 + 2, y0 + 16, 10, color);
+	/* right lines */
+	SSD1306_drawFastHLine(x0 + 15, y0 + 10, 10, color);
+	SSD1306_drawFastHLine(x0 + 17, y0 + 12, 10, color);
+	SSD1306_drawFastHLine(x0 + 17, y0 + 14, 10, color);
+	SSD1306_drawFastHLine(x0 + 15, y0 + 16, 10, color);
+	/* top lines */
+	SSD1306_drawFastVLine(x0 + 10, y0 + 2, 10, color);
+	SSD1306_drawFastVLine(x0 + 12, y0, 10, color);
+	SSD1306_drawFastVLine(x0 + 14, y0, 10, color);
+	SSD1306_drawFastVLine(x0 + 16, y0 + 2, 10, color);
+	/* bottom lines */
+	SSD1306_drawFastVLine(x0 + 10, y0 + 15, 10, color);
+	SSD1306_drawFastVLine(x0 + 12, y0 + 17, 10, color);
+	SSD1306_drawFastVLine(x0 + 14, y0 + 17, 10, color);
+	SSD1306_drawFastVLine(x0 + 16, y0 + 15, 10, color);
+	/* circle sides */
+	SSD1306_drawFastHLine(x0 + 11, y0 + 9, 5, color);
+	SSD1306_drawFastHLine(x0 + 11, y0 + 17, 5, color);
+	SSD1306_drawFastVLine(x0 + 9, y0 + 11, 5, color);
+	SSD1306_drawFastVLine(x0 + 17, y0 + 11, 5, color);
+	/* center sphere reflection */
+	SSD1306_drawPixel(x0 + 11, y0 + 12, color);
+	SSD1306_drawPixel(x0 + 12, y0 + 11, color);
+	SSD1306_drawPixel(x0 + 13, y0 + 11, color);
+}
+
+
+/**
+ * Draw the audio waveform at x,y with color
+ * NOTE: Color is 16-bit (565)
+ */
+extern void util_gfx_draw_waveform(int16_t x0, int16_t y0, SSD1306_COLOR color, uint8_t waveform) {
+	if (waveform == 0) {
+		/* sine wave */
+		util_gfx_set_pixel(x0 + 2, y0 + 0, color);
+		util_gfx_set_pixel(x0 + 3, y0 + 0, color);
+		util_gfx_set_pixel(x0 + 4, y0 + 0, color);
+		util_gfx_set_pixel(x0 + 5, y0 + 0, color);
+		util_gfx_set_pixel(x0 + 1, y0 + 1, color);
+		util_gfx_set_pixel(x0 + 6, y0 + 1, color);
+		util_gfx_set_pixel(x0 + 1, y0 + 2, color);
+		util_gfx_set_pixel(x0 + 6, y0 + 2, color);
+		util_gfx_set_pixel(x0 + 0, y0 + 3, color);
+		util_gfx_set_pixel(x0 + 7, y0 + 3, color);
+		util_gfx_set_pixel(x0 + 14, y0 + 3, color);
+		util_gfx_set_pixel(x0 + 0, y0 + 4, color);
+		util_gfx_set_pixel(x0 + 7, y0 + 4, color);
+		util_gfx_set_pixel(x0 + 14, y0 + 4, color);
+		util_gfx_set_pixel(x0 + 8, y0 + 5, color);
+		util_gfx_set_pixel(x0 + 13, y0 + 5, color);
+		util_gfx_set_pixel(x0 + 8, y0 + 6, color);
+		util_gfx_set_pixel(x0 + 13, y0 + 6, color);
+		util_gfx_set_pixel(x0 + 9, y0 + 7, color);
+		util_gfx_set_pixel(x0 + 10, y0 + 7, color);
+		util_gfx_set_pixel(x0 + 11, y0 + 7, color);
+		util_gfx_set_pixel(x0 + 12, y0 + 7, color);
+	} else if (waveform == 1) {
+		/* triangle wave */
+		util_gfx_set_pixel(x0 + 4, y0 + 0, color);
+		util_gfx_set_pixel(x0 + 3, y0 + 1, color);
+		util_gfx_set_pixel(x0 + 5, y0 + 1, color);
+		util_gfx_set_pixel(x0 + 2, y0 + 2, color);
+		util_gfx_set_pixel(x0 + 6, y0 + 2, color);
+		util_gfx_set_pixel(x0 + 1, y0 + 3, color);
+		util_gfx_set_pixel(x0 + 7, y0 + 3, color);
+		util_gfx_set_pixel(x0 + 15, y0 + 3, color);
+		util_gfx_set_pixel(x0 + 0, y0 + 4, color);
+		util_gfx_set_pixel(x0 + 8, y0 + 4, color);
+		util_gfx_set_pixel(x0 + 14, y0 + 4, color);
+		util_gfx_set_pixel(x0 + 9, y0 + 5, color);
+		util_gfx_set_pixel(x0 + 13, y0 + 5, color);
+		util_gfx_set_pixel(x0 + 10, y0 + 6, color);
+		util_gfx_set_pixel(x0 + 12, y0 + 6, color);
+		util_gfx_set_pixel(x0 + 11, y0 + 7, color);
+	} else if (waveform == 2) {
+		/* ramp wave */
+		SSD1306_drawFastVLine(x0, y0 + 3, 4, color);
+		SSD1306_drawFastHLine(x0, y0 + 7, 2, color);
+		SSD1306_drawFastHLine(x0 + 2, y0 + 6, 2, color);
+		SSD1306_drawFastHLine(x0 + 4, y0 + 5, 2, color);
+		SSD1306_drawFastHLine(x0 + 6, y0 + 4, 2, color);
+		SSD1306_drawFastHLine(x0 + 8, y0 + 3, 2, color);
+		SSD1306_drawFastHLine(x0 + 10, y0 + 2, 2, color);
+		SSD1306_drawFastHLine(x0 + 12, y0 + 1, 2, color);
+		SSD1306_drawFastHLine(x0 + 14, y0, 2, color);
+		SSD1306_drawFastVLine(x0 + 15, y0 + 1, 4, color);
+	} else if (waveform == 3) {
+		/* square wave */
+		SSD1306_drawFastVLine(x0, y0, 5, color);
+		SSD1306_drawFastHLine(x0 + 1, y0, 6, color);
+		SSD1306_drawFastVLine(x0 + 7, y0, 8, color);
+		SSD1306_drawFastHLine(x0 + 8, y0 + 7, 6, color);
+		SSD1306_drawFastVLine(x0 + 14, y0 + 3, 5, color);
+	} else if (waveform == 4) {
+		/* noise */
+		SSD1306_drawFastVLine(x0, y0 + 3, 3, color);
+		SSD1306_drawFastVLine(x0 + 1, y0 + 4, 3, color);
+		SSD1306_drawFastVLine(x0 + 2, y0 + 1, 5, color);
+		SSD1306_drawFastVLine(x0 + 3, y0 + 3, 4, color);
+		SSD1306_drawFastVLine(x0 + 4, y0 + 2, 6, color);
+		SSD1306_drawFastVLine(x0 + 5, y0 + 1, 4, color);
+		SSD1306_drawFastVLine(x0 + 6, y0, 7, color);
+		SSD1306_drawFastVLine(x0 + 7, y0 + 2, 6, color);
+		SSD1306_drawFastVLine(x0 + 8, y0 + 3, 3, color);
+		SSD1306_drawFastVLine(x0 + 9, y0 + 1, 4, color);
+		SSD1306_drawFastVLine(x0 + 10, y0 + 2, 5, color);
+		SSD1306_drawFastVLine(x0 + 11, y0, 6, color);
+		SSD1306_drawFastVLine(x0 + 12, y0 + 3, 5, color);
+		SSD1306_drawFastVLine(x0 + 13, y0 + 2, 5, color);
+		SSD1306_drawFastVLine(x0 + 14, y0 + 1, 5, color);
+		SSD1306_drawFastVLine(x0 + 15, y0 + 3, 4, color);
+	}
+}
+
+
+/**
  * Draw a circle at x, y with radius r and color.
  * NOTE: Color is 16-bit (565)
  */

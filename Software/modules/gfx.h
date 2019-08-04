@@ -55,6 +55,22 @@ extern void util_gfx_cursor_area_set(area_t area);
  */
 extern void util_gfx_cursor_area_reset();
 
+/**
+ * Draw DCZia logo
+ * @param 	x0			X coordinate for the left of the logo
+ * @param	y0			Y coordinate for the top of the logo
+ * @param	color		RGB565 color of the logo
+ */
+extern void util_gfx_draw_dczia(int16_t x0, int16_t y0, SSD1306_COLOR color);
+
+/**
+ * Draw audio waveform
+ * @param 	x0			X coordinate for the left of the waveform
+ * @param	y0			Y coordinate for the top of the waveform
+ * @param	color		RGB565 color of the waveform
+ * @param   waveform 	Waveform to be drawn (0: sine, 1: triangle, 2: ramp, 3: square, 4: noise)
+ */
+extern void util_gfx_draw_waveform(int16_t x0, int16_t y0, SSD1306_COLOR color, uint8_t waveform);
 
 /**
  * Draw a circle to the screen
