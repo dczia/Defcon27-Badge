@@ -26,7 +26,11 @@ void Audio::timer_event_handler(nrf_timer_event_t event_type, void* p_context) {
             if (waveform == WAVE_SINE) {
                 signalVal = sineTable[count];
             } else if (waveform == WAVE_TRI) {
-                signalVal = triTable[count];
+                if (count <= 32) {
+                    signalVal = count << 1;
+                } else {
+                    signalVal = (64 - count) << 1;
+                }
             } else if (waveform == WAVE_RAMP) {
                 signalVal = count;
             } else if (waveform == WAVE_SQR) {
