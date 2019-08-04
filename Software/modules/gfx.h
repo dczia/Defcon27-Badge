@@ -55,6 +55,13 @@ extern void util_gfx_cursor_area_set(area_t area);
  */
 extern void util_gfx_cursor_area_reset();
 
+/**
+ * Draw DCZia symbol
+ * @param 	x0			X coordinate for the left of the symbol
+ * @param	y0			Y coordinate for the top of the symbol
+ * @param	color		RGB565 color of the circle
+ */
+extern void util_gfx_draw_dczia(int16_t x0, int16_t y0, SSD1306_COLOR color);
 
 /**
  * Draw a circle to the screen

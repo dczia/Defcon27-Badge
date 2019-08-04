@@ -249,14 +249,14 @@ int main() {
             range1 = tof_pitch(range1);
             range2 = tof_volume(range2);
             snprintf(display1, 20, "THEREMIN");
-            // snprintf(display2, 20, "%03dmm    %03dmm", range2, range1);
-            snprintf(display2, 20, "%03dmm    %03dmm", audio->getVolume(), range1);
+            snprintf(display2, 20, "%03dmm      %03dmm", range2, range1);
+            // snprintf(display2, 20, "%03dmm Sine %03dmm", audio->getVolume(), range1);
         } else if (badgeMode == BADGE_MODE_FIXED_VOL) {
             /* fixed volume mode */
             range1 = tof_pitch(range1);
             audio->setVolume(16);
             snprintf(display1, 20, "THEREMIN");
-            snprintf(display2, 20, "Vol Fixd %03dmm", range1);
+            snprintf(display2, 20, "Vol:fixed  %03dmm", range1);
         } else if (badgeMode == BADGE_MODE_CREDITS) {
             /* credits mode / music playback */
             snprintf(display1, 20, "Credits...");
@@ -265,7 +265,6 @@ int main() {
             if (!audio->songIsPlaying()) {
                 audio_off();
                 audio->startSongPlayback();
-                leds->set(LED_D, ON);
                 app_timer_start(m_audio_step_timer_id, APP_TIMER_TICKS(50), nullptr);
             }
         } else {
@@ -276,15 +275,15 @@ int main() {
             led_theramin();  // Enables LED Thearamin Mode
             snprintf(display1, 20, "LED Mode");
             if (led_mode == 1) {
-                snprintf(display2, 20, "Cylon");
+                snprintf(display2, 20, " Cylon");
             } else if (led_mode == 2) {
-                snprintf(display2, 20, "Chile");
+                snprintf(display2, 20, " Chile");
             } else if (led_mode == 3) {
-                snprintf(display2, 20, "Vapor");
+                snprintf(display2, 20, " Vapor");
             } else if (led_mode == 4) {
-                snprintf(display2, 20, "Warp core");
+                snprintf(display2, 20, " Warp core");
             } else if (led_mode == 5) {
-                snprintf(display2, 20, "Malort");
+                snprintf(display2, 20, " Malort");
             } else {
                 snprintf(display2, 20, "");
             }
@@ -296,7 +295,11 @@ int main() {
         util_gfx_set_font(FONT_MONO55_8PT);
         util_gfx_set_cursor(10, 1);
         util_gfx_print(display1, COLOR_WHITE);
-        util_gfx_set_cursor(10, 14);
+        if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
+            util_gfx_set_cursor(0,20);
+        } else {
+            util_gfx_set_cursor(0, 15);
+        }
         util_gfx_print(display2, COLOR_WHITE);
         util_gfx_set_font(FONT_VERAMONO_5PT);
         util_gfx_set_cursor(100, 1);
@@ -335,7 +338,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
                 // add code that runs one time when button is pressed
                 if (badgeMode == BADGE_MODE_DEFAULT) {
                     led_mode = 1;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
                     audio->setWaveform(WAVE_SINE);
                 }
 
@@ -362,7 +365,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
                 // add code that runs one time when button is pressed
                 if (badgeMode == BADGE_MODE_DEFAULT) {
                     led_mode = 2;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
                     audio->setWaveform(WAVE_TRI);
                 }
 
@@ -389,7 +392,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
                 // add code that runs one time when button is pressed
                 if (badgeMode == BADGE_MODE_DEFAULT) {
                     led_mode = 3;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
                     audio->setWaveform(WAVE_RAMP);
                 }
 
@@ -416,7 +419,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
                 // add code that runs one time when button is pressed
                 if (badgeMode == BADGE_MODE_DEFAULT) {
                     led_mode = 4;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
                     audio->setWaveform(WAVE_SQR);
                 }
 
@@ -443,7 +446,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
                 // add code that runs one time when button is pressed
                 if (badgeMode == BADGE_MODE_DEFAULT) {
                     led_mode = 5;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)){
+                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
                     audio->setWaveform(WAVE_NOIZ);
                 }
 
@@ -588,11 +591,12 @@ void oled_init(){
     // Default text
     util_gfx_init();
     util_gfx_set_font(FONT_COMPUTER_12PT);
-    util_gfx_set_cursor(35, 1);
+    util_gfx_set_cursor(10, 1);
     util_gfx_print("DCZia", COLOR_WHITE);
     util_gfx_set_font(FONT_MONO55_8PT);
-    util_gfx_set_cursor(35, 18);
+    util_gfx_set_cursor(10, 18);
     util_gfx_print("DEFCON 27", COLOR_WHITE);
+    util_gfx_draw_dczia(95, 2, COLOR_WHITE);
 
     // Display the thing
     SSD1306_display();

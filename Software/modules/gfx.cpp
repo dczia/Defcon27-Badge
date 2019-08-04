@@ -188,6 +188,43 @@ void util_gfx_cursor_area_reset() {
 
 
 /**
+ * Draw the DCZia symbol at x,y with color
+ * NOTE: Color is 16-bit (565)
+ */
+extern void util_gfx_draw_dczia(int16_t x0, int16_t y0, SSD1306_COLOR color) {
+	/* left lines */
+	SSD1306_drawFastHLine(x0 + 2, y0 + 10, 10, color);
+	SSD1306_drawFastHLine(x0, y0 + 12, 10, color);
+	SSD1306_drawFastHLine(x0, y0 + 14, 10, color);
+	SSD1306_drawFastHLine(x0 + 2, y0 + 16, 10, color);
+	/* right lines */
+	SSD1306_drawFastHLine(x0 + 15, y0 + 10, 10, color);
+	SSD1306_drawFastHLine(x0 + 17, y0 + 12, 10, color);
+	SSD1306_drawFastHLine(x0 + 17, y0 + 14, 10, color);
+	SSD1306_drawFastHLine(x0 + 15, y0 + 16, 10, color);
+	/* top lines */
+	SSD1306_drawFastVLine(x0 + 10, y0 + 2, 10, color);
+	SSD1306_drawFastVLine(x0 + 12, y0, 10, color);
+	SSD1306_drawFastVLine(x0 + 14, y0, 10, color);
+	SSD1306_drawFastVLine(x0 + 16, y0 + 2, 10, color);
+	/* bottom lines */
+	SSD1306_drawFastVLine(x0 + 10, y0 + 15, 10, color);
+	SSD1306_drawFastVLine(x0 + 12, y0 + 17, 10, color);
+	SSD1306_drawFastVLine(x0 + 14, y0 + 17, 10, color);
+	SSD1306_drawFastVLine(x0 + 16, y0 + 15, 10, color);
+	/* circle sides */
+	SSD1306_drawFastHLine(x0 + 11, y0 + 9, 5, color);
+	SSD1306_drawFastHLine(x0 + 11, y0 + 17, 5, color);
+	SSD1306_drawFastVLine(x0 + 9, y0 + 11, 5, color);
+	SSD1306_drawFastVLine(x0 + 17, y0 + 11, 5, color);
+	/* center sphere reflection */
+	SSD1306_drawPixel(x0 + 11, y0 + 12, color);
+	SSD1306_drawPixel(x0 + 12, y0 + 11, color);
+	SSD1306_drawPixel(x0 + 13, y0 + 11, color);
+}
+
+
+/**
  * Draw a circle at x, y with radius r and color.
  * NOTE: Color is 16-bit (565)
  */
