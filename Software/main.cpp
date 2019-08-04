@@ -30,7 +30,8 @@ uint8_t output1;
 uint8_t output2;
 
 // Audio Variables
-uint8_t octave = 5;
+uint8_t octave = 6;
+uint8_t octavesUp = 0;
 
 /**
  * Initialize the button pins
@@ -99,16 +100,14 @@ void encoder_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
             if (prevPinAState == false) {
                 if (pinBState) {
                     // counter-clockwise turn
-                    // octave--;
-                    // if (octave < 0) {
-                    //     octave = 0;
-                    // }
+                    if (--octave < 1) {
+                        octave = 1;
+                    }
                 } else {
                     // clockwise turn
-                    // octave++;
-                    // if (octave > 9) {
-                    //     octave = 9; // have to stop at 9 since theremin audio spans two octaves
-                    // }
+                    if (++octave > 6) {
+                        octave = 6; // as of right now, timer freaks if you go into octave C8
+                    }
                 }
             }
 
@@ -231,10 +230,10 @@ int main() {
     uint8_t status1 = 0, status2 = 0;
     printf("Looping...\n");
 
-    char display2[20];
+    char display2[22];
     char display1[20];
     char voltageDisp[5];
-    uint8_t counter = 0;
+    char octaveDisp[3];
     uint8_t voltageOnes = 0;
     uint8_t voltageDecimal = 0;
 
@@ -249,18 +248,18 @@ int main() {
             range1 = tof_pitch(range1);
             range2 = tof_volume(range2);
             snprintf(display1, 20, " THEREMIN");
-            snprintf(display2, 20, "%03dmm      %03dmm", range2, range1);
+            snprintf(display2, 22, "%03dmm      C%d   %03dmm", range2, octave + octavesUp, range1);
             // snprintf(display2, 20, "%03dmm Sine %03dmm", audio->getVolume(), range1);
         } else if (badgeMode == BADGE_MODE_FIXED_VOL) {
             /* fixed volume mode */
             range1 = tof_pitch(range1);
             audio->setVolume(16);
             snprintf(display1, 20, " THEREMIN");
-            snprintf(display2, 20, "fixed      %03dmm", range1);
+            snprintf(display2, 22, "fixed      C%d   %03dmm", octave + octavesUp, range1);
         } else if (badgeMode == BADGE_MODE_CREDITS) {
             /* credits mode / music playback */
             snprintf(display1, 20, " Credits...");
-            snprintf(display2, 20, " Malort", range1);
+            snprintf(display2, 22, " Malort", range1);
             // something cool
             if (!audio->songIsPlaying()) {
                 audio_off();
@@ -275,17 +274,17 @@ int main() {
             led_theramin();  // Enables LED Thearamin Mode
             snprintf(display1, 20, " LED Mode");
             if (led_mode == 1) {
-                snprintf(display2, 20, " Cylon");
+                snprintf(display2, 22, " Cylon");
             } else if (led_mode == 2) {
-                snprintf(display2, 20, " Chile");
+                snprintf(display2, 22, " Chile");
             } else if (led_mode == 3) {
-                snprintf(display2, 20, " Vapor");
+                snprintf(display2, 22, " Vapor");
             } else if (led_mode == 4) {
-                snprintf(display2, 20, " Warp core");
+                snprintf(display2, 22, " Warp core");
             } else if (led_mode == 5) {
-                snprintf(display2, 20, " Malort");
+                snprintf(display2, 22, " Malort");
             } else {
-                snprintf(display2, 20, "");
+                snprintf(display2, 22, "");
             }
         }
 
@@ -295,21 +294,23 @@ int main() {
         util_gfx_set_font(FONT_MONO55_8PT);
         util_gfx_set_cursor(0, 1);
         util_gfx_print(display1, COLOR_WHITE);
-        if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
-            util_gfx_draw_waveform(55, 22, COLOR_WHITE, audio->getWaveform());
-            util_gfx_set_cursor(0, 20);
-        } else {
+        if (!((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL))) {
             util_gfx_set_cursor(0, 15);
+            util_gfx_print(display2, COLOR_WHITE);
+            util_gfx_set_font(FONT_VERAMONO_5PT);
+        } else {
+            util_gfx_draw_waveform(48, 21, COLOR_WHITE, audio->getWaveform());
+            util_gfx_set_font(FONT_VERAMONO_5PT);
+            util_gfx_set_cursor(0, 22);
+            util_gfx_print(display2, COLOR_WHITE);
         }
-        util_gfx_print(display2, COLOR_WHITE);
-        util_gfx_set_font(FONT_VERAMONO_5PT);
-        util_gfx_set_cursor(100, 1);
+        util_gfx_set_cursor(105, 1);
         util_gfx_print(voltageDisp, COLOR_WHITE);
 
         SSD1306_display();
         checkButtonHolds();
 
-        nrf_delay_ms(10);  // Do we really need this?
+        // nrf_delay_ms(10);  // Do we really need this?
     }
 }
 
@@ -639,21 +640,21 @@ uint8_t tof_pitch(uint8_t prevRange) {
 
     bool halfNote = handPosition & 0x1;  // check if this is an inbetween note
     uint8_t noteIndex = handPosition >> 1;  // divide hand position by 2 to get note
-    uint8_t octavesUp = 0;
 
     // if note is beyond current octave, move to next octave
+    octavesUp = 0;
     if (noteIndex > 12) {
         noteIndex -= 12;
-        octavesUp++;
+        octavesUp = 1;
     }
 
     // get period from note lookup
     uint32_t newPeriod = 0;
     if (halfNote) {
         // get note between (note + (next_note))/ 2
-        newPeriod = (notes[octave + octavesUp][noteIndex] + notes[octave + octavesUp][noteIndex + 1]) >> 1;
+        newPeriod = (notes[octave + octavesUp - 1][noteIndex] + notes[octave + octavesUp - 1][noteIndex + 1]) >> 1;
     } else {
-        newPeriod = notes[octave + octavesUp][noteIndex];
+        newPeriod = notes[octave + octavesUp - 1][noteIndex];
     }
 
     // set new timer1 period
