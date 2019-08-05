@@ -8,7 +8,7 @@ SDK_ROOT         := $(HOME)/dev/nordic-sdk15/
 #SDK_ROOT         := /sdk/
 
 PROJ_DIR         := $(shell pwd)
-NRFJPROG         := $(HOME)/dev/bin/nrfjprog/nrfjprog
+NRFJPROG         := /usr/bin/nrfjprog
 MERGEHEX         := $(HOME)/dev/bin/mergehex/mergehex
 
 SOFTDEVICE       := $(SDK_ROOT)/components/softdevice/s140/hex/s140_nrf52_6.1.1_softdevice.hex
@@ -131,6 +131,7 @@ SRC_FILES += \
   $(PROJ_DIR)/modules/led.cpp \
   $(PROJ_DIR)/modules/ws2812b.cpp \
   $(PROJ_DIR)/modules/VL6180X.cpp \
+  $(PROJ_DIR)/modules/SAO.cpp \
   $(PROJ_DIR)/main.cpp \
 
 

@@ -28,11 +28,18 @@
 #include "./modules/drv_ssd1306.h"
 #include "./modules/VL6180X.h"
 #include "./modules/ws2812b.h"
+#include "./modules/SAO.h"
 
 #define VERSION "1.00"
 #endif /* MAIN_H_ */
 
-
+typedef enum {
+    BUTTON_PRESS_D = 1,
+    BUTTON_PRESS_C = 2,
+    BUTTON_PRESS_Z = 3,
+    BUTTON_PRESS_I = 4,
+    BUTTON_PRESS_A = 5
+} BUTTON_PRESS;
 
 /* badge modes */
 const uint8_t BADGE_MODE_DEFAULT   = 0;
@@ -46,6 +53,8 @@ void incrementBadgeMode();
 void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action);
 void startup_sequence();
 void checkButtonHolds();
+void checkSAO();
+void modeSet(BUTTON_PRESS buttonPress);
 
 void led_theramin();
 void led_handler_cylon(void *p_context);
