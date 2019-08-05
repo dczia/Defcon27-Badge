@@ -17,6 +17,7 @@ VL6180X *TOF;
 Audio *audio;
 LED *leds;
 WS2812S *pixels;
+SAO *theremini;
 
 // Variables for LED modes
 bool led_status = false;
@@ -212,6 +213,9 @@ int main() {
     // Setup the battery monitor
     adc = new ADC();
 
+    // Setup SAO
+    theremini = new SAO(0x23);
+
     // BLE
     ble_stack_init();
     scan_start();
@@ -310,8 +314,22 @@ int main() {
         SSD1306_display();
         checkButtonHolds();
 
+        checkSAO();
+
         // nrf_delay_ms(10);  // Do we really need this?
     }
+}
+
+void checkSAO(void){
+
+    uint8_t key = 0;
+    theremini->read(&key, 1);
+
+    if(key != 0) {
+        printf("Last key is %d\n", key);
+        modeSet((BUTTON_PRESS)key);
+    }
+
 }
 
 void incrementBadgeMode() {
@@ -327,6 +345,47 @@ void audio_off() {
     audio->setPWM0Ch0Value(0);  // turn off PWM0 ch0
 }
 
+void modeSet(BUTTON_PRESS buttonPress){
+
+    switch(buttonPress){
+        case BUTTON_PRESS_D:
+            if (badgeMode == BADGE_MODE_DEFAULT) {
+                led_mode = 1;
+            } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
+                audio->setWaveform(WAVE_SINE);
+            }
+            break;
+        case BUTTON_PRESS_C:
+            if (badgeMode == BADGE_MODE_DEFAULT) {
+                led_mode = 2;
+            } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
+                audio->setWaveform(WAVE_TRI);
+            }
+            break;
+        case BUTTON_PRESS_Z:
+            if (badgeMode == BADGE_MODE_DEFAULT) {
+                led_mode = 3;
+            } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
+                audio->setWaveform(WAVE_RAMP);
+            }
+            break;
+        case BUTTON_PRESS_I:
+            if (badgeMode == BADGE_MODE_DEFAULT) {
+                led_mode = 4;
+            } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
+                audio->setWaveform(WAVE_SQR);
+            }
+            break;
+        case BUTTON_PRESS_A:
+            if (badgeMode == BADGE_MODE_DEFAULT) {
+                led_mode = 5;
+            } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
+                audio->setWaveform(WAVE_NOIZ);
+            }
+            break;
+    }
+
+}
 
 /**
  * Handler for encoder pin A change events
@@ -338,15 +397,9 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_D_PIN) == false) {
             if (!DButtonPressed) {
                 // add code that runs one time when button is pressed
-                if (badgeMode == BADGE_MODE_DEFAULT) {
-                    led_mode = 1;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
-                    audio->setWaveform(WAVE_SINE);
-                }
-
+                modeSet(BUTTON_PRESS_D);
                 leds->set(LED_D, ON);
                 printf("Button D Pressed\n");
-
                 DButtonPressed = true;
             }
         } else {
@@ -365,12 +418,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_C_PIN) == false) {
             if (!CButtonPressed) {
                 // add code that runs one time when button is pressed
-                if (badgeMode == BADGE_MODE_DEFAULT) {
-                    led_mode = 2;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
-                    audio->setWaveform(WAVE_TRI);
-                }
-
+                modeSet(BUTTON_PRESS_C);
                 leds->set(LED_C, ON);
                 printf("Button C Pressed\n");
 
@@ -392,12 +440,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_Z_PIN) == false) {
             if (!ZButtonPressed) {
                 // add code that runs one time when button is pressed
-                if (badgeMode == BADGE_MODE_DEFAULT) {
-                    led_mode = 3;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
-                    audio->setWaveform(WAVE_RAMP);
-                }
-
+                modeSet(BUTTON_PRESS_Z);
                 leds->set(LED_Z, ON);
                 printf("Button Z Pressed\n");
 
@@ -419,12 +462,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_I_PIN) == false) {
             if (!IButtonPressed) {
                 // add code that runs one time when button is pressed
-                if (badgeMode == BADGE_MODE_DEFAULT) {
-                    led_mode = 4;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
-                    audio->setWaveform(WAVE_SQR);
-                }
-
+                modeSet(BUTTON_PRESS_I);
                 leds->set(LED_I, ON);
                 printf("Button I Pressed\n");
 
@@ -446,12 +484,7 @@ void button_handler(nrf_drv_gpiote_pin_t pin, nrf_gpiote_polarity_t action) {
         if (nrfx_gpiote_in_is_set(BUTTON_A_PIN) == false) {
             if (!AButtonPressed) {
                 // add code that runs one time when button is pressed
-                if (badgeMode == BADGE_MODE_DEFAULT) {
-                    led_mode = 5;
-                } else if ((badgeMode == BADGE_MODE_THEREMIN) || (badgeMode == BADGE_MODE_FIXED_VOL)) {
-                    audio->setWaveform(WAVE_NOIZ);
-                }
-
+                modeSet(BUTTON_PRESS_A);
                 leds->set(LED_A, ON);
                 printf("Button A Pressed\n");
 
@@ -707,8 +740,8 @@ void led_theramin() {
     output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72;  // ReMap Sensor Values
     uint8_t outhalf = output1 >> 2;  // divide by 4
     uint8_t outhalf2 = output2 >> 2;  // divide by 4
-    printf("Output Range 1  = %d\n", output2);  // Debug
-    printf("Output Range 2  = %d\n", output1);
+    //printf("Output Range 1  = %d\n", output2);  // Debug
+    //printf("Output Range 2  = %d\n", output1);
 
     if (led_mode == 1) {  // Vapor Mode
         pixels->setColor(0, {output2, 0, output2});
