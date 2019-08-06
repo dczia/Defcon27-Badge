@@ -107,7 +107,7 @@ bool checkForRabies(BADGE_ADV badge);
 #define APP_BLE_CONN_CFG_TAG 			1
 #define APP_BLE_OBSERVER_PRIO           3
 
-#define DEVICE_NAME                     "DCZia   "                 				/**< Name of device. Will be included in the advertising data. */
+#define DEVICE_NAME                     ""                 				/**< Name of device. Will be included in the advertising data. */
 #define NON_CONNECTABLE_ADV_INTERVAL    MSEC_TO_UNITS(500, UNIT_0_625_MS) 		/**< The advertising interval for non-connectable advertisement (100 ms).
 																					This value can vary between 100ms to 10.24s). */
 
