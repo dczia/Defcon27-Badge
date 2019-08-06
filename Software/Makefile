@@ -16,6 +16,7 @@ UF2CONV 		:= $(PROJ_DIR)/uf2conv.py
 
 SOFTDEVICE       := $(SDK_ROOT)/components/softdevice/s140/hex/s140_nrf52_6.1.1_softdevice.hex
 MBR              := $(SDK_ROOT)/components/softdevice/mbr/nrf52840/hexmbr_nrf52_2.4.1_mbr.hex
+BOOTLOADER       := $(PROJ_DIR)/dczia_bootloader-0.2.11-5-gecc5f25-dirty_s140_6.1.1.hex
 
 $(OUTPUT_DIRECTORY)/lasertheremin.out:
   LINKER_SCRIPT  := dczia_gcc_nrf52.ld
@@ -368,6 +369,13 @@ flash: $(OUTPUT_DIRECTORY)/lasertheremin.hex
 	@echo Flashing: $<
 	$(NRFJPROG) --program $< -f nrf52 --sectorerase
 	$(NRFJPROG) --reset -f nrf52
+
+# Flash bootloader
+flash_bootloader:
+	@echo Flashing $(BOOTLOADER)
+	$(NRFJPROG) -f nrf52 --eraseall
+	$(NRFJPROG) -f nrf52 --program $(BOOTLOADER) --sectoranduicrerase
+	$(NRFJPROG) -f nrf52 --reset
 
 erase:
 	$(NRFJPROG) --eraseall -f nrf52
