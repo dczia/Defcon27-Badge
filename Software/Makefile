@@ -11,6 +11,9 @@ PROJ_DIR         := $(shell pwd)
 NRFJPROG         := /usr/bin/nrfjprog
 MERGEHEX         := $(HOME)/dev/bin/mergehex/mergehex
 
+PYTHON3 		:= $(shell which python 2>/dev/null)
+UF2CONV 		:= $(PROJ_DIR)/uf2conv.py
+
 SOFTDEVICE       := $(SDK_ROOT)/components/softdevice/s140/hex/s140_nrf52_6.1.1_softdevice.hex
 MBR              := $(SDK_ROOT)/components/softdevice/mbr/nrf52840/hexmbr_nrf52_2.4.1_mbr.hex
 
@@ -376,3 +379,9 @@ SDK_CONFIG_FILE := config/sdk_config.h
 CMSIS_CONFIG_TOOL := $(SDK_ROOT)/external_tools/cmsisconfig/CMSIS_Configuration_Wizard.jar
 sdk_config:
 	java -jar $(CMSIS_CONFIG_TOOL) $(SDK_CONFIG_FILE)
+
+uf2: $(OUTPUT_DIRECTORY)/lasertheremin.hex
+	@echo Building UF2 file: $<
+	$(PYTHON3) $(UF2CONV) $< -c -f 0xADA52840 -o dczia-dc27.uf2
+
+
