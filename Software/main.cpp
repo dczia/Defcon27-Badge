@@ -43,7 +43,7 @@ static void button_init() {
     IButtonPressed = false;
     AButtonPressed = false;
     encSwPressed = false;
-    
+
     /* set encoder pin directions and states */
     nrf_gpio_cfg_input(BUTTON_D_PIN, NRF_GPIO_PIN_NOPULL);
     nrf_gpio_cfg_input(BUTTON_C_PIN, NRF_GPIO_PIN_NOPULL);
@@ -222,14 +222,14 @@ int main() {
     // Configure the systick
     sysTickStart();
     // Setup the BLE
-    advertising_setUser("test");
+    advertising_setUser("-DCZia505-");
     ble_adv_start();
 
     // Setup TOF range variables
     uint8_t range1 = 0, range2 = 0;
     uint8_t status1 = 0, status2 = 0;
-    printf("Looping...\n");
 
+    //Looping behavior
     char display2[22];
     char display1[20];
     char voltageDisp[5];
@@ -799,22 +799,22 @@ void led_handler_cylon(void *p_context) {
                 leds->bitmap(17);
                 led_pattern2_step++;
                 break;
-            
+
             case 2:
                 leds->bitmap(10);
                 led_pattern2_step++;
                 break;
-        
+
             case 3:
                 leds->bitmap(4);
                 led_pattern2_step++;
                 break;
-        
+
             case 4:
                 leds->bitmap(10);
                 led_pattern2_step++;
                 break;
-        
+
             case 5:
                 leds->bitmap(17);
                 led_pattern2_step = 1;
@@ -828,7 +828,7 @@ void led_handler_cylon(void *p_context) {
             //if (output1 > 255) { output1 = 0; }
             //if (output2 > 255) { output2 = 0; }
         switch(led_pattern2_step) {
-            
+
             case 1:
                 leds->bitmap(3);
                 led_pattern2_step++;
@@ -836,7 +836,7 @@ void led_handler_cylon(void *p_context) {
               //  pixels->setColor(1, {output1, output1, 9});
               //  pixels->show();
                 break;
-            
+
             case 2:
                 leds->bitmap(24);
                 led_pattern2_step++;
@@ -844,7 +844,7 @@ void led_handler_cylon(void *p_context) {
                // pixels->setColor(1, {output1, output1, 9});
                // pixels->show();
                 break;
-        
+
             case 3:
                 leds->bitmap(6);
                 led_pattern2_step++;
@@ -852,7 +852,7 @@ void led_handler_cylon(void *p_context) {
                // pixels->setColor(1, {output1, output1, 9});
                // pixels->show();
                 break;
-        
+
             case 4:
                 leds->bitmap(12);
                 led_pattern2_step++;
@@ -860,7 +860,7 @@ void led_handler_cylon(void *p_context) {
                // pixels->setColor(1, {output1, output1, 9});
                // pixels->show();
                 break;
-        
+
             case 5:
                 leds->bitmap(17);
                 led_pattern2_step = 1;
@@ -868,7 +868,7 @@ void led_handler_cylon(void *p_context) {
                // pixels->setColor(1, {output1, output1, 9});
                // pixels->show();
                 break;
-           
+
         }
     }
 
