@@ -34,3 +34,11 @@ The following parts should be included with your badge:
 - Step 6. Install keycaps
 - Step 7. Place DCZIA stickers on the keycaps
 - Step 6. Install Batteries
+
+## Badge User Manual
+
+The badge by default boots into LED Mode. Presing the D C Z I A keys will change the key light patterns, and colors of the top RGB leds. Placing your hands 2 - 25 cm above the left and right sides of the badge will modify the brightness and color of the corresponding LEDs.
+
+Pressing down on the top of the rotary encoder (it will click when you have activated the button) will change sound modes. The main modes will be LED Mode, Theramin Mode, and Fixed Volume Mode (Loud Mode). 
+
+Looking at the front of the badge with the screen at the top, the left distance sensor will affect volume, and the right sensor will change pitch. Pressing the keys will change waveforms (Square Wave, Sine Wave, Triangle Wave, Sawtooth, and PWM). Rotating the rotary encoder will change the range of pitch that the right sensor will modify. 
