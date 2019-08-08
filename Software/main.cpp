@@ -740,6 +740,7 @@ void led_theramin() {
     output2 = 255 + ((0 - 255) / (190 - 8)) * (LEDrange2 - 8) + -72;  // ReMap Sensor Values
     uint8_t outhalf = output1 >> 2;  // divide by 4
     uint8_t outhalf2 = output2 >> 2;  // divide by 4
+    uint8_t out75 = output2 * 0.75;
     //printf("Output Range 1  = %d\n", output2);  // Debug
     //printf("Output Range 2  = %d\n", output1);
 
@@ -756,18 +757,22 @@ void led_theramin() {
         pixels->show();
     }
     if (led_mode == 3) {  // VaporMode1
+	pixels->setColor(0, {15, out75, output2});
+        pixels->setColor(1, {output1, 5, 39});	
+        //pixels->setColor(0, {outhalf2, output2, 0});
+        //pixels->setColor(1, {output1, outhalf, output1});
+        pixels->show();
+    }
+    if (led_mode == 4) {  // Warp Core
+        //pixels->setColor(0, {19, output2, output2});
+        //pixels->setColor(1, {output1, 5, 39});
         pixels->setColor(0, {outhalf2, output2, 0});
         pixels->setColor(1, {output1, outhalf, output1});
-        pixels->show();
+	pixels->show();
     }
-    if (led_mode == 4) {  // VaporMode2
-        pixels->setColor(0, {19, output2, output2});
-        pixels->setColor(1, {output1, 5, 39});
-        pixels->show();
-    }
-    if (led_mode == 5) {  // VaporMode3
-            pixels->setColor(0, {100, 0, 0});
-            pixels->setColor(1, {0, 10, 100});
+    if (led_mode == 5) {  // Mallort Mode
+            pixels->setColor(0, {95, outhalf2, 0});
+            pixels->setColor(1, {62, outhalf, 5});
             pixels->show();
     }
 }
