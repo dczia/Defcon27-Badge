@@ -26,14 +26,15 @@ The following parts should be included with your badge:
 - Step 3. Solder on battery box
   - **Note** If you did solder on the battery box first, genly bend it upwards to access the components you need to solder underneath it.
 - Step 4. Attach screen
-  - **Note** Mount the header to the board putting the long legs through the four holes from the front of the pcb. The black plastic part of the header should lay flat ontop of the front of the pcb. Solder the display to the short legs, this way the screen will lay flat on the font of the pcb. Then solder the back side of the headers to the board.
+  - **Note** Mount the header to the board putting the long legs through the four holes from the back of the pcb. The black plastic part of the header should lay flat on the back of the pcb. Solder the display to the long legs from the front, this way the screen will lay flat on the font of the pcb.
 - Step 5. Attach SAO Headers
   - If you wish to use SAO's solder the two headers to the front of the pcb with the notch pointing up
-- Step 5. Attach Speaker
+- Step 6. Attach Speaker
   - The positive (RED) and negative (BLACK) wires of the speaker get soldered to the two square pads on the back of the badge on the left side of the pcb looking at it from the rear. Then take the sticky tape backing off the speaker and attach it centered on the prefroated holes on the back of the board.
-- Step 6. Install keycaps
-- Step 7. Place DCZIA stickers on the keycaps
-- Step 6. Install Batteries
+- Step 7. Cut the DCZIA sticker and trim into individual D C Z I A stickers and place on the keycaps
+- Step 8. Install Batteries
+
+-- Note, if your speaker is really really quiet, please contact us.
 
 ## Badge User Manual
 
