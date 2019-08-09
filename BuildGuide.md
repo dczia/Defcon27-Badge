@@ -19,6 +19,8 @@ The following parts should be included with your badge:
 - Stickers
 - Lanyard
 
+![Badge contents](Images/Badge1.jpg)
+
 ## Build Instructions
 
 - Step 1. Solder on keyswitches
@@ -27,15 +29,21 @@ The following parts should be included with your badge:
   - **Note** If you did solder on the battery box first, genly bend it upwards to access the components you need to solder underneath it.
 - Step 4. Attach screen
   - **Note** Mount the header to the board putting the long legs through the four holes from the back of the pcb. The black plastic part of the header should lay flat on the back of the pcb. Solder the display to the long legs from the front, this way the screen will lay flat on the font of the pcb.
+  ![Screen Assembly](Images/Badge2.jpg)
+  ![Screen Assembly](Images/Badge3.jpg)
+  ![Screen Assembly](Images/Badge4.jpg)
+  ![Screen Assembly](Images/Badge5.jpg)
 - Step 5. Attach SAO Headers
   - If you wish to use SAO's solder the two headers to the front of the pcb with the notch pointing up
 - Step 6. Attach Speaker
   - The positive (RED) and negative (BLACK) wires of the speaker get soldered to the two square pads on the back of the badge on the left side of the pcb looking at it from the rear. Then take the sticky tape backing off the speaker and attach it centered on the prefroated holes on the back of the board.
+  - You can gently stuff the extra speaker wire under the battery box if you did not trim it.
 - Step 7. Cut the DCZIA sticker and trim into individual D C Z I A stickers and place on the keycaps
 - Step 8. Install Batteries
-
--- NOTE - The headphone jack does not work as is,we will post a fix. The jack did not match the footprint we used. Sorry!
--- Also Note, if your speaker is really really quiet, please contact us.
+  ![Screen Assembly](Images/Badge6.jpg)
+- NOTE - The headphone jack does not work as is,we will post a fix. The jack did not match the footprint we used. Sorry!
+- Also Note, if your speaker is really really quiet, please contact us.
+- Also Also Note, The battery box is a bit flimsy, so your batterys may jostle and reboot the badge or fly out if the badge is bumped around alot.
 
 ## Badge User Manual
 
