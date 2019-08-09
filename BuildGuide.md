@@ -22,7 +22,7 @@ The following parts should be included with your badge:
 ## Build Instructions
 
 - Step 1. Solder on keyswitches
-- Step 2. Solder on rotaty encoder
+- Step 2. Solder on rotatry encoder
 - Step 3. Solder on battery box
   - **Note** If you did solder on the battery box first, genly bend it upwards to access the components you need to solder underneath it.
 - Step 4. Attach screen
@@ -34,7 +34,8 @@ The following parts should be included with your badge:
 - Step 7. Cut the DCZIA sticker and trim into individual D C Z I A stickers and place on the keycaps
 - Step 8. Install Batteries
 
--- Note, if your speaker is really really quiet, please contact us.
+-- NOTE - The headphone jack does not work as is,we will post a fix. The jack did not match the footprint we used. Sorry!
+-- Also Note, if your speaker is really really quiet, please contact us.
 
 ## Badge User Manual
 
